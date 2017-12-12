@@ -1,13 +1,19 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+<view>
+  <view class="container">
+    <view class='logo'>logo</view>
+    <view class> ****title****</view>
+    <video src="https://upfiles.heclouds.com/other_files/cm_marathon_intro.mp4">
+    </video>
+    <view class='contact'>
+      <view>官方联系方式：15711111551</view>
+      <view>商务合作官方微信号：hauyan</view>
+      <view>官方邮箱：huayan@163.com</view>
+    </view>
+    <view class='patner'>合作花店</view>
+    <view class='footbtn'>
+      <button class='inline-block' bindtap="register">注册花店</button>
+      <button class='inline-block'>登陆花店</button>
+    </view>
   </view>
 </view>

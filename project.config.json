@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.7.0",
 	"appid": "wx88168e0c2c6b3bf2",
-	"projectname": "flower",
+	"projectname": "flower_words",
 	"condition": {
 		"search": {
 			"current": -1,
