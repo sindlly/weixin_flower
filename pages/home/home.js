@@ -4,7 +4,10 @@ const app = getApp()
 
 Page({
   data: {
-    img_list:[1,2,3,4,5,6]
+    motto: 'Hello World dxy!',
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
   register: function() {

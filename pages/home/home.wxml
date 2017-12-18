@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view>
+  <view class="container">
+    home
+    <navigator url="../home/data/data">
+    <button>查看花店数据</button>
+    </navigator>
+    <navigator url="../home/printer/printer">
+    <button>设置打印机</button>
+    </navigator>
+    <navigator url="../editer/editer">
+    <button>编辑花店名片</button>
+    </navigator>
+  </view>
+</view>

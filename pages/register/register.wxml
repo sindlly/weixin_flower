@@ -1,7 +1,8 @@
 <view class='container'>
   <view>商家注册</view>
-  <form>
-  <input type="number" placeholder="手机号"/>
-  <input type="password" placeholder="密码"/>
+  <form bindsubmit="formSubmit">
+  <view class="section"><input name="phone" type="number" placeholder="手机号"/></view>
+  <view><input name="password" type="password" placeholder="密码"/></view>
+  <view><button formType="submit">注册</button></view>
   </form>
 </view>

@@ -1,0 +1,5 @@
+/* pages/home/data/data.wxss */
+.img{
+  width: 100px;
+  height: 100px;
+}

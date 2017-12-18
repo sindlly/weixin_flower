@@ -1,8 +1,14 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/home/printer/printer",
+    "pages/editer/editer", 
+    "pages/home/home",
+    "pages/home/data/data",
+    "pages/register/register",
+   
     "pages/logs/logs",
-    "pages/register/register"
+    "pages/detail/detail"  
   ],
   "window":{
     "backgroundTextStyle":"light",
