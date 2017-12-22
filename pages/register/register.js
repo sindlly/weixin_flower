@@ -1,6 +1,5 @@
 Page({
   formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
     const requestTask = wx.request({
       url: 'http://111.231.76.244:7001/api/v1/users', 
       method:"POST",
@@ -9,11 +8,25 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res.data)
+        if(res.code == 200){
+          wx.reLaunch({
+            url: '../login/login'
+          })
+        }
+        else{
+          wx.showModal({
+            title: '提示',
+            content: res.data.msg
+          })
+        }
+      },
+      fail:function(res){
+        wx.showModal({
+          title: '提示',
+          content: res.data.msg
+        })
       }
     })
-    // wx.navigateTo({
-    //   url: '../detail/detail'
-    // })
+    
   }
 })

@@ -26,6 +26,6 @@
   </view>
   <view class='footbtn'>
       <view class='inline-block reg-btn' bindtap="register">注册花店</view>
-      <view class='inline-block login-btn'>登录花店</view>
+      <view class='inline-block login-btn' bindtap="login">登录花店</view>
     </view>
 </view>

@@ -1,0 +1,21 @@
+<!--pages/editer/editaudio/editaudio.wxml-->
+<view class='container'>
+<view class='panle'>
+<text>您可以这样说：</text>
+<view><text>{{text[0]}}</text></view>
+<view class='changetext'>
+  <image src='../../../files/changetext.png'></image>
+  <text>换一句</text>
+</view>
+<audio src="{{audioSrc}}" id="myAudio"  controls loop></audio>
+</view>
+
+</view>
+<view class='control-area' wx:if="{{!isStart}}">
+<image class='voice-btn' src='../../../files/voice.png' bindtap="startAudio"></image>
+</view>
+<view class='control-area' wx:if="{{isStart}}">
+  <image class='voice-btn' wx:if="{{!isSave}}" src='../../../files/voice.png' bindtap="endAudio"></image>
+  <image class='voice-btn' wx:if="{{isSave}}" src='../../../files/savevoice.png' bindtap="saveAudio"></image>
+</view>
+

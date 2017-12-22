@@ -1,1 +1,30 @@
-<view>editer</view>
+<!--贺卡编辑页  -->
+<view class="container">
+  <view class='panle'>
+    <view class="display-area">
+      <view class="upfile" wx:if="{{!hasPicture&!hasVideo}}" bindtap="addPicture">
+        <image class="img_icon" src='../../files/add_img.png'></image>
+        <span class="tips">添加图片</span>
+      </view>
+      <image mode='aspectFit' src="{{ pictureUrl }}" wx:if="{{hasPicture}}"
+></image>
+      <!-- <image src="{{ pictureUrl }}" wx:if="{{hasPicture}}" bindload="imageLoad"
+style="width:{{ images.width }}rpx; height:{{ images.height }}rpx;"></image> -->
+      <video class='dispaly-video' src="{{videoSrc}}" wx:if="{{hasVideo}}"></video>
+    </view>
+    <textarea bindblur="bindTextAreaBlur" auto-height value="{{text}}" />
+    <!-- <audio src="{{audioSrc}}" id="myAudio" controls loop></audio> -->
+  </view>
+</view>
+<view class="control-area">
+    <image class='voice-btn' src='../../files/voice.png' bindtap="upAdio"></image>
+    <image class='video-btn' src='../../files/video.png' bindtap="upVideo"></image>
+  </view>
+  <view class='name-area'>
+    <view class="name name-1">录音</view>
+    <view class="name">录像</view>
+  </view>
+  <view class='foot'>
+    <image class='preview-btn' src='../../files/preview.png'></image>
+    <image class='save-btn' src='../../files/save.png' bindtap="save"></image>
+  </view>

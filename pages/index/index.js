@@ -12,6 +12,11 @@ Page({
       url: '../register/register'
     })
   },
+  login: function () {
+    wx.navigateTo({
+      url: '../login/login'
+    })
+  },
   onLoad: function () {
     
   },
