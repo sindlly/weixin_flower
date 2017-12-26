@@ -33,6 +33,7 @@ textarea{
 }
 .display-area{
   width: 100%;
+  text-align: center;
   /* min-height: 225px; */
 }
 .upfile{
@@ -58,37 +59,37 @@ textarea{
 }
 .control-area{
   width: 100%;
-  margin-top: 10px;
+  box-sizing: border-box;
+  padding: 0 130rpx;
+  margin-top: 80rpx;
   display: flex;
-  justify-content:center;
+  justify-content:space-around;
   align-items: center
 }
 .voice-btn{
-  width: 80px;
-  height: 80px;
-  margin-right:30px
-}
-.voice-btn:after{
-content: "录音"
+  width: 120rpx;
+  height: 120rpx;
+  /* margin-right:60rpx */
 }
 .video-btn{
-  width: 80px;
-  height: 80px;
+  width: 120rpx;
+  height: 120rpx;
 }
 .name-area{
   width: 100%;
-   display: flex;
-  justify-content:center;
+  box-sizing: border-box;
+  padding: 0 130rpx;
+  display: flex;
+  justify-content:space-around;
   align-items: center
 }
 .name{
-  width: 80px;
+  width: 120rpx;
   text-align: center;
   color: #888;
-
 }
 .name-1{
-margin-right:30px
+/* margin-right:30px */
 }
 .foot{
   width: 100%;

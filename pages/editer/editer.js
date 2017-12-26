@@ -6,6 +6,7 @@ Page({
    */
   data: {
   //开发用例
+    $root: getApp().globalData.ROOTPATH,
     token: wx.getStorageSync("token"),
     csrfToken: wx.getStorageSync("csrfToken"),
     id:"98598110-e526-11e7-8da8-5fed89802120",
@@ -16,7 +17,7 @@ Page({
     videoSrc:'',
     hasVideo:false,
     audioSrc:'',
-    images:{}
+    images:{},
   },
   addPicture:function(){
     var _this =this;
@@ -59,7 +60,6 @@ Page({
     })
   },
   save: function(){
-    
     var _this = this;
     var timestamp1 = Date.parse(new Date());
     //如果有录音
@@ -72,7 +72,7 @@ Page({
     console.log(_this.data.uploadUrl)
     wx.uploadFile({
       method: "POST",
-      url: 'http://111.231.76.244:7001/api/v1/files', 
+      url: $root+'/files', 
       filePath: _this.data.uploadUrl,
       header: {
         'content-type': 'multipart/form-data',
@@ -106,9 +106,17 @@ Page({
   imageLoad: function (e) {
     var $width = e.detail.width,    //获取图片真实宽度
       $height = e.detail.height,
+      viewWidth = 0,
+      viewHeight = 0,
       ratio = $width / $height;    //图片的真实宽高比例
-    var viewWidth = 640,           //设置图片显示宽度，左右留有16rpx边距
-      viewHeight = 640 / ratio;    //计算的高度值
+      if(ratio >= 1){
+        viewWidth = 640,           //设置图片显示宽度，左右留有16rpx边距
+        viewHeight = 640 / ratio;    //计算的高度值
+      }else{
+        viewWidth = 480,           //设置图片显示宽度，左右留有16rpx边距
+        viewHeight = 480 / ratio;    //计算的高度值
+      }
+    
     var image = this.data.images;
     //将图片的datadata-index作为image对象的key,然后存储图片的宽高值
     image = {

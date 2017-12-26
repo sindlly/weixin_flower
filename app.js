@@ -34,6 +34,6 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    ROOTPATH: 'https://buildupstep.cn/api/v1'
   }
 })

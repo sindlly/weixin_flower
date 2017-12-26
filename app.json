@@ -2,6 +2,8 @@
   "pages": [
     "pages/login/login",
     "pages/register/register",
+    
+    
     "pages/editer/editer",
     "pages/index/index",
     "pages/detail/detail",

@@ -1,7 +1,8 @@
 Page({
   formSubmit: function (e) {
+    const $root = getApp().globalData.ROOTPATH;
     const requestTask = wx.request({
-      url: 'http://111.231.76.244:7001/api/v1/auth/login', 
+      url: $root+'/auth/login', 
       method:"POST",
       data: e.detail.value,
       header: {
