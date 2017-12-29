@@ -1,0 +1,25 @@
+<!--pages/editer/preview/preview.wxml-->
+<!--贺卡预览  -->
+<view class='wapper'>
+<view class="container">
+  <view class='panle'>
+    <view class="display-area">
+      <image mode='aspectFit' bindtap='previewImg' src="{{ pictureUrl }}" wx:if="{{hasPicture}}"></image>
+      <video class='dispaly-video' src="{{videoSrc}}" wx:if="{{hasVideo}}"></video>
+    </view>
+    <textarea bindblur="" auto-height value="{{text}}" />
+  </view>
+  <view class='audio-area' wx:if="{{hasAudio}}">
+    <image src='../../../files/pre_audio_play.png' wx:if='{{!isPlay}}' bindtap='audioPlay'></image>
+    <image src='../../../files/pre_audio_pause.png' wx:if='{{isPlay}}' bindtap='audioPause'></image>
+    <view class='audio-text'>听听TA还说了什么</view>
+  </view>
+</view>
+</view>
+
+
+
+<view class='foot'>
+  <image class='preview-btn' src='../../../files/pre01.png'></image>
+  <image class='save-btn' src='../../../files/pre02.png'></image>
+</view>

@@ -8,7 +8,9 @@ Page({
   //开发用例
     $root: getApp().globalData.ROOTPATH,
     token: wx.getStorageSync("token"),
+    //token: '353cf243-4667-4675-8d38-c3eae21bac72',
     csrfToken: wx.getStorageSync("csrfToken"),
+    //csrfToken:'353cf243-4667-4675-8d38-c3eae21bac72',
     id:"98598110-e526-11e7-8da8-5fed89802120",
     text:"陪伴才是最好的礼物，用最好的陪伴，献给最美的母亲，在你老去前，我来疼爱你。 ",
     uploadUrl:'',
@@ -30,74 +32,206 @@ Page({
         _this.setData({
           pictureUrl :res.tempFilePaths,
           hasPicture : true,
-          uploadUrl: res.tempFilePaths[0],
+          hasVideo:false,
+          // uploadUrl: res.tempFilePaths[0],
         }) 
+        wx.setStorageSync("pictureUrl", res.tempFilePaths);//为预览暂存地址
+        wx.setStorageSync("videoSrc", '')
       }
     })
+  },
+  bindTextAreaBlur:function(e){
+    console.log(e.detail.value);
+    wx.setStorageSync("blessing", e.detail.value);
   },
   upVideo: function(){
     var _this = this
-    wx.chooseVideo({
-      sourceType: ['album', 'camera'],
-      maxDuration: 60,
-      camera: 'back',
-      success: function (res) {
-        console.log(res)
-        _this.setData({
-          videoSrc: res.tempFilePath,
-          hasVideo:true,
-          uploadUrl: res.tempFilePath,
-        })
-      },
-      fail:function(res){
-        console.log(res)
-      }
-    })
+    if (wx.getStorageSync("audioSrc")!='') {
+      wx.showModal({
+        title: '提示',
+        content: '选择录像将清除录音，是否继续',
+        success: function (res) {
+          if (res.confirm) {
+            //选择录像，则清除录音；
+            wx.setStorageSync("audioSrc",'')
+            wx.chooseVideo({
+              sourceType: ['album', 'camera'],
+              maxDuration: 60,
+              camera: 'back',
+              success: function (res) {
+                console.log(res)
+                _this.setData({
+                  videoSrc: res.tempFilePath,
+                  hasVideo: true,
+                  hasPicture: false,
+                  uploadUrl: res.tempFilePath,
+                  pictureUrl:'',
+                })
+                wx.setStorageSync("videoSrc", res.tempFilePath);//为预览暂存地址
+                wx.setStorageSync("pictureUrl", '');//若有视频，则清除图片
+              },
+              fail: function (res) {
+                console.log(res)
+              }
+            })
+          }
+        }
+      })
+    }
+    else{
+      wx.chooseVideo({
+        sourceType: ['album', 'camera'],
+        maxDuration: 60,
+        camera: 'back',
+        success: function (res) {
+          console.log(res)
+          _this.setData({
+            videoSrc: res.tempFilePath,
+            hasVideo: true,
+            hasPicture: false,
+            uploadUrl: res.tempFilePath,
+            pictureUrl: '',
+          })
+          wx.setStorageSync("videoSrc", res.tempFilePath);//为预览暂存地址
+          wx.setStorageSync("pictureUrl", '');//若有视频，则清除图片
+        },
+        fail: function (res) {
+          console.log(res)
+        }
+      })
+    }
+    
+    
   },
   upAdio: function(){
+    var _this = this;
+    if (wx.getStorageSync("videoSrc")){
+      wx.showModal({
+        title: '提示',
+        content: '选择录音将清除视频，是否继续',
+        success: function (res) {
+          if (res.confirm) {
+            //选择录音，则清除视频；
+            wx.setStorageSync("videoSrc", '');
+            _this.setData({
+              uploadUrl: '',
+              hasPicture: false,
+              pictureUrl: '',
+              videoSrc: '',
+              hasVideo: false,
+            })
+            wx.navigateTo({
+              url: '../editer/editaudio/editaudio'
+            })
+          }
+        }
+      })
+    }else{
+      wx.navigateTo({
+        url: '../editer/editaudio/editaudio'
+      })
+    }
+    
+  },
+  preview:function(){
     wx.navigateTo({
-      url: '../editer/editaudio/editaudio'
+      url: '../editer/preview/preview'
     })
   },
   save: function(){
     var _this = this;
     var timestamp1 = Date.parse(new Date());
+    var imgUrl = this.data.pictureUrl; //图片地址、
+    var blessing = this.data.text; //祝福语
     //如果有录音
-    console.log("录音地址：" + wx.getStorageSync("voiceSrc"))
-    if (wx.getStorageSync("voiceSrc")) {
+    if (wx.getStorageSync("audioSrc")) {
         _this.setData({
-          uploadUrl: wx.getStorageSync("voiceSrc")
+          uploadUrl: wx.getStorageSync("audioSrc")
         })
     }
-    console.log(_this.data.uploadUrl)
-    wx.uploadFile({
-      method: "POST",
-      url: $root+'/files', 
-      filePath: _this.data.uploadUrl,
+    
+    //上传录音或录像
+    if (_this.data.uploadUrl!=''){
+      console.log("上传录音或录像")
+      wx.uploadFile({
+        method: "POST",
+        url: _this.data.$root + '/files',
+        filePath: _this.data.uploadUrl,
+        header: {
+          'content-type': 'multipart/form-data',
+          'access_token': _this.data.token,
+          'x-csrf-token': _this.data.csrfToken
+        },
+        name: 'files',
+        formData: {
+          'files': _this.data.uploadUrl
+        },
+        success: function (res) {
+          var timestamp2 = Date.parse(new Date());
+          var usetime = timestamp2 - timestamp1;
+          console.log("用时：" + usetime)
+          var data = res.data
+          console.log("录音或录像返回"+data);
+          //do something
+          wx.showToast({
+            title: '保存成功',
+            icon: 'success',
+            duration: 2000
+          })
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      })
+    }
+    
+    //上传图片
+    if(imgUrl!=''){
+      console.log("有图片上传")
+      wx.uploadFile({
+        method: "POST",
+        url: _this.data.$root + '/files',
+        filePath: imgUrl[0],
+        header: {
+          'content-type': 'multipart/form-data',
+          'access_token': _this.data.token,
+          'x-csrf-token': _this.data.csrfToken
+        },
+        name: 'files',
+        formData: {
+          'files': imgUrl
+        },
+        success: function (res) {
+          var timestamp2 = Date.parse(new Date());
+          var usetime = timestamp2 - timestamp1;
+          console.log("用时：" + usetime)
+          var data = res.data
+          console.log("图片返回："+data);
+          //do something
+          wx.showToast({
+            title: '保存成功',
+            icon: 'success',
+            duration: 2000
+          })
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      })
+    }
+    //上传文字
+    wx.request({
+      url: _this.data.$root+'/cards',
+      data:{
+        blessing:_this.data.text
+      },
+      method:"POST",
       header: {
-        'content-type': 'multipart/form-data',
         'access_token': _this.data.token,
         'x-csrf-token': _this.data.csrfToken
       },
-      name: 'files',
-      formData: {
-        'files': _this.data.uploadUrl
-      },
       success: function (res) {
-        var timestamp2 = Date.parse(new Date());
-        var usetime = timestamp2 - timestamp1;
-        console.log("用时："+usetime)
-        var data = res.data
-        console.log(data);
-        //do something
-        wx.showToast({
-          title: '保存成功',
-          icon: 'success',
-          duration: 2000
-        })
-      },
-      fail:function(res){
-        console.log(res);
+        console.log("上传文字返回"+res.data)
       }
     })
   },
@@ -131,14 +265,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+  //清理缓存
+    wx.setStorageSync("pictureUrl",'');
+    wx.setStorageSync("audioSrc", '');
+    wx.setStorageSync("videoSrc", '')
+    wx.setStorageSync("blessing", this.data.text)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-   
+    
   },
 
   /**

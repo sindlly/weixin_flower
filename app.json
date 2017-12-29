@@ -1,16 +1,17 @@
 {
   "pages": [
+    "pages/editer/editer",
+    "pages/editer/preview/preview",
     "pages/login/login",
     "pages/register/register",
-    
-    
-    "pages/editer/editer",
+  
     "pages/index/index",
     "pages/detail/detail",
     "pages/home/printer/printer",
     "pages/home/home",
     "pages/home/data/data",
     "pages/editer/editaudio/editaudio"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

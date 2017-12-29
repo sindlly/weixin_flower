@@ -1,4 +1,4 @@
-/* pages/home/data/data.wxss */
+/* pages/editer/preview/preview.wxss */
 page{
   width: 100%;
     height: 100%;  
@@ -8,9 +8,17 @@ page{
   background-size: cover;
 
 }
+.wapper{
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
 .container{
+  width: 100%;
   justify-content: flex-start;
-  height: auto;
+   height: auto;
 
 }
 .panle{
@@ -18,7 +26,7 @@ page{
   /* min-height: 300px; */
   border-radius: 10px;
   background: rgba(255, 255, 255, .9);
-  margin-top:30px;
+  /* margin-top:30px; */
   box-sizing:border-box;
   padding: 20px;
   color: #888;
@@ -39,17 +47,7 @@ textarea{
   align-items: center;
   /* min-height: 225px; */
 }
-.upfile{
-  width: 100%;
-  min-height: 225px;   
-  display: flex;
-  justify-content:center;
-  align-items: center
-}
-.img_icon{
-  width: 57px;
-  height: 48px;
-}
+
 .tips{
   line-height: 48px;
   margin-left: 10px;
@@ -60,42 +58,39 @@ textarea{
 .dispaly-picture{
    max-width: 100%; 
 }
-.control-area{
+.audio-area{
   width: 100%;
-  box-sizing: border-box;
-  padding: 0 150rpx;
-  margin-top: 80rpx;
+  height: 110rpx; 
+  margin-top:40rpx;
+  border-radius: 10rpx;
+  background: rgba(255, 255, 255, .9);
   display: flex;
-  justify-content:space-around;
-  align-items: center
+  justify-content:flex-start;
+  align-items: center;
 }
-.voice-btn{
-  width: 120rpx;
-  height: 120rpx;
-  /* margin-right:60rpx */
-}
-.video-btn{
-  width: 120rpx;
-  height: 120rpx;
-}
-.name-area{
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 150rpx;
-  display: flex;
-  justify-content:space-around;
-  align-items: center
-}
-.name{
-  width: 120rpx;
-  text-align: center;
+.audio-text{
+  font-size:14pt;
+  margin-left: 100rpx;
   color: #888;
+  display: flex;
+  justify-content:center;
+  align-items: center;
 }
-.name-1{
-/* margin-right:30px */
+.audio-area image{
+  width: 111rpx;
+  height: 110rpx;
 }
+.audio-text{
+  height: 110rpx; 
+}
+#myAudio{
+  
+}
+
 .foot{
   width: 100%;
+  position: fixed;
+  bottom: 40rpx;
   display: flex;
   justify-content:space-between;
   align-items: center;
@@ -103,12 +98,12 @@ textarea{
 
 }
 .preview-btn{
-  width: 171rpx;
+  width: 200rpx;
   height: 95rpx;
 
 }
 .save-btn{
-  width: 171rpx;
+  width: 200rpx;
   height: 95rpx;
 
 }
