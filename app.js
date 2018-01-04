@@ -34,6 +34,7 @@ App({
     })
   },
   globalData: {
-    ROOTPATH: 'https://buildupstep.cn/api/v1'
+    ROOTPATH: 'https://buildupstep.cn/api/v1',
+    HOST: 'https://buildupstep.cn',
   }
 })

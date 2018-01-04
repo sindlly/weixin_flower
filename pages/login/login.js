@@ -12,6 +12,7 @@ Page({
         if (res.data.code == 200){
           wx.setStorageSync("userid", res.data.data.user.id)
           wx.setStorageSync("token", res.data.data.token)
+          wx.setStorageSync("user_info", res.data.data.user)
           // var cookie = res.header['set-cookie']
           // var crsrf = cookie.split(";")[0].split("=")[1]
           // wx.setStorageSync("csrfToken", crsrf)

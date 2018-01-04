@@ -1,0 +1,24 @@
+/**printer.wxss**/
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.printer-qr, .printer-test {
+  margin: 25px;
+}
+.printer-tag {
+  margin-top: 75px;
+  text-align: center;
+}
+.label-text {
+  display: block;
+    margin-top: 8px
+  }
+.printer-status {
+  margin-bottom: 7vh;
+}
+.printer-btnstatus {
+  border: none !important;
+}
