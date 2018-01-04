@@ -1,0 +1,37 @@
+/* page{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}*/
+.container{
+  padding:10px 30px;
+} 
+.btn-1 {
+  width: 320rpx;
+  margin-bottom: 20rpx;
+}
+
+.title {
+  align-self: flex-start;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.log {
+  width: 100rpx;
+  height: 100rpx;
+}
+button {
+  margin: 20rpx 0;
+  width: 640rpx;
+}
+.left{
+  align-self: flex-start;
+  font-size: 11pt;
+}
+.img{
+  margin-top: 20rpx;
+  width: 640rpx;
+}

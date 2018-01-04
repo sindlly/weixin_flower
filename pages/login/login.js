@@ -15,10 +15,20 @@ Page({
           // var cookie = res.header['set-cookie']
           // var crsrf = cookie.split(";")[0].split("=")[1]
           // wx.setStorageSync("csrfToken", crsrf)
-          wx.reLaunch({
-            // url: '../home/home'
-            url: '../editer/editer'
-          });
+
+          //判断是否是第一次登录，如果不是就跳转到商家编辑页
+          if(res.data.data.user.name){
+            wx.reLaunch({
+              url: '../home/home'
+              // url: '../detail/detail'
+            });
+          }
+          else{
+            wx.reLaunch({
+              url: '../detail/detail'
+            });
+          }
+          
         } 
         else {
           wx.showModal({

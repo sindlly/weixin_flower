@@ -1,15 +1,24 @@
 <!--index.wxml-->
 <view>
   <view class="container">
-    home
     <navigator url="../home/data/data">
-    <button>查看花店数据</button>
+    <button class='btn-1' type='primary'>查看花店数据</button>
     </navigator>
     <navigator url="../home/printer/printer">
-    <button>设置打印机</button>
+    <button class='btn-1' type='primary'>设置打印机</button>
     </navigator>
-    <navigator url="../editer/editer">
-    <button>编辑花店名片</button>
+    <navigator  url="../editer/editer" >
+    <button class='btn-1' type='primary'>编辑花店名片</button>
     </navigator>
+  </view>
+  <view class='container'>
+    <view class='title'>
+      <image mode='aspectFit' src='../../files/log.png' class='log'></image>
+      <view>{{name}}</view>
+    </view>
+    <button type='warn'>点击进入花店公众号</button>
+    <view class='left'>花店地址：{{address}}</view>
+    <view class='left'>花店电话：{{contact}}</view>
+    <image class='img' mode='widthFix' src='../../files/default.jpg'></image>
   </view>
 </view>

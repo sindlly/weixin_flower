@@ -1,11 +1,12 @@
 Page({
   data:{
-    id:'197bdfd0-e3d4-11e7-b1d3-63846c2dd592',
-    token:"c8b056b0-76b3-4370-a259-ce321c843893",
+    id: wx.getStorageSync("userid"),
+    token: wx.getStorageSync("token"),
     name:'',
     address:'',
     contact:'',
     url:'',
+    $root :getApp().globalData.ROOTPATH
 
   },
   /**
@@ -14,11 +15,11 @@ Page({
   onLoad: function (options) {
     var _this = this;
     const requestTask = wx.request({
-      method: "PATCH",
-      url: 'http://111.231.76.244:7001/api/v1/users/' + _this.data.id,
+      method: "GET",
+      url: _this.data.$root+'/users/' + _this.data.id,
       header: {
         'content-type': 'application/json',
-        "token": _this.data.token,
+        "access_token": _this.data.token,
       },
       success: function (res) {
         console.log(res.data)
@@ -33,26 +34,35 @@ Page({
   },
   formSubmit: function (e) {
     var _this = this;
-    if (e.detail.value.url==" "){
+    if (e.detail.value.url==""){
       delete e.detail.value.url;
     }
     const requestTask = wx.request({
       method: "PATCH",
-      url: 'http://111.231.76.244:7001/api/v1/users/' + _this.data.id,
+      url: _this.data.$root+'/users/' + _this.data.id,
       header: {
         'content-type': 'application/json',
-        "token": _this.data.token,
+        "access_token": _this.data.token,
       },
       data: e.detail.value,
       success: function (res) {
-        console.log(res.data)
-        wx.navigateTo({
-          url: '../home/home'
-        })
-        
+        if(res.data.code==200){
+          wx.reLaunch({
+            url: '../home/home'
+          })
+        }
+        else{
+          wx.showModal({
+            title: '提示',
+            content: res.data.msg
+          })
+        }
       }
     })
     
+    
+  },
+  goto:function(){
     
   }
 })

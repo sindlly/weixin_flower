@@ -9,7 +9,7 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        if(res.code == 200){
+        if(res.data.code == 200){
           wx.reLaunch({
             url: '../login/login'
           })

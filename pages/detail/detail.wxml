@@ -1,11 +1,22 @@
-<view class='container'>
-  <view>花店基础信息</view>
-  <form bindsubmit="formSubmit">
-  <view class="section"><input name="name" type="text" placeholder="花店名字" value="{{name}}"/></view>
- <view class="section"><input name="address" type="text" placeholder="花店地址"value="{{address}}"/></view>
- <view class="section"><input name="contact" type="number" placeholder="花店联系电话" value="{{contact}}"/></view>
- <view class="section"><input name="url" type="text" placeholder="花店公众号url（选填）" value="{{url}}" /></view>
-  <view><button formType="submit">确认保存</button></view>
-  <view><button formType="">如何获取公众号url</button></view>
-  </form>
+<view class='wapper'>
+  <view class=''>
+    <form bindsubmit="formSubmit">
+      <view class="panel">
+        <view class='bline'>
+          <input name="name" value="{{name}}" type="number" placeholder="花店名字" />
+        </view>
+        <view class='bline'>
+          <input name="address" type="text" value="{{address}}" placeholder="花店地址" />
+        </view>
+         <view class="bline"><input name="contact" type="number" placeholder="花店联系电话" value="{{contact}}"/></view>
+         <view class=""><input name="url" type="text" placeholder="花店公众号url（选填）" value="{{url}}" /></view>
+
+      </view>
+      <view>
+        <button type='warn' formType="submit">确认保存</button>
+        <view><button class="btn" bindtap='goto'>如何获取公众号url</button></view>
+      </view>
+    </form>
+    
+  </view>
 </view>
