@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/printer/printer",
     "pages/login/login",
+    "pages/printer/printer",
     "pages/register/register",
     "pages/cardbg/cardbg",    
     "pages/editer/preview/preview",

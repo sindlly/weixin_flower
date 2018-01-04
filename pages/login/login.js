@@ -18,7 +18,7 @@ Page({
           // wx.setStorageSync("csrfToken", crsrf)
           wx.reLaunch({
             // url: '../home/home'
-            url: '../editer/editer'
+            url: '../printer/printer'
           });
         } 
         else {

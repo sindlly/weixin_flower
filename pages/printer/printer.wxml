@@ -6,6 +6,9 @@
   <view class="printer-qr">
     <button bindtap="printQrCode" disabled="{{disabled}}">打印二维码</button>
   </view>
+  <view class="printer-reprint">
+    <button bindtap="rePrintQrCode" disabled="{{!rePrint}}">重打二维码</button>
+  </view>
   <view class="printer-test">
     <button bindtap="QrCodeTest" disabled="{{disabled}}">打印测试纸</button>
   </view>

@@ -22,11 +22,14 @@ Page({
     tag: false,
     userInfo: wx.getStorageSync('user_info') || null,
     token: wx.getStorageSync('token'),
+    rePrint: false,
+    printUrl: '',
   },
   printQrCode: function () {
     const $root = app.globalData.ROOTPATH;
     const $host = app.globalData.HOST;
     const { data: $data } = this;
+    const that = this;
 
     // 请求生成贺卡
     wx.request({
@@ -38,14 +41,22 @@ Page({
       },
       success: function (res) {
         if (res.data.code == 200) {
-          const url = `${$host}/public/cards?id=${res.data.data.id}`;
+          const url = `${$host}/public/two_dimension_code?id=${res.data.data.id}`;
 
           // 根据url打印二维码
           PrintQRcode(url, $data.tag, $data.userInfo.name);
+          that.setData({
+            rePrint: true,
+            printUrl: url,
+          });
         }
         else wx.showModal({title: '提示', content: res.data.msg}) 
       }
     })
+  },
+
+  rePrintQrCode: function() {
+    PrintQRcode(this.data.printUrl, this.data.tag, this.data.userInfo.name);
   },
 
   QrCodeTest: function () {
@@ -69,12 +80,14 @@ Page({
 })
 
 const PrintQRcode = (url, tag=false, name) => {
-  if(tag) {
+  if(!tag) {
+    pos.PrintJumpLines(3);
     pos.PrintQRcode(url);
-    pos.PrintJumpLines(3);
+    pos.PrintJumpLines(6);
   } else {
+    pos.PrintJumpLines(1);
     pos.PrintMiddleText(`------${name}------`);
-    pos.PrintJumpLines(3);
+    pos.PrintJumpLines(1);
     pos.PrintQRcode(url);
     pos.PrintJumpLines(2);
     pos.PrintMiddleText(`------${name}------`);
@@ -87,7 +100,7 @@ const timer = (that) => {
     if (bluetooth.GetCanPrint()) {//打印机是否就绪
       that.setData({
         disabled: false,
-        motto: '打印机就绪',
+        motto: '打印机准备就绪',
         loading: false,
       });
     }
