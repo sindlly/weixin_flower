@@ -1,0 +1,17 @@
+/* pages/cardbg/cardbg.wxss */
+.container{
+flex-direction: row;
+flex-wrap: wrap
+}
+.panel{
+  display: flex;
+  flex-direction: column;
+   margin-bottom: 40rpx;
+   align-items: center;
+   color: #888;
+}
+.img{
+  width: 320rpx;
+  border-radius: 10rpx;
+ 
+}

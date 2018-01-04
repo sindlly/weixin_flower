@@ -1,8 +1,19 @@
-<view class='container'>
-  <view>商家注册</view>
-  <form bindsubmit="formSubmit">
-  <view class="section"><input name="phone" value='15086915671' type="number" placeholder="手机号"/></view>
-  <view><input name="password" type="password" value="003020" placeholder="密码"/></view>
-  <view><button formType="submit">注册</button></view>
-  </form>
+<view class='wapper'>
+  <view class=''>
+    <form bindsubmit="formSubmit">
+      <view class="panel">
+        <view class='bline'>
+          <input name="phone" value='' type="number" placeholder="手机号" />
+        </view>
+        <view class=''>
+          <input name="password" type="password" value="" placeholder="密码" />
+        </view>
+      </view>
+      <view>
+        <button type='warn' formType="submit">注册</button>
+      </view>
+    </form>
+    
+  </view>
+
 </view>

@@ -11,7 +11,7 @@ Page({
     videoSrc: '',
     hasVideo: false,
     audioSrc: '',
-    hasAudio: true,
+    hasAudio: false,
     isPlay:false,
     seek:0,
 
@@ -24,7 +24,7 @@ Page({
     this.innerAudioContext.src = path;
     console.log("seek"+this.data.seek);
     if(this.data.seek){
-      this.innerAudioContext.seek(this.data.seek);
+      this.innerAudioContext.startTime=this.data.seek;
       this.innerAudioContext.play();
     }
     else{
