@@ -1,1 +1,17 @@
-<view>data</view>
+<view class="container">
+  <view class="data-quota">
+    二维码剩余额度：<text>{{quota}} 张</text>
+  </view>
+  <view class="data-print">
+    打印总数：<text>{{print}} 张</text>
+  </view>
+  <view class="data-read">
+    阅读总数：<text>{{read}} 次</text>
+  </view>
+  <view class="data-jump">
+    公众号跳转数：<text>{{jump}} 次</text>
+  </view>
+  <view class='data-buy'>
+    <navigator url="../../home/home" hover-class="navigator-hover">点击购买二维码</navigator>
+  </view>
+</view>

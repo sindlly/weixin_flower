@@ -1,1 +1,32 @@
 /* pages/home/data/data.wxss */
+.container {
+  display: flex;
+  justify-content: flex-start;
+  height: 100vh;
+  text-align: left
+}
+.container view {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  position: relative
+}
+.data-quota {
+  padding-top: 40px;
+}
+.container view text {
+  float: right;
+}
+.data-buy {
+  text-align: center
+} 
+navigator {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid silver;
+  border-radius: 5px
+}
+.hover-class {
+  color: brown;
+  background-color: brown;
+}

@@ -1,1 +1,7 @@
-{}
+{
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#D2691E",
+  "navigationBarTitleText": "花店数据详情",
+  "navigationBarTextStyle": "#fff",
+  "backgroundColor": "#fff"
+}
