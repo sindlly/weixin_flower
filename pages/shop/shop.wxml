@@ -1,0 +1,24 @@
+<!--printer.wxml-->
+<view class="container">
+  <view wx:for="{{commodities}}" class="item-container" wx:key="unique">
+    <view class="item-container-left">
+      <image class="image-item" src='{{$root}}/files/{{item.picture_ids[0]}}/thumbnail' mode='widthFix'></image>
+    </view>
+    <view class="item-container-right">
+      <text class="item-title">{{item.name}}</text>
+      <text class="item-subtitle">{{item.description}}</text>
+      <view class='container-right-bottom'>
+        <view class="item-container-price">
+          <view>
+          <text class="item-price">¥{{item.price}}</text>
+          <text class="item-old-price">原价¥{{item.price}}</text> 
+          </view>
+          <text class="item-payed">100人付款</text>
+        </view>
+        <view class="item-container-buy">
+          <navigator class="item-buy" url="../shop/order/order?id={{item.id}}" hover-class="navigator-hover">立即购买</navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

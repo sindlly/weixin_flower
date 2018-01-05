@@ -12,7 +12,9 @@
     
     "pages/detail/detail",
     "pages/home/data/data",
-    "pages/editer/editaudio/editaudio"
+    "pages/editer/editaudio/editaudio",
+    "pages/shop/shop",
+    "pages/shop/order/order"
     
   ],
   "window": {

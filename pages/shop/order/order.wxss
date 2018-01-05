@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100vw;
+  text-align: left
+}
+
+.item-container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  border-bottom: 1px solid silver;
+}
+.item-container-left {
+  width: 20vw;
+}
+.item-container-right {
+  margin-left: 5vw;
+  width: 60vw;
+}
+.image-item {
+  width: 20vw;
+}
+
+/* 右上 */
+.item-title {
+  display: block;
+  font-size: 13pt
+}
+.item-subtitle {
+  display: block;  
+  font-size: 11pt
+}
+
+/* 右下 */
+.container-right-bottom {
+  margin: 15px 0 5px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.item-container-price {
+  display: inline-block;
+  width: 35vw;
+}
+.item-container-pay {
+  display: inline-block;
+  width: 15vw;  
+}
+.item-price {
+  color: brown;
+  font-size: 13pt;
+}
+.item-old-price {
+  margin-left: 2vw;
+  font-size: 11pt;  
+}
+.item-payed {
+  display: block;
+  font-size: 11pt
+}
+.item-buy {
+  font-size: 11pt;
+  padding: 5px 10px;
+  background-color: crimson;
+  color: #fff;
+  border-radius: 5px
+}
