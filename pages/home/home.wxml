@@ -7,13 +7,13 @@
     <navigator url="../printer/printer">
     <button class='btn-1' type='primary'>设置打印机</button>
     </navigator>
-    <navigator  url="../editer/editer" >
+    <navigator  url="../cardbg/cardbg" >
     <button class='btn-1' type='primary'>编辑花店名片</button>
     </navigator>
   </view>
   <view class='container'>
     <view class='title'>
-      <image mode='aspectFit' src='../../files/log.png' class='log'></image>
+      <image mode='widthFix' src='../../files/log.png' class='log'></image>
       <view>{{name}}</view>
     </view>
     <button type='warn'>点击进入花店公众号</button>

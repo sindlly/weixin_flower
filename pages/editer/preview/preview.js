@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    $root: getApp().globalData.ROOTPATH,
     text: "",
     hasPicture: false,
     pictureUrl: '',
@@ -14,12 +15,13 @@ Page({
     hasAudio: false,
     isPlay:false,
     seek:0,
+    bgurl:''
 
   },
   audioPlay:function(){
     // 测试用例
     var _this = this;
-    var path = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46'
+    var path = ''
     // this.innerAudioContext.src = this.data.audioSrc;
     this.innerAudioContext.src = path;
     console.log("seek"+this.data.seek);
@@ -45,7 +47,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      bgurl: this.data.$root + "/files/" + options.bgid
+    })
   },
   previewImg: function () {
     var src = this.data.pictureUrl;

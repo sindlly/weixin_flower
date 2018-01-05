@@ -11,8 +11,11 @@ Page({
     //token: '353cf243-4667-4675-8d38-c3eae21bac72',
     csrfToken: wx.getStorageSync("csrfToken"),
     //csrfToken:'353cf243-4667-4675-8d38-c3eae21bac72',
-    id:"98598110-e526-11e7-8da8-5fed89802120",
-    text:"陪伴才是最好的礼物，用最好的陪伴，献给最美的母亲，在你老去前，我来疼爱你。 ",
+    id:"",
+    blessing:"陪伴才是最好的礼物，用最好的陪伴，献给最美的母亲，在你老去前，我来疼爱你。 ",
+    voice_id:'',
+    video_id:'',
+    picture_id:'',
     uploadUrl:'',
     hasPicture: false,
     pictureUrl:'',
@@ -20,6 +23,8 @@ Page({
     hasVideo:false,
     audioSrc:'',
     images:{},
+    bgurl:'',
+    bgid:'',
   },
   addPicture:function(){
     var _this =this;
@@ -121,28 +126,29 @@ Page({
               hasVideo: false,
             })
             wx.navigateTo({
-              url: '../editer/editaudio/editaudio'
+              url: '../editer/editaudio/editaudio?bgid='+_this.data.bgid
             })
           }
         }
       })
     }else{
       wx.navigateTo({
-        url: '../editer/editaudio/editaudio'
+        url: '../editer/editaudio/editaudio?bgid=' + _this.data.bgid
       })
     }
     
   },
   preview:function(){
+    var _this = this;
     wx.navigateTo({
-      url: '../editer/preview/preview'
+      url: '../editer/preview/preview?bgid=' + _this.data.bgid
     })
   },
   save: function(){
     var _this = this;
     var timestamp1 = Date.parse(new Date());
     var imgUrl = this.data.pictureUrl; //图片地址、
-    var blessing = this.data.text; //祝福语
+    var blessing = this.data.blessing; //祝福语
     //如果有录音
     if (wx.getStorageSync("audioSrc")) {
         _this.setData({
@@ -202,11 +208,19 @@ Page({
           'files': imgUrl
         },
         success: function (res) {
-          var timestamp2 = Date.parse(new Date());
-          var usetime = timestamp2 - timestamp1;
-          console.log("用时：" + usetime)
-          var data = res.data
-          console.log("图片返回："+data);
+           
+          
+          // var timestamp2 = Date.parse(new Date());
+          // var usetime = timestamp2 - timestamp1;
+          // console.log("用时：" + usetime)
+          var obj = JSON.parse(res.data)
+          console.log(res.data);
+          console.log("图片返回："+obj);
+          console.log("图片返回：" + obj.data[0].id);
+
+          _this.setData({
+                  picture_id:obj.data[0].id
+                })
           //do something
           wx.showToast({
             title: '保存成功',
@@ -223,7 +237,12 @@ Page({
     wx.request({
       url: _this.data.$root+'/cards',
       data:{
-        blessing:_this.data.text
+        id:_this.data.id,
+        voice_id: _this.data.voice_id,
+        video_id: _this.data.voice_id,
+        background_id: _this.data.bgid,
+        picture_id: _this.data.picture_id,
+        blessing: _this.data.blessing,
       },
       method:"POST",
       header: {
@@ -269,7 +288,13 @@ Page({
     wx.setStorageSync("pictureUrl",'');
     wx.setStorageSync("audioSrc", '');
     wx.setStorageSync("videoSrc", '')
-    wx.setStorageSync("blessing", this.data.text)
+    wx.setStorageSync("blessing", this.data.blessing);
+    this.setData({
+      bgid: options.bgid,
+      bgurl: this.data.$root + "/files/" + options.bgid
+    })
+    // this.data.bgurl = 
+    console.log(this.data.bgurl);
   },
 
   /**

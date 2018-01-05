@@ -15,7 +15,12 @@ Page({
   onLoad: function (options) {
     
   },
-
+  bindbg:function(e){
+    console.log(e.currentTarget.dataset.bgid)
+    wx.navigateTo({
+      url: '../editer/editer?bgid=' + e.currentTarget.dataset.bgid,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -26,13 +31,22 @@ Page({
       // url: _this.data.$root + '/cards',
       success:function(res){
          var arr = res.data.data.items;
+         var arry = [];
         for(var i in arr){
-          arr[i].background_ids = _this.data.$root + '/files/' + arr[i].background_ids +'/thumbnail'
+          for (var j in arr[i].background_ids){
+           var bg = _this.data.$root + '/files/' + arr[i].background_ids[j] + '/thumbnail';
+            console.log("bg"+bg)
+            arry.push({
+              bg: bg,
+              blessings: arr[i].blessings[j],
+              name:arr[i].name,
+              bgid: arr[i].background_ids[j]
+            })
+          }
         }
-        // console.log(arr)
-        // var imgSrc = _this.data.$root + '/files/' + res.data.data.items
-        _this.setData({
-          imgSrcArry:arr
+        console.log("arry"+arry)
+       _this.setData({
+          imgSrcArry:arry
         })
       }
     })

@@ -10,9 +10,17 @@ Page({
       },
       success: function (res) {
         if(res.data.code == 200){
-          wx.reLaunch({
-            url: '../login/login'
+          wx.showToast({
+            title: '注册成功',
+            icon: 'success',
+            duration: 1000,
+            complete:function(){
+              wx.reLaunch({
+                url: '../login/login'
+              })
+            } 
           })
+          
         }
         else{
           wx.showModal({
