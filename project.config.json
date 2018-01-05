@@ -21,8 +21,15 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "二维码扫描",
+					"pathName": "pages/printer/printer",
+					"scene": "1011"
+				}
+			]
 		}
 	}
 }

@@ -1,20 +1,28 @@
 {
   "pages": [
     "pages/login/login",
+<<<<<<< HEAD
     "pages/detail/detail",
    
+=======
+    "pages/printer/printer",
+>>>>>>> 08235be38baa0c228cb8c9452a3ae35ec27f1814
     "pages/register/register",
-    "pages/cardbg/cardbg",
+    "pages/cardbg/cardbg",    
     "pages/editer/preview/preview",
-    
     "pages/bcards/bcards",
     "pages/editer/editer",
+<<<<<<< HEAD
     
     
     
     "pages/index/index",
     
     "pages/home/printer/printer",
+=======
+    "pages/index/index",
+    "pages/detail/detail",
+>>>>>>> 08235be38baa0c228cb8c9452a3ae35ec27f1814
     "pages/home/home",
     "pages/home/data/data",
     "pages/editer/editaudio/editaudio"

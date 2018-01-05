@@ -1,0 +1,23 @@
+<!--printer.wxml-->
+<view class="container">
+  <view class="printer-status">
+    <button class="printer-btnstatus" id="btPrint" disabled="{{disabled}}" loading="{{loading}}" plain="true" type="{{disabled ? 'warn': 'primary'}}">{{motto}}</button>
+  </view>
+  <view class="printer-qr">
+    <button bindtap="printQrCode" disabled="{{disabled}}">打印二维码</button>
+  </view>
+  <view class="printer-reprint">
+    <button bindtap="rePrintQrCode" disabled="{{!rePrint}}">重打二维码</button>
+  </view>
+  <view class="printer-test">
+    <button bindtap="QrCodeTest" disabled="{{disabled}}">打印测试纸</button>
+  </view>
+  <view class='printer-tag'>
+    <checkbox-group bindchange="checkboxChange">
+      <label class="checkbox">
+        <checkbox value="checked" />
+        <text class="label-text">是否打印店铺名称</text>
+      </label>
+    </checkbox-group>
+  </view>
+</view>
