@@ -16,8 +16,6 @@ Page({
           // var cookie = res.header['set-cookie']
           // var crsrf = cookie.split(";")[0].split("=")[1]
           // wx.setStorageSync("csrfToken", crsrf)
-<<<<<<< HEAD
-
           //判断是否是第一次登录，如果不是就跳转到商家编辑页
           if(res.data.data.user.name){
             wx.reLaunch({
@@ -30,13 +28,6 @@ Page({
               url: '../detail/detail'
             });
           }
-          
-=======
-          wx.reLaunch({
-            // url: '../home/home'
-            url: '../printer/printer'
-          });
->>>>>>> 08235be38baa0c228cb8c9452a3ae35ec27f1814
         } 
         else {
           wx.showModal({

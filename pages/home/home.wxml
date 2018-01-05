@@ -4,7 +4,7 @@
     <navigator url="../home/data/data">
     <button class='btn-1' type='primary'>查看花店数据</button>
     </navigator>
-    <navigator url="../home/printer/printer">
+    <navigator url="../printer/printer">
     <button class='btn-1' type='primary'>设置打印机</button>
     </navigator>
     <navigator  url="../editer/editer" >
