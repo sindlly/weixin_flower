@@ -4,14 +4,37 @@ flex-direction: row;
 flex-wrap: wrap
 }
 .panel{
+  width: 320rpx;
+  position: relative;
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
    margin-bottom: 40rpx;
    align-items: center;
+   font-size: 11pt;
    color: #888;
+}
+text{
+  width: 100%;
+  overflow: hidden;
+white-space: nowrap;  
+text-overflow: ellipsis;
+text-align: center;
 }
 .img{
   width: 320rpx;
+  height: 240rpx;
   border-radius: 10rpx;
- 
+}
+.hot{
+  position: absolute;
+  width: 70rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  background: rgb(255,108,51);
+  color: #fff;
+  font-size: 8pt;
+  right: 0px;
+  border-radius: 8rpx;
+  text-align: center;
 }

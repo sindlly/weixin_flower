@@ -47,9 +47,18 @@ Page({
       data: e.detail.value,
       success: function (res) {
         if(res.data.code==200){
-          wx.reLaunch({
-            url: '../home/home'
+          wx.showToast({
+            title: '保存成功',
+            icon: 'success',
+            duration: 2000,
+            complete:function(){
+              wx.reLaunch({
+                url: '../home/home'
+              })
+            }
           })
+
+          
         }
         else{
           wx.showModal({

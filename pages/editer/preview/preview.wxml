@@ -1,5 +1,7 @@
 <!--pages/editer/preview/preview.wxml-->
 <!--贺卡预览  -->
+<image class='wapper-img' src='{{bgurl}}'>
+</image>
 <view class='wapper'>
 <view class="container">
   <view class='panle'>

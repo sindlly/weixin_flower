@@ -1,4 +1,6 @@
 <!--pages/editer/editaudio/editaudio.wxml-->
+<image class='wapper' src='{{bgurl}}'>
+</image>
 <view class='container'>
   <view class='panle'>
     <text>您可以这样说：</text>

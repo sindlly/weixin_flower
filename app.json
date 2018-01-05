@@ -1,14 +1,18 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/home/home",
+    "pages/editer/editer",
     "pages/login/login",
+    "pages/cardbg/cardbg",
+    "pages/bcards/bcards",
+   
+    "pages/home/home",
+    
     "pages/printer/printer",
     "pages/register/register",
-    "pages/cardbg/cardbg",    
+     
     "pages/editer/preview/preview",
-    "pages/bcards/bcards",
-    "pages/editer/editer",
+
     
     "pages/detail/detail",
     "pages/home/data/data",

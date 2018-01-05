@@ -1,4 +1,6 @@
 <!--贺卡编辑页  -->
+<image class='wapper' src='{{bgurl}}'>
+</image>
 <view class="container">
   <view class='panle'>
     <view class="display-area">
@@ -11,7 +13,7 @@
 style="width:{{ images.width }}rpx; height:{{ images.height }}rpx;"></image>  -->
       <video class='dispaly-video' src="{{videoSrc}}" wx:if="{{hasVideo}}"></video>
     </view>
-    <textarea bindblur="bindTextAreaBlur" auto-height value="{{text}}" />
+    <textarea bindblur="bindTextAreaBlur" auto-height value="{{blessing}}" />
     <!-- <audio src="{{audioSrc}}" id="myAudio" controls loop></audio> -->
   </view>
 </view>

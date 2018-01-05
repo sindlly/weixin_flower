@@ -1,9 +1,10 @@
 <!--pages/cardbg/cardbg.wxml-->
 <view class='container'>
 
-<view class='panel' wx:for="{{[1,2,1]}}" wx:key='0' >
-<image   mode='widthFix' class='img' src="{{imgSrcArry[0].background_ids}}"></image>
-{{imgSrcArry[0].name}}-{{imgSrcArry[0].blessings}}
-</view>
+  <view class='panel' wx:for="{{imgSrcArry}}" wx:key='0'>
+    <image class='img' bindtap='bindbg' data-bgid='{{imgSrcArry[index].bgid}}' src="{{imgSrcArry[index].bg}}"></image>
+    <text>{{imgSrcArry[index].name}}-{{imgSrcArry[index].blessings}}</text>
+  <view class='hot'>HOT</view>
+  </view>
 
 </view>
