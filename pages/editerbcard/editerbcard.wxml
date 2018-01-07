@@ -1,0 +1,9 @@
+<!--pages/editerbcard/editerbcard.wxml-->
+<view class='container'>
+  <image mode='widthFix' src="{{imgSrc}}"></image>
+</view>
+<view class='footbtn'>
+  <view class='inline-block reg-btn' bindtap="upImg" wx:if="{{!isSave}}">上传</view>
+  <view class='inline-block reg-btn' bindtap="saveImg" wx:if="{{isSave}}">保存</view>
+  <view class='inline-block login-btn' bindtap="deleImg">删除</view>
+</view>

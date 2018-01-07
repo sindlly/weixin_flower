@@ -1,24 +1,20 @@
 {
   "pages": [
-    "pages/shop/order/order",    
-    "pages/shop/shop",
+    "pages/login/login",
+    "pages/bcards/bcards",
     "pages/index/index",
     "pages/editer/editer",
-    "pages/login/login",
     "pages/cardbg/cardbg",
-    "pages/bcards/bcards",
     "pages/home/home",
-    
     "pages/printer/printer",
     "pages/register/register",
-     
     "pages/editer/preview/preview",
-
-    
     "pages/detail/detail",
     "pages/home/data/data",
-    "pages/editer/editaudio/editaudio"
-   
+    "pages/editer/editaudio/editaudio",
+    "pages/shop/shop",
+    "pages/shop/order/order",
+    "pages/editerbcard/editerbcard"
   ],
   "window": {
     "backgroundTextStyle": "light",
