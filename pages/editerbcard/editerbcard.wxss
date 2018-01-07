@@ -1,0 +1,26 @@
+/* pages/editerbcard/editerbcard.wxss */
+image{
+  width: 640rpx;
+}
+.footbtn{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  flex-direction: row;
+  flex-wrap:nowrap;
+}
+.inline-block{
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  line-height: 46px;
+  font-size:18px;
+  text-align: center;
+  color: #fff;
+}
+.reg-btn{
+  background-color: rgb( 255, 57, 57 );
+}
+.login-btn{
+  background-color: rgb( 255, 118, 118 );
+}

@@ -5,10 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    $root: getApp().globalData.ROOTPATH,
     log:'',
-    name:"花店名称",
-    addr:'生命周期函数监听渲染',
-    phone:'023-65741027'
+    name:"",
+    addr:'',
+    phone:'',
+    imgsrc:'',
+    defaultImg: '../../files /default.jpg',
   },
 
   /**
@@ -20,7 +23,21 @@ Page({
     })
   },
   onLoad: function (options) {
-  
+    this.setData({
+      log: wx.getStorageSync('avatar_id') ? wx.getStorageSync('avatar_id'):'../../files/defaultLog.png',
+      name: wx.getStorageSync('name'),
+      address: wx.getStorageSync('address'),
+      contact: wx.getStorageSync('contact'),
+    })
+    if (wx.getStorageSync("picture_ids")){
+      this.setData({
+        imgSrc: this.data.$root + '/files/' + wx.getStorageSync("picture_ids"),
+      })
+    } else {
+      _this.setData({
+        imgSrc: this.data.defaultImg
+      })
+    }
   },
 
   /**
@@ -34,7 +51,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.onLoad();
   },
 
   /**

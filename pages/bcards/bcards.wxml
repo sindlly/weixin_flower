@@ -1,25 +1,30 @@
 <!--pages/bcards/bcards.wxml-->
 <view class='container'>
-  <view class='banner'>
+  <!-- <view class='banner'>
     <image class='banner-img' mode='widthFix' src='../../files/bcard_banner.png'>
     </image>
     <image bindtap='gotoEditer' class="goto-editer" mode='aspectFit' src='../../files/bcard_banner_btn.png'></image>
-  </view>
-  <view class='title view-margin'>
+  </view> -->
+  <view class='title'>
     <view class='line'></view>
     <view class="title-word">花店信息</view>
   </view>
   <view class='container'>
-    <view class='name'>{{name}}</view>
     <view class='intro'>
       <image class='log' src='{{log}}'></image>
       <view class='detail'>
-        <view class='info'>地址：{{addr}}</view>
-        <view class='info'>电话：{{phone}}</view>
+        <view class='info'>地址：{{address}}</view>
+        <view class='info'>电话：{{contact}}</view>
       </view>
     </view>
   </view>
-  <image mode='widthFix' src='../../files/test.jpg'></image>
-  <button type='warn'>点击进入花店公众号</button>
+  <image mode='widthFix' src='{{imgSrc}}'></image>
 </view>
-
+<view class='footbtn'>
+  <navigator url="../detail/detail">
+    <view class='inline-block reg-btn'>编辑花店基础信息</view>
+  </navigator>
+  <navigator url="../editerbcard/editerbcard">
+    <view class='inline-block login-btn'>编辑花店图片</view>
+  </navigator>
+</view>

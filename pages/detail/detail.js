@@ -53,7 +53,7 @@ Page({
             duration: 2000,
             complete:function(){
               wx.reLaunch({
-                url: '../home/home'
+                url: '../bcards/bcards'
               })
             }
           })

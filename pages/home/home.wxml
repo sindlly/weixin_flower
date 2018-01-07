@@ -7,7 +7,7 @@
     <navigator url="../printer/printer">
     <button class='btn-1' type='primary'>设置打印机</button>
     </navigator>
-    <navigator  url="../cardbg/cardbg" >
+    <navigator  url="../bcards/bcards" >
     <button class='btn-1' type='primary'>编辑花店名片</button>
     </navigator>
   </view>
@@ -19,6 +19,6 @@
     <button type='warn'>点击进入花店公众号</button>
     <view class='left'>花店地址：{{address}}</view>
     <view class='left'>花店电话：{{contact}}</view>
-    <image class='img' mode='widthFix' src='../../files/default.jpg'></image>
+    <image class='img' mode='widthFix' src='{{imgSrc}}'></image>
   </view>
 </view>
