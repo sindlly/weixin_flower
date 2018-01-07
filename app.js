@@ -36,5 +36,6 @@ App({
   globalData: {
     ROOTPATH: 'https://buildupstep.cn/api/v1',
     HOST: 'https://buildupstep.cn',
+    DEFAULT_IMG: '38ec2f40-f352-11e7-b5f3-c93673e5d7ba'
   }
 })

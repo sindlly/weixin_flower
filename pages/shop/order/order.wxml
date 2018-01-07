@@ -1,24 +1,50 @@
 <!--printer.wxml-->
 <view class="container">
-  <view wx:for="{{commodities}}" class="item-container" wx:key="unique">
-    <view class="item-container-left">
-      <image class="image-item" src='{{$root}}/files/{{item.picture_ids[0]}}/thumbnail' mode='widthFix'></image>
-    </view>
-    <view class="item-container-right">
-      <text class="item-title">{{item.name}}</text>
-      <text class="item-subtitle">{{item.description}}</text>
-      <view class='container-right-bottom'>
-        <view class="item-container-price">
-          <view>
-          <text class="item-price">¥{{item.price}}</text>
-          <text class="item-old-price">原价¥{{item.price}}</text> 
-          </view>
-          <text class="item-payed">100人付款</text>
-        </view>
-        <view class="item-container-buy">
-          <navigator class="item-buy" url="../commodity/commodity" hover-class="navigator-hover">立即购买</navigator>
-        </view>
+  <view class="order-address">
+    <view>LOGO</view>
+    <view>
+      <view class="address-contact">
+        <text>{{userInfo.name}}</text>
+        <text>{{userInfo.contact}}</text>
+      </view>
+      <view>
+        <text class='smaller-font'>{{userInfo.address}}</text>
       </view>
     </view>
+    <view> <navigator class="item-buy" url="../../detail/detail" hover-class="navigator-hover">></navigator></view>
+  </view>
+  <view class='order-commodity' wx:if="{{commodity}}">
+    <view class="item-container-left">
+      <image class="image-item" src='{{$root}}/files/{{commodity.picture_ids[0]}}/thumbnail' mode='widthFix'></image>
+    </view>
+    <view class="item-container-right">
+      <text class="item-title">{{commodity.name}}</text>
+      <text class="item-subtitle">{{commodity.description}}</text>
+      <view class='container-right-bottom'>
+        <text class="item-price">¥ {{commodity.price}}</text>
+        <text class="item-count">X {{count}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='order-number'>
+    <text class='smaller-font'>购买数量</text>
+    <view class='smaller-font'>
+      <button bindtap="countMinus" disabled="{{disabled}}">-</button>
+      <text class="count-value">{{count}}</text>
+      <button bindtap="countAdd">+</button>
+    </view>
+  </view>
+  <view class='order-count'>
+    <text class='smaller-font'>共 {{count}} 件商品</text>
+    <view class='smaller-font'>
+      小计
+      <text class="item-price">¥ {{count * commodity.price || 0}}</text>
+    </view>
+  </view>
+  <view class='order-sum'>
+    <view class='sum-price'>合计金额：
+      <text class="item-price">¥ {{count * commodity.price || 0}}</text>
+    </view>
+    <text class="sum-submit" bindtap="submitOrder">提交订单</text>
   </view>
 </view>

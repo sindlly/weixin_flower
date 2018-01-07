@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/shop/order/order",    
+    "pages/shop/shop",
     "pages/index/index",
     "pages/editer/editer",
     "pages/login/login",
     "pages/cardbg/cardbg",
     "pages/bcards/bcards",
-   
     "pages/home/home",
     
     "pages/printer/printer",
@@ -16,10 +17,8 @@
     
     "pages/detail/detail",
     "pages/home/data/data",
-    "pages/editer/editaudio/editaudio",
-    "pages/shop/shop",
-    "pages/shop/order/order"
-    
+    "pages/editer/editaudio/editaudio"
+   
   ],
   "window": {
     "backgroundTextStyle": "light",
