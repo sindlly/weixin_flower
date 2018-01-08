@@ -81,10 +81,15 @@ button{
 }
 .footbtn{
   width: 100%;
-  /* position: fixed; */
   bottom: 0;
   flex-direction: row;
   flex-wrap:nowrap;
+  border-radius: 0;
+  height: 50px;
+  line-height: 50px;
+  position: fixed;
+  color: #fff;
+  text-align: center;
 }
 navigator{
   display: inline;
@@ -93,9 +98,9 @@ navigator{
   display: inline-block;
   width: 50%;
   height: 100%;
-  line-height: 46px;
-  font-size:18px;
+  line-height: 50px;
   text-align: center;
+  font-size: 13pt;
   color: #fff;
 }
 .container-img{
@@ -105,7 +110,7 @@ image{
   width: 640rpx;
 }
 .reg-btn{
-  background-color: rgb( 255, 57, 57 );
+  background-color: #ff3630;
 }
 .login-btn{
   background-color: rgb( 255, 118, 118 );

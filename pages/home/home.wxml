@@ -2,21 +2,20 @@
 <view>
   <view class='container'>
     <view class="head">
-      <navigator url="../home/data/data">
+      <navigator url="../home/data/data" hover-class="none">
         <image mode='widthFix' class='head-img' src='../../files/data.png'></image>
         <text class='head-text'>查看花店数据</text>
       </navigator>
-      <navigator url="../printer/printer">
+      <navigator url="../printer/printer" hover-class="none">
         <image class='head-img' mode='widthFix' src='../../files/printer_setting.png'></image>
         <text class='head-text'>设置打印机</text>
       </navigator>
-      <navigator url="../bcards/bcards">
+      <navigator url="../bcards/bcards" hover-class="none">
         <image class='head-img' mode='widthFix' src='../../files/card.png'></image>
         <text class='head-text'>编辑花店名片</text>
       </navigator>
     </view>
   </view>
-
   <view class='container '>
     <view class='title'>
       <view class='line'></view>
@@ -34,4 +33,6 @@
     <image class='img' mode='widthFix' src='{{imgSrc}}'></image>
   </view>
 </view>
- <button type='warn'>点击进入花店公众号</button>
+<view class='jump-public'>
+  <text bindtap='jumpPublic'>进入花店公众号</text>
+</view>

@@ -24,10 +24,10 @@
 </view>
 
 <view class='footbtn'>
-  <navigator url="../detail/detail">
-    <view class='inline-block reg-btn'>编辑花店基础信息</view>
+  <navigator url="../detail/detail" hover-class="none">
+    <view class='inline-block reg-btn'>编辑基础信息</view>
   </navigator>
-  <navigator url="../editerbcard/editerbcard">
-    <view class='inline-block login-btn'>编辑花店图片</view>
+  <navigator url="../editerbcard/editerbcard" hover-class="none">
+    <view class='inline-block login-btn'>编辑图片</view>
   </navigator>
 </view>

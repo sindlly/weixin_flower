@@ -13,6 +13,5 @@
         <button type='primary' formType="submit">登录</button>
       </view>
     </form>
-    
   </view>
 </view>

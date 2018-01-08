@@ -8,15 +8,19 @@
         <view class='bline'>
           <input name="address" data-name='address' bindinput="bindKeyInput" type="text" value="{{address}}" placeholder="花店地址" />
         </view>
-         <view class="bline"><input name="contact" data-name='contact' bindinput="bindKeyInput" type="number" placeholder="花店联系电话" value="{{contact}}"/></view>
-         <view class=""><input name="url" data-name='url' bindinput="bindKeyInput" type="text" placeholder="花店公众号url（选填）" value="{{url}}" /></view>
-
+        <view class="bline">
+          <input name="contact" data-name='contact' bindinput="bindKeyInput" type="number" placeholder="花店联系电话" value="{{contact}}" />
+        </view>
+        <view class="">
+          <input name="url" data-name='url' bindinput="bindKeyInput" type="text" placeholder="花店公众号url（选填）" value="{{url}}" />
+        </view>
       </view>
       <view>
-        <button type='warn' formType="submit">确认保存</button>
-        <view><button class="btn" bindtap='goto'>如何获取公众号url</button></view>
+        <button class="btn-save" formType="submit">确认保存</button>
+        <view>
+          <button class="btn" bindtap='goto'>如何获取公众号url</button>
+        </view>
       </view>
     </form>
-    
   </view>
 </view>
