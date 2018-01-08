@@ -2,7 +2,7 @@
 <view class="container">
   <view wx:for="{{commodities}}" class="item-container" wx:key="unique">
     <view class="item-container-left">
-      <image class="image-item" src='{{$root}}/files/{{item.picture_ids[0]}}/thumbnail' mode='widthFix'></image>
+      <image class="image-item" src='{{$root}}/files/{{item.picture_ids[0]}}/thumbnail' mode='scaleToFill'></image>
     </view>
     <view class="item-container-right">
       <text class="item-title">{{item.name}}</text>
@@ -11,7 +11,7 @@
         <view class="item-container-price">
           <view>
           <text class="item-price">¥{{item.price}}</text>
-          <text class="item-old-price">原价¥{{item.price}}</text> 
+          <text class="item-old-price">原价 ¥{{item.price}}</text> 
           </view>
           <text class="item-payed">100人付款</text>
         </view>
