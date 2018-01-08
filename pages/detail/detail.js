@@ -12,6 +12,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  bindKeyInput:function(e){
+    var key = e.currentTarget.dataset.name;
+    var val = e.detail.value;
+    wx.setStorageSync(key, val);
+    console.log(wx.getStorageSync(key))
+  },
   onLoad: function (options) {
     var _this = this;
     const requestTask = wx.request({
@@ -51,11 +57,11 @@ Page({
             title: '保存成功',
             icon: 'success',
             duration: 2000,
-            complete:function(){
-              wx.reLaunch({
-                url: '../bcards/bcards'
-              })
-            }
+            // complete:function(){
+            //   wx.reLaunch({
+            //     url: '../bcards/bcards'
+            //   })
+            // }
           })
 
           

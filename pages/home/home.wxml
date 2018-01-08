@@ -1,24 +1,37 @@
 <!--index.wxml-->
 <view>
-  <view class="container">
-    <navigator url="../home/data/data">
-    <button class='btn-1' type='primary'>查看花店数据</button>
-    </navigator>
-    <navigator url="../printer/printer">
-    <button class='btn-1' type='primary'>设置打印机</button>
-    </navigator>
-    <navigator  url="../bcards/bcards" >
-    <button class='btn-1' type='primary'>编辑花店名片</button>
-    </navigator>
-  </view>
   <view class='container'>
-    <view class='title'>
-      <image mode='widthFix' src='../../files/log.png' class='log'></image>
-      <view>{{name}}</view>
+    <view class="head">
+      <navigator url="../home/data/data">
+        <image mode='widthFix' class='head-img' src='../../files/data.png'></image>
+        <text class='head-text'>查看花店数据</text>
+      </navigator>
+      <navigator url="../printer/printer">
+        <image class='head-img' mode='widthFix' src='../../files/printer_setting.png'></image>
+        <text class='head-text'>设置打印机</text>
+      </navigator>
+      <navigator url="../bcards/bcards">
+        <image class='head-img' mode='widthFix' src='../../files/card.png'></image>
+        <text class='head-text'>编辑花店名片</text>
+      </navigator>
     </view>
-    <button type='warn'>点击进入花店公众号</button>
-    <view class='left'>花店地址：{{address}}</view>
-    <view class='left'>花店电话：{{contact}}</view>
+  </view>
+
+  <view class='container '>
+    <view class='title'>
+      <view class='line'></view>
+      <view class="title-word">{{name}}</view>
+    </view>
+    <view class='container container-intro'>
+      <view class='intro'>
+        <image class='log' src='{{log}}'></image>
+        <view class='detail'>
+          <view class='info'>地址：{{address}}</view>
+          <view class='info'>电话：{{contact}}</view>
+        </view>
+      </view>
+    </view>
     <image class='img' mode='widthFix' src='{{imgSrc}}'></image>
   </view>
 </view>
+ <button type='warn'>点击进入花店公众号</button>
