@@ -13,7 +13,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var _this = this;
+    wx.request({
+      url: _this.data.$root+'/cards/'+options.id,
+      success:function(res){
+        wx.setStorageSync('cardid', options.id)
+        //如果status为BLANK，表示为首个用户
+        // if (res.dada.card.status != "BLANK"){
+        //   wx.reLaunch({
+        //     url: '../' + options.id,  //若有数据则跳到贺卡页。
+        //   })
+        // }
+        // else{
+
+        // }
+      }
+    })
   },
   bindbg:function(e){
     console.log(e.currentTarget.dataset.bgid)
