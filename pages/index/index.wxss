@@ -1,103 +1,117 @@
 /**index.wxss**/
-page{
+
+page {
   height: 100%;
 }
+
 .container {
-  /* height: 750px; */
   height: 100%;
-  justify-content:space-between;
-   padding: 0 30rpx 120rpx 30rpx; 
-  align-items:flex-start;
+  justify-content: space-between;
+  padding: 0 30rpx 140rpx 30rpx;
+  align-items: flex-start;
   overflow: hidden;
+  font-size: 13pt;
 }
 
 .title {
   width: 100%;
-  /* height: 46px;  */
   display: flex;
-  align-items:center;
+  align-items: center;
 }
-.log-img{
+
+.log-img {
   width: 50rpx;
-  /* height: 46px; */
 }
+
 .title-word {
-  /* line-height: 46px; */
   margin-left: 15px;
   font-size: 1rem;
-  font-weight: bold;
 }
-video{
-  width:100%;
-  height: 450rpx;
-  margin-top:20rpx;
-  border-radius: 10rpx !important;
+
+video {
+  width: 100%;
+  height: 430rpx;
+  margin-top: 20rpx;
 }
-.view-margin{
+
+.view-margin {
   margin-top: 0rpx;
 }
+
 .line {
-  background-color: rgb( 255, 144, 64 );
+  background-color: rgb(255, 144, 64);
   width: 6px;
   height: 40rpx;
   border-radius: 5px;
 }
-.contact{
-   width: 100%; 
+
+.contact {
+  width: 100%;
   padding-left: 21px;
-  /* padding-right: 48px; */
   display: flex;
   flex-direction: column;
-  align-items:flex-start;
+  align-items: flex-start;
 }
-.contact-detail{
+
+.contact-detail {
   width: 85%;
-  font-size: 0.9rem;
+  font-size: 11pt;
   font-family: "PingFangSC";
-  color:grey;
-  border-bottom: 1px dashed gray;
+  color: #333;
+  border-bottom: 1px dashed silver;
   line-height: 80rpx;
   flex-shrink: 0;
 }
-.detail-black{
-  color:black;
+
+.contact-email {
+  border: none;
 }
-.partner-list{
+
+.detail-black {
+  color: black;
+}
+
+.partner-list {
   width: 100%;
   display: flex;
-  flex-direction:row;
-  justify-content:space-around;
+  flex-direction: row;
+  justify-content: space-around;
   margin-top: 20rpx;
 }
-.img-list{
+
+.img-list {
   width: 100rpx;
   height: 100rpx;
   border-radius: 50rpx;
-  background:gray;
-  
+  background: gray;
 }
-.footbtn{
+
+.footbtn {
   width: 100%;
   position: fixed;
   bottom: 0;
   flex-direction: row;
-  flex-wrap:nowrap;
+  flex-wrap: nowrap;
 }
-.inline-block{
+
+.inline-block {
   display: inline-block;
   width: 50%;
   height: 100%;
-  line-height: 46px;
-  font-size:18px;
+  line-height: 50px;
+  font-size: 13pt;
   text-align: center;
   color: #fff;
 }
-.reg-btn{
-  background-color: rgb( 255, 57, 57 );
+
+.reg-btn {
+  background-color: #ff3630;
 }
-.login-btn{
-  background-color: rgb( 255, 118, 118 );
+
+.login-btn {
+  background-color: #ff7676;
 }
-.wapper{
+
+.wapper {
   width: 100%;
 }

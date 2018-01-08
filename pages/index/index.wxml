@@ -1,5 +1,4 @@
 <!--index.wxml-->
-
 <view class="container">
   <view class='wapper'>
     <view class='title'>
@@ -9,7 +8,6 @@
     <video src="https://upfiles.heclouds.com/other_files/cm_marathon_intro.mp4">
     </video>
   </view>
-
   <view class='wapper'>
     <view class='title view-margin'>
       <view class='line'></view>
@@ -22,7 +20,7 @@
       <view class="contact-detail">商务合作官方微信号
         <span class="detail-black">：hauyan</span>
       </view>
-      <view class="contact-detail">官方邮箱
+      <view class="contact-detail contact-email">官方邮箱
         <span class="detail-black">：huayan@163.com</span>
       </view>
     </view>
@@ -36,7 +34,6 @@
       <image wx:for="{{img_list}}" class='img-list'></image>
     </view>
   </view>
-
 </view>
 <view class='footbtn'>
   <view class='inline-block reg-btn' bindtap="register">注册花店</view>
