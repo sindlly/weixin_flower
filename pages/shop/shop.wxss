@@ -3,7 +3,7 @@
   justify-content: flex-start;
   height: 100vh;
   text-align: left;
-  background-color: #eee
+  background-color: #f2f2f2;
 }
 
 .item-container {
@@ -13,67 +13,78 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: flex-start;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
   background-color: #fff;
-  padding: 2vh 2vh 1vh 2vh 
+  padding: 2vh 2vh 1vh 2vh;
 }
-.item-container-left {
-  width: 25vw;
-}
+
 .item-container-right {
-  margin-left: 1vw;
-  width: 70vw;
+  margin-left: 2vw;
+  width: 66vw;
 }
+
 .image-item {
-  width: 20vw;
+  width: 110px;
+  height: 110px;
 }
 
 /* 右上 */
+
 .item-title {
   display: block;
-  font-size: 13pt
+  font-size: 13pt;
+  color: #333;
 }
+
 .item-subtitle {
-  display: block; 
-  color: silver; 
-  font-size: 11pt
+  display: block;
+  color: #666;
+  font-size: 11pt;
+  margin-top: 5px;
 }
 
 /* 右下 */
+
 .container-right-bottom {
-  margin-top: 1vh;
+  margin-top: 2.8vh;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
 }
+
 .item-container-price {
   display: inline-block;
   width: 35vw;
 }
+
 .item-container-pay {
   display: inline-block;
-  width: 15vw;  
+  width: 15vw;
 }
+
 .item-price {
-  color: brown;
+  color: #ff3939;
   font-size: 13pt;
 }
+
 .item-old-price {
   margin-left: 2vw;
   font-size: 11pt;
-  color: silver  
+  color: #999;
 }
+
 .item-payed {
   display: block;
   font-size: 11pt;
-  color: silver 
+  color: #999;
 }
+
 .item-buy {
   font-size: 11pt;
   padding: 5px 10px;
-  background-color: crimson;
+  background-color: #ff7676;
   color: #fff;
-  border-radius: 5px
+  border-radius: 5px;
 }

@@ -4,7 +4,7 @@
   height: 100vh;
   width: 100vw;
   text-align: left;
-  background-color: #eee;
+  background-color: #f2f2f2;
   position: relative;
 }
 
@@ -17,13 +17,31 @@
   align-items: flex-start;
   border-bottom: 1px solid #eee;
   background-color: #fff;
-  padding: 2vh 2vh 1vh 2vh;
+  padding: 2vh;
   margin-bottom: 1vh;
 }
+
 .order-address {
   flex-direction: row;
-  justify-content: space-between
+  justify-content: space-between;
+  align-items: center;
 }
+
+.address-left .position-logo {
+  width: 20px;
+  height: 26px;
+}
+
+.address-middle {
+  width: 60vw;
+}
+
+.address-right {
+  width: 20vw;
+  text-align: right;
+  color: #999;
+}
+
 .address-contact {
   width: 100%;
   display: flex;
@@ -32,6 +50,12 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.address-contact text {
+  color: #242424;
+  font-size: 12pt;
+}
+
 .order-number button {
   display: inline-block;
   width: 32px;
@@ -54,6 +78,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .order-sum {
   padding: 0;
   font-size: 12pt;
@@ -62,45 +87,46 @@
   position: absolute;
   bottom: 0;
 }
+
 .order-sum .sum-submit {
   height: 50px;
-  background-color: red;
+  background-color: #ff3630;
   line-height: 50px;
   padding: 0 12vw;
   color: #fff;
 }
+
 .order-sum .sum-price {
-  margin-left: 2vh
+  margin-left: 2vh;
 }
 
 /* 商品相关 */
 
-.item-container-left {
-  width: 25vw;
+.image-item {
+  width: 100px;
+  height: 100px;
 }
 
 .item-container-right {
-  margin-left: 1vw;
+  margin-left: 2vw;
   width: 70vw;
-}
-
-.image-item {
-  width: 20vw;
 }
 
 .item-title {
   display: block;
   font-size: 13pt;
+  color: #333;
 }
 
 .item-subtitle {
   display: block;
-  color: silver;
+  color: #666;
   font-size: 11pt;
+  margin-top: 5px;
 }
 
 .container-right-bottom {
-  margin-top: 1vh;
+  margin-top: 4.6vh;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -119,7 +145,7 @@
 }
 
 .item-price {
-  color: brown;
+  color: #ff3939;
   font-size: 13pt;
 }
 
@@ -143,5 +169,5 @@
 
 .smaller-font {
   font-size: 11pt;
-  color: silver;
+  color: #999;
 }
