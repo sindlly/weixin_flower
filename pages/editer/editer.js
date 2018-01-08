@@ -25,6 +25,9 @@ Page({
     images:{},
     bgurl:'',
     bgid:'',
+    media_id:'',
+    saveData:{
+    },
   },
   addPicture:function(){
     var _this =this;
@@ -144,55 +147,9 @@ Page({
       url: '../editer/preview/preview?bgid=' + _this.data.bgid
     })
   },
-  save: function(){
-    var _this = this;
-    var timestamp1 = Date.parse(new Date());
-    var imgUrl = this.data.pictureUrl; //图片地址、
-    var blessing = this.data.blessing; //祝福语
-    //如果有录音
-    if (wx.getStorageSync("audioSrc")) {
-        _this.setData({
-          uploadUrl: wx.getStorageSync("audioSrc")
-        })
-    }
-    
-    //上传录音或录像
-    if (_this.data.uploadUrl!=''){
-      console.log("上传录音或录像")
-      wx.uploadFile({
-        method: "POST",
-        url: _this.data.$root + '/files',
-        filePath: _this.data.uploadUrl,
-        header: {
-          'content-type': 'multipart/form-data',
-          'access_token': _this.data.token,
-          'x-csrf-token': _this.data.csrfToken
-        },
-        name: 'files',
-        formData: {
-          'files': _this.data.uploadUrl
-        },
-        success: function (res) {
-          var timestamp2 = Date.parse(new Date());
-          var usetime = timestamp2 - timestamp1;
-          console.log("用时：" + usetime)
-          var data = res.data
-          console.log("录音或录像返回"+data);
-          //do something
-          wx.showToast({
-            title: '保存成功',
-            icon: 'success',
-            duration: 2000
-          })
-        },
-        fail: function (res) {
-          console.log(res);
-        }
-      })
-    }
-    
+  getPicture_id:function(){
     //上传图片
-    if(imgUrl!=''){
+    var _this = this;
       console.log("有图片上传")
       wx.uploadFile({
         method: "POST",
@@ -208,53 +165,95 @@ Page({
           'files': imgUrl
         },
         success: function (res) {
-           
-          
-          // var timestamp2 = Date.parse(new Date());
-          // var usetime = timestamp2 - timestamp1;
-          // console.log("用时：" + usetime)
           var obj = JSON.parse(res.data)
-          console.log(res.data);
-          console.log("图片返回："+obj);
-          console.log("图片返回：" + obj.data[0].id);
-
+          console.log(obj);
+          // _this.setData({
+          //     picture_id: obj.data[0].id, 
+          // })
+          return obj.data[0].id;
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      })
+    
+  },
+  getMedia_id:function(){
+    //如果有录音
+    if (wx.getStorageSync("audioSrc")) {
+      _this.setData({
+        uploadUrl: wx.getStorageSync("audioSrc")
+      })
+    }
+    //上传录音或录像
+    if (_this.data.uploadUrl != '') {
+      console.log("上传录音或录像")
+      wx.uploadFile({
+        method: "POST",
+        url: _this.data.$root + '/files',
+        filePath: _this.data.uploadUrl,
+        header: {
+          'content-type': 'multipart/form-data',
+          'access_token': _this.data.token,
+        },
+        name: 'files',
+        formData: {
+          'files': _this.data.uploadUrl
+        },
+        success: function (res) {
+          var data = res.data
+          console.log("录音或录像返回" + data);
           _this.setData({
-                  picture_id:obj.data[0].id
-                })
-          //do something
-          wx.showToast({
-            title: '保存成功',
-            icon: 'success',
-            duration: 2000
+            media_id: data.data[0].id
           })
+          //do something
         },
         fail: function (res) {
           console.log(res);
         }
       })
     }
-    //上传文字
-    wx.request({
-      url: _this.data.$root+'/cards',
-      data:{
-        id:_this.data.id,
-        voice_id: _this.data.voice_id,
-        video_id: _this.data.voice_id,
-        background_id: _this.data.bgid,
-        picture_id: _this.data.picture_id,
+  },
+  save: function(){
+    var _this = this;
+    //图片+文字
+    if (_this.data.pictureUrl){
+      var picture_id =_this.getPicture_id();
+      var data = {
+        picture_id: picture_id,
         blessing: _this.data.blessing,
-      },
-      method:"POST",
+        status: 'NONBLANK',
+        union_id:'asdfa',
+      }
+      _this.upText(data);
+    }
+      
+  },
+  //保存
+  upText:function(data){
+    var _this = this;
+    wx.request({
+      url: _this.data.$root + '/cards/' + wx.getStorageSync('cardid'),
+      // data: {
+      //   voice_id: _this.data.voice_id,
+      //   video_id: _this.data.voice_id,
+      //   background_id: _this.data.bgid,
+      //   picture_id: _this.data.picture_id,
+      //   blessing: _this.data.blessing,
+      //   status:'UNBLANK',
+      //   union_id:'asdfa',
+      // },
+      data:data,
+      method: "PATCH",
       header: {
         'access_token': _this.data.token,
         'x-csrf-token': _this.data.csrfToken
       },
       success: function (res) {
-        console.log("上传文字返回"+res.data)
+        console.log("上传文字返回" + res.data)
       }
     })
   },
-
   //处理图片
   imageLoad: function (e) {
     var $width = e.detail.width,    //获取图片真实宽度
