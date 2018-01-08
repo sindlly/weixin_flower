@@ -1,18 +1,18 @@
 Page({
-  data:{
+  data: {
     id: wx.getStorageSync("userid"),
     token: wx.getStorageSync("token"),
-    name:'',
-    address:'',
-    contact:'',
-    url:'',
-    $root :getApp().globalData.ROOTPATH
+    name: '',
+    address: '',
+    contact: '',
+    url: '',
+    $root: getApp().globalData.ROOTPATH
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  bindKeyInput:function(e){
+  bindKeyInput: function (e) {
     var key = e.currentTarget.dataset.name;
     var val = e.detail.value;
     wx.setStorageSync(key, val);
@@ -22,7 +22,7 @@ Page({
     var _this = this;
     const requestTask = wx.request({
       method: "GET",
-      url: _this.data.$root+'/users/' + _this.data.id,
+      url: _this.data.$root + '/users/' + _this.data.id,
       header: {
         'content-type': 'application/json',
         "access_token": _this.data.token,
@@ -40,19 +40,18 @@ Page({
   },
   formSubmit: function (e) {
     var _this = this;
-    if (e.detail.value.url==""){
-      delete e.detail.value.url;
-    }
+    if (e.detail.value.url == "") delete e.detail.value.url;
     const requestTask = wx.request({
       method: "PATCH",
-      url: _this.data.$root+'/users/' + _this.data.id,
+      url: _this.data.$root + '/users/' + _this.data.id,
       header: {
         'content-type': 'application/json',
         "access_token": _this.data.token,
       },
       data: e.detail.value,
       success: function (res) {
-        if(res.data.code==200){
+        if (res.data.code == 200) {
+          wx.setStorageSync("user_info", res.data.data.user);
           wx.showToast({
             title: '保存成功',
             icon: 'success',
@@ -63,10 +62,8 @@ Page({
             //   })
             // }
           })
-
-          
         }
-        else{
+        else {
           wx.showModal({
             title: '提示',
             content: res.data.msg
@@ -74,10 +71,10 @@ Page({
         }
       }
     })
-    
-    
+
+
   },
-  goto:function(){
-    
+  goto: function () {
+
   }
 })

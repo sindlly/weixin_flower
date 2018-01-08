@@ -21,8 +21,8 @@ Page({
           //判断是否是第一次登录，如果不是就跳转到商家编辑页
           if (res.data.data.user.name) {
             wx.reLaunch({
-              // url: '../home/home?id=' + res.data.data.user.id
-              url: '../cardbg/cardbg?id=cbf1ade0-f43f-11e7-b5f3-c93673e5d7ba'
+              url: '../home/home?id=' + res.data.data.user.id
+              // url: '../cardbg/cardbg?id=cbf1ade0-f43f-11e7-b5f3-c93673e5d7ba'
             });
           }
           else {

@@ -3,7 +3,7 @@
     <form bindsubmit="formSubmit">
       <view class="panel">
         <view class='bline'>
-          <input name="name" bindinput="bindKeyInput" data-name='name' value="{{name}}" type="number" placeholder="花店名字" />
+          <input name="name" bindinput="bindKeyInput" data-name='name' value="{{name}}" type="text" placeholder="花店名字" />
         </view>
         <view class='bline'>
           <input name="address" data-name='address' bindinput="bindKeyInput" type="text" value="{{address}}" placeholder="花店地址" />

@@ -56,6 +56,9 @@ Page({
             });
           }
           else wx.showModal({ title: '提示', content: res.data.msg })
+        },
+        fail: function(e) {
+          wx.showModal({ title: '提示', content: '生成二维码失败！' })
         }
       })
     }
