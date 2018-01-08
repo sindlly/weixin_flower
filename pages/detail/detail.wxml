@@ -3,13 +3,13 @@
     <form bindsubmit="formSubmit">
       <view class="panel">
         <view class='bline'>
-          <input name="name" value="{{name}}" type="number" placeholder="花店名字" />
+          <input name="name" bindinput="bindKeyInput" data-name='name' value="{{name}}" type="number" placeholder="花店名字" />
         </view>
         <view class='bline'>
-          <input name="address" type="text" value="{{address}}" placeholder="花店地址" />
+          <input name="address" data-name='address' bindinput="bindKeyInput" type="text" value="{{address}}" placeholder="花店地址" />
         </view>
-         <view class="bline"><input name="contact" type="number" placeholder="花店联系电话" value="{{contact}}"/></view>
-         <view class=""><input name="url" type="text" placeholder="花店公众号url（选填）" value="{{url}}" /></view>
+         <view class="bline"><input name="contact" data-name='contact' bindinput="bindKeyInput" type="number" placeholder="花店联系电话" value="{{contact}}"/></view>
+         <view class=""><input name="url" data-name='url' bindinput="bindKeyInput" type="text" placeholder="花店公众号url（选填）" value="{{url}}" /></view>
 
       </view>
       <view>

@@ -23,6 +23,7 @@ Page({
   },
   onLoad: function (option) {
     var _this = this;
+    
     const requestTask = wx.request({
       method: "GET",
       url: _this.data.$root + '/users/' +option.id,
@@ -37,6 +38,7 @@ Page({
           address: res.data.data.address,
           contact: res.data.data.contact,
           url: res.data.data.url,
+          log: wx.getStorageSync('avatar_id') ? wx.getStorageSync('avatar_id') : '../../files/defaultLog.png',
         })
         if (res.data.data.picture_ids){
           //如果有图片
@@ -59,6 +61,10 @@ Page({
     //图片是否有更新
     this.setData({
       imgSrc: this.data.$root + '/files/' + wx.getStorageSync('picture_ids') ? this.data.$root + '/files/' + wx.getStorageSync('picture_ids') : this.data.defaultImg,
+      name: wx.getStorageSync('name'),
+      address: wx.getStorageSync('address'),
+      contact: wx.getStorageSync('contact'),
+      url: wx.getStorageSync('url'),
     })
   },
 })

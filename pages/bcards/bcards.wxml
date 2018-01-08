@@ -7,9 +7,9 @@
   </view> -->
   <view class='title'>
     <view class='line'></view>
-    <view class="title-word">花店信息</view>
+    <view class="title-word">{{name}}</view>
   </view>
-  <view class='container'>
+  <view class='container container-intro'>
     <view class='intro'>
       <image class='log' src='{{log}}'></image>
       <view class='detail'>
@@ -18,8 +18,11 @@
       </view>
     </view>
   </view>
-  <image mode='widthFix' src='{{imgSrc}}'></image>
 </view>
+<view class='container container-img'>
+<image mode='widthFix' src='{{imgSrc}}'></image>
+</view>
+
 <view class='footbtn'>
   <navigator url="../detail/detail">
     <view class='inline-block reg-btn'>编辑花店基础信息</view>
