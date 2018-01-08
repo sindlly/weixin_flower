@@ -22,7 +22,6 @@
 
 .log {
   width: 60rpx;
-  /* height: 100rpx; */
   margin-right: 20rpx;
 }
 button {

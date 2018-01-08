@@ -1,7 +1,3 @@
 {
-  "backgroundTextStyle": "light",
-  "navigationBarBackgroundColor": "#D2691E",
-  "navigationBarTitleText": "打印机设置",
-  "navigationBarTextStyle": "#fff",
-  "backgroundColor": "#fff"
+  "navigationBarTitleText": "打印机设置"
 }

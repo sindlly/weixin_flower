@@ -1,15 +1,39 @@
 <view class="container">
-  <view class="data-quota">
-    二维码剩余额度：<text>{{quota}} 张</text>
+  <view class="data-quota data-item">
+    <view class="data-key">
+      <image src='../../../files/data_qr.png'></image>
+      <text>二维码剩余额度</text>
+    </view>
+    <view class="data-value">
+      <text class="value-detail">{{quota}}</text> 张
+    </view>
   </view>
-  <view class="data-print">
-    打印总数：<text>{{print}} 张</text>
+  <view class="data-print data-item">
+    <view class="data-key">
+      <image src='../../../files/data_print.png'></image>
+      <text>打印总数</text>
+    </view>
+    <view class="data-value">
+      <text class="value-detail">{{print}}</text> 张
+    </view>
   </view>
-  <view class="data-read">
-    阅读总数：<text>{{read}} 次</text>
+  <view class="data-read data-item">
+    <view class="data-key">
+      <image src='../../../files/data_read.png'></image>    
+      <text>阅读总数</text>
+    </view>
+    <view class="data-value">
+      <text class="value-detail">{{read}}</text> 次
+    </view>
   </view>
-  <view class="data-jump">
-    公众号跳转数：<text>{{jump}} 次</text>
+  <view class="data-jump data-item">
+    <view class="data-key">
+      <image src='../../../files/data_jump.png'></image>      
+      <text>公众号跳转数</text>
+    </view>
+    <view class="data-value">
+      <text class="value-detail">{{jump}}</text> 次
+    </view>
   </view>
   <view class='data-buy'>
     <navigator url="../../shop/shop" hover-class="navigator-hover">点击购买二维码</navigator>

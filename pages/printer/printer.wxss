@@ -1,24 +1,52 @@
 /**printer.wxss**/
+
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100vh;
 }
-.printer-qr, .printer-test {
-  margin: 25px;
-}
-.printer-tag {
-  margin-top: 75px;
+
+.printer-qr, .printer-test, .printer-reprint {
+  margin-bottom: 25px;
   text-align: center;
 }
-.label-text {
-  display: block;
-    margin-top: 8px
-  }
-.printer-status {
-  margin-bottom: 7vh;
+
+.printer-tag {
+  text-align: center;
+  margin-top: 5px;
 }
+
+.printer-status {
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
 .printer-btnstatus {
   border: none !important;
+}
+
+.image-print {
+  width: 70px;
+  height: 70px;
+}
+
+.print-options {
+  display: block;
+  margin-top: 5px;
+}
+
+.printer-buy {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  background-color: #ff3630;
+  line-height: 50px;
+  color: #fff;
+}
+
+text {
+  color: #333;
 }

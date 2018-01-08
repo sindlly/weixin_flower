@@ -17,13 +17,16 @@ let TimerCheck;
 Page({
   data: {
     motto: '连接打印机中....',
-    disabled: false,
-    loading: true,
-    tag: false,
+    disabled: false, // 按钮是否可用
+    loading: true, 
+    tag: false, // 是否打印店铺名称
     userInfo: wx.getStorageSync('user_info') || null,
     token: wx.getStorageSync('token'),
-    rePrint: false,
-    printUrl: '',
+    rePrint: false, // 是否可重复打印
+    printUrl: '', // 二维码url地址
+    printImgUrl: '../../files/print_disabled.png',
+    reprintImgUrl: '../../files/reprint_disabled.png',
+    tprintImgUrl: '../../files/tprint_disabled.png',
   },
   printQrCode: function () {
     const $root = app.globalData.ROOTPATH;
@@ -32,37 +35,41 @@ Page({
     const that = this;
 
     // 请求生成贺卡
-    wx.request({
-      url: $root + '/cards',
-      method: "POST",
-      header: {
-        'content-type': 'application/json',
-        'access_token': $data.token,
-      },
-      success: function (res) {
-        if (res.data.code == 200) {
-          const url = `${$host}/public/two_dimension_code?id=${res.data.data.id}`;
+    if (!$data.disabled) {
+      wx.request({
+        url: $root + '/cards',
+        method: "POST",
+        header: {
+          'content-type': 'application/json',
+          'access_token': $data.token,
+        },
+        success: function (res) {
+          if (res.data.code == 200) {
+            const url = `${$host}/public/two_dimension_code?id=${res.data.data.id}`;
 
-          // 根据url打印二维码
-          PrintQRcode(url, $data.tag, $data.userInfo.name);
-          that.setData({
-            rePrint: true,
-            printUrl: url,
-          });
+            // 根据url打印二维码
+            PrintQRcode(url, $data.tag, $data.userInfo.name);
+            that.setData({
+              rePrint: true,
+              printUrl: url,
+              reprintImgUrl: '../../files/reprint.png',
+            });
+          }
+          else wx.showModal({ title: '提示', content: res.data.msg })
         }
-        else wx.showModal({title: '提示', content: res.data.msg}) 
-      }
-    })
+      })
+    }
   },
 
   rePrintQrCode: function() {
-    PrintQRcode(this.data.printUrl, this.data.tag, this.data.userInfo.name);
+    const { data: $data } = this;
+    if ($data.rePrint) PrintQRcode($data.printUrl, $data.tag, $data.userInfo.name);
   },
 
   QrCodeTest: function () {
     const testUrl = 'https://www.baidu.com/s?wd=%E5%B0%8F%E7%A8%8B%E5%BA%';
     const { data: $data } = this;
-    PrintQRcode(testUrl, $data.tag, '花言小程序');
+    if (!$data.disabled) PrintQRcode(testUrl, $data.tag, '花言小程序');
   },
 
   checkboxChange: function(e) {
@@ -102,6 +109,8 @@ const timer = (that) => {
         disabled: false,
         motto: '打印机准备就绪',
         loading: false,
+        printImgUrl: '../../files/print.png',
+        tprintImgUrl: '../../files/tprint.png',
       });
     }
     else {
@@ -112,6 +121,9 @@ const timer = (that) => {
         disabled: true,
         motto: bluetooth.GetCurLog(),//打印机状态日志
         loading: true,
+        printImgUrl: '../../files/print_disabled.png',
+        reprintImgUrl: '../../files/reprint_disabled.png',
+        tprintImgUrl: '../../files/tprint_disabled.png',
       });
     }
   }

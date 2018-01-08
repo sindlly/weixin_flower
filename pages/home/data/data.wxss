@@ -1,32 +1,61 @@
 /* pages/home/data/data.wxss */
+
 .container {
   display: flex;
   justify-content: flex-start;
   height: 100vh;
-  text-align: left
+  width: 100vw;
+  text-align: left;
+  background-color: #f2f2f2;
+  font-size: 13pt;
 }
-.container view {
+
+.data-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
   width: 90%;
-  margin: 0 auto;
-  margin-bottom: 30px;
-  position: relative
+  margin-bottom: 10px;
+  border-left: 3px solid #ff7676;
+  border-radius: 2px;
 }
+
 .data-quota {
-  padding-top: 40px;
+  margin-top: 10px;
 }
-.container view text {
-  float: right;
-}
-.data-buy {
-  text-align: center
-} 
-navigator {
+
+.data-key {
+  width: 80vw;
   display: inline-block;
-  padding: 10px;
-  border: 1px solid silver;
-  border-radius: 5px
 }
-.hover-class {
-  color: brown;
-  background-color: brown;
+
+.data-key image {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.data-value {
+  width: 20vw;
+  text-align: right;
+}
+
+.value-detail {
+  color: #ff3939;
+  font-size: 16pt;
+}
+
+.data-buy {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  background-color: #ff3630;
+  line-height: 50px;
+  color: #fff;
 }

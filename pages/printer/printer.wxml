@@ -4,13 +4,16 @@
     <button class="printer-btnstatus" id="btPrint" disabled="{{disabled}}" loading="{{loading}}" plain="true" type="{{disabled ? 'warn': 'primary'}}">{{motto}}</button>
   </view>
   <view class="printer-qr">
-    <button bindtap="printQrCode" disabled="{{disabled}}">打印二维码</button>
+    <image class="image-print" src="{{printImgUrl}}" mode='scaleToFill' bindtap="printQrCode"></image>
+    <text class="print-options" >打印二维码</text>
   </view>
   <view class="printer-reprint">
-    <button bindtap="rePrintQrCode" disabled="{{!rePrint}}">重打二维码</button>
+      <image class="image-print" src="{{reprintImgUrl}}" mode='scaleToFill' bindtap="rePrintQrCode"></image>  
+    <text class="print-options" >重打二维码</text>
   </view>
   <view class="printer-test">
-    <button bindtap="QrCodeTest" disabled="{{disabled}}">打印测试纸</button>
+    <image class="image-print" src="{{tprintImgUrl}}" mode='scaleToFill' bindtap="QrCodeTest"></image>
+    <text class="print-options" >打印测试纸</text>
   </view>
   <view class='printer-tag'>
     <checkbox-group bindchange="checkboxChange">
@@ -19,5 +22,8 @@
         <text class="label-text">是否打印店铺名称</text>
       </label>
     </checkbox-group>
+  </view>
+  <view class='printer-buy'>
+    <navigator url="../shop/shop" hover-class="navigator-hover">点击购买二维码</navigator>
   </view>
 </view>

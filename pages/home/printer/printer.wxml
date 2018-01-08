@@ -1,8 +1,0 @@
-<view class='container'>
-<view class='title'>打印机设置</view>
-<image class='img' src='{{imgsrc}}'></image>
-<view>
-<button bindtap="upfile">上传log</button>
-<button bindtap="connectBule">连接蓝牙打印机</button>
-</view>
-</view>
