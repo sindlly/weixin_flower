@@ -2,21 +2,13 @@ const util = require('../../utils/util.js')
 
 Page({
   data: {
-    id: wx.getStorageSync("userid"),
     token: '',
     url: '',
     $root: getApp().globalData.ROOTPATH,
     avatarUrl: '', // logo地址
     qrUrl: '', // 二维码图片地址
     isFirstLogin: '',
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  bindKeyInput: function (e) {
-    var key = e.currentTarget.dataset.name;
-    var val = e.detail.value;
-    wx.setStorageSync(key, val);
+    userInfo: '',
   },
 
   onLoad: function (options) {
@@ -34,6 +26,7 @@ Page({
   },
 
   formSubmit: function (e) {
+
     const _this = this;
     const logoSelected = _this.isFileSelected(_this.data.avatarUrl);
     const qrSelected = _this.isFileSelected(_this.data.qrUrl);    
@@ -47,6 +40,7 @@ Page({
 
     // 上传logo
     if (logoSelected) {
+      console.log('asdf');
       promiseArray.push(uploadPromisified({
         url: _this.data.$root + '/files',
         filePath: _this.data.avatarUrl,
@@ -59,6 +53,7 @@ Page({
 
     // 上传公众号二维码
     if (qrSelected) {
+      console.log('=====?asdfssss');
       promiseArray.push(uploadPromisified({
         url: _this.data.$root + '/files',
         filePath: _this.data.qrUrl,
@@ -71,6 +66,7 @@ Page({
 
     if (promiseArray[0]) {
       Promise.all(promiseArray).then((files) => {
+        console.log(files);
         let avatar = undefined;
         let qr = undefined;
         if ( promiseArray.length === 2 ) {
@@ -86,9 +82,11 @@ Page({
 
         if (parsedAvatar && parsedAvatar.data[0].id) requestData.avatar_id = parsedAvatar.data[0].id;
         if (parsedQr && parsedQr.data[0].id) requestData.url = parsedQr.data[0].id;
+        console.log(requestData);
 
         _this.saveInfo(_this, requestData); // 保存信息
       }).catch((reason) => {
+        console.log(reason);        
         wx.hideLoading();
         wx.showModal({
           title: '提示',
@@ -144,10 +142,10 @@ Page({
 
   saveInfo: function (_this, data) {
     const requestPromisified = util.wxPromisify(wx.request);
-
+    console.log(_this.data.$root + '/users/' + _this.data.userInfo.id);
     requestPromisified({
-      method: "PATCH",
-      url: _this.data.$root + '/users/' + _this.data.id,
+      method: "PUT",
+      url: _this.data.$root + '/users/' + _this.data.userInfo.id,
       header: {
         'content-type': 'application/json',
         "access_token": _this.data.token,

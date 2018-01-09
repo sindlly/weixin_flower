@@ -67,7 +67,7 @@ Page({
       const obj = JSON.parse(res.data);
       requestPromisified({
         url: _this.data.$root + '/users/' + _this.data.userInfo.id,
-        method: 'PATCH',
+        method: 'PUT',
         data: {
           picture_ids: [obj.data[0].id]
         },

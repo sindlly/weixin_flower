@@ -23,7 +23,7 @@
     </view>
     <view class='container container-intro'>
       <view class='intro'>
-        <image class='log' src='{{avatar}}'></image>
+        <image class='log' src='{{avatar}}' mode='aspectFill'></image>
         <view class='detail'>
           <view class='info'>地址：{{userInfo.address}}</view>
           <view class='info'>电话：{{userInfo.contact}}</view>
@@ -34,5 +34,5 @@
   </view>
 </view>
 <view class='jump-public'>
-  <text bindtap='jumpPublic'>进入花店公众号</text>
+  <text bindtap='jumpPublic'>花店公众号二维码</text>
 </view>

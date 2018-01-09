@@ -1,8 +1,7 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/index/index",
-    
+    "pages/login/login",
     "pages/detail/detail",
     "pages/bcards/bcards",
     "pages/editer/editer",
@@ -21,6 +20,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "花言",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   }
 }

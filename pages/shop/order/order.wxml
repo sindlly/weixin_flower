@@ -13,7 +13,7 @@
         <text class='smaller-font'>{{userInfo.address}}</text>
       </view>
     </view>
-    <view class='address-right'> <navigator class="item-buy" url="../../detail/detail" hover-class="none">></navigator></view>
+    <view class='address-right'> <navigator class="item-buy" url="../../detail/detail?isFirstLogin=false" hover-class="none">></navigator></view>
   </view>
   <view class='order-commodity' wx:if="{{commodity}}">
     <view class="item-container-left">
