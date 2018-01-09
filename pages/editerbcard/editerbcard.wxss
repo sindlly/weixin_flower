@@ -1,32 +1,38 @@
 /* pages/editerbcard/editerbcard.wxss */
-.container-img{
+
+.container-img {
   justify-content: space-between;
   align-content: center;
   padding: 0;
 }
-image{
+
+image {
   width: 640rpx;
 }
-.footbtn{
+
+.footbtn {
   margin-top: 30rpx;
   width: 100%;
-  /* position: fixed; */
+  position: fixed;
   bottom: 0;
   flex-direction: row;
-  flex-wrap:nowrap;
+  flex-wrap: nowrap;
 }
-.inline-block{
+
+.inline-block {
   display: inline-block;
   width: 50%;
   height: 100%;
   line-height: 46px;
-  font-size:18px;
+  font-size: 18px;
   text-align: center;
   color: #fff;
 }
-.reg-btn{
-  background-color: rgb( 255, 57, 57 );
+
+.reg-btn {
+  background-color: rgb(255, 57, 57);
 }
-.login-btn{
-  background-color: rgb( 255, 118, 118 );
+
+.login-btn {
+  background-color: rgb(255, 118, 118);
 }

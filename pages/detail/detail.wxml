@@ -1,24 +1,37 @@
 <view class='wapper'>
-  <view class=''>
+  <view class='base-info'>
     <form bindsubmit="formSubmit">
+      <view class="image-container">
+        <view class="image-chosen"  bindtap='changeAvatar'>
+          <text>花店LOGO</text>
+          <view class="btn-container">
+            <image src='{{avatarUrl}}' mode='aspectFill'></image>
+            <text class="btn-chosen">></text>
+          </view>
+        </view>
+        <view class="image-chosen" bindtap='changeQr'>
+          <text>公众号二维码</text>
+          <view class="btn-container">
+            <image src='{{qrUrl}}' mode='aspectFill'></image>
+            <text class="btn-chosen">></text>
+          </view>
+        </view>
+      </view>
       <view class="panel">
         <view class='bline'>
-          <input name="name" bindinput="bindKeyInput" data-name='name' value="{{name}}" type="text" placeholder="花店名字" />
+          <input name="name" bindinput="bindKeyInput" data-name='name' value="{{userInfo.name}}" type="text" placeholder="花店名字" />
         </view>
         <view class='bline'>
-          <input name="address" data-name='address' bindinput="bindKeyInput" type="text" value="{{address}}" placeholder="花店地址" />
+          <input name="address" data-name='address' bindinput="bindKeyInput" type="text" value="{{userInfo.address}}" placeholder="花店地址" />
         </view>
         <view class="bline">
-          <input name="contact" data-name='contact' bindinput="bindKeyInput" type="number" placeholder="花店联系电话" value="{{contact}}" />
-        </view>
-        <view class="">
-          <input name="url" data-name='url' bindinput="bindKeyInput" type="text" placeholder="花店公众号url（选填）" value="{{url}}" />
+          <input name="contact" data-name='contact' bindinput="bindKeyInput" type="number" placeholder="花店联系电话" value="{{userInfo.contact}}" />
         </view>
       </view>
       <view>
         <button class="btn-save" formType="submit">确认保存</button>
         <view>
-          <button class="btn" bindtap='goto'>如何获取公众号url</button>
+          <button class="btn" bindtap='getQr'>如何获取公众号二维码</button>
         </view>
       </view>
     </form>

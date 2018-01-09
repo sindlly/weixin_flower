@@ -1,3 +1,20 @@
+// 微信异步流程控制
+function wxPromisify(fn) {
+  return function (obj = {}) {
+    return new Promise((resolve, reject) => {
+      obj.success = function (res) {
+        resolve(res)
+      }
+
+      obj.fail = function (res) {
+        reject(res)
+      }
+
+      fn(obj)
+    })
+  }
+}
+
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
@@ -32,7 +49,8 @@ function formatNumber(n) {
 module.exports = {
   formatTime: formatTime,
   encodeToGb2312: encodeToGb2312,
-  Arry2Arry: Arry2Arry
+  Arry2Arry: Arry2Arry,
+  wxPromisify
 }
 function Arry2Arry(arry1, arry2) {
   var b = new Uint8Array(arry1.length + arry2.length);

@@ -10,14 +10,10 @@ Page({
       },
       success: function (res) {
         if (res.data.code == 200) {
+          wx.clearStorageSync();
           wx.setStorageSync("userid", res.data.data.user.id)
           wx.setStorageSync("token", res.data.data.token)
           wx.setStorageSync("user_info", res.data.data.user)
-          wx.setStorageSync("name", res.data.data.user.name)
-          wx.setStorageSync("phone", res.data.data.user.phone)
-          wx.setStorageSync("contact", res.data.data.user.contact)
-          wx.setStorageSync("address", res.data.data.user.address)
-          wx.setStorageSync("avatar_id", res.data.data.user.avatar_id)
           //判断是否是第一次登录，如果不是就跳转到商家编辑页
           if (res.data.data.user.name) {
             wx.reLaunch({

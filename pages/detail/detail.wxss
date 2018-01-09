@@ -7,8 +7,11 @@ page {
   width: 100%;
 }
 
-.panel {
+.base-info {
   margin-top: 40rpx;
+}
+
+.panel {
   width: 100%;
   background: #fff;
   display: flex;
@@ -47,4 +50,41 @@ button {
 .btn-save {
   background-color: #ff3630;
   color: #fff;
+}
+
+.image-container {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-chosen {
+  margin: 0 auto;
+  width: 640rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 10rpx 0;
+  font-size: 13pt;
+  color: #495060;
+}
+
+.image-chosen image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100rpx
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+}
+
+.btn-chosen {
+  margin-left: 20rpx;
+  color: silver;
 }
