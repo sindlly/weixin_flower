@@ -2,8 +2,8 @@
 <view class="container">
   <view class="order-address">
     <view class='address-left'>
-      <image class='position-logo' bindtap='preview'src='../../../files/position.png'></image>
-</view>
+      <image class='position-logo' bindtap='preview' src='../../../files/position.png'></image>
+    </view>
     <view class='address-middle'>
       <view class="address-contact">
         <text>{{userInfo.name}}</text>
@@ -13,7 +13,9 @@
         <text class='smaller-font'>{{userInfo.address}}</text>
       </view>
     </view>
-    <view class='address-right'> <navigator class="item-buy" url="../../detail/detail" hover-class="none">></navigator></view>
+    <view class='address-right'>
+      <navigator class="item-buy" url="../../detail/detail?isFirstLogin=false" hover-class="none">></navigator>
+    </view>
   </view>
   <view class='order-commodity' wx:if="{{commodity}}">
     <view class="item-container-left">
@@ -23,7 +25,7 @@
       <text class="item-title">{{commodity.name}}</text>
       <text class="item-subtitle">{{commodity.description}}</text>
       <view class='container-right-bottom'>
-        <text class="item-price">¥ {{commodity.price}}</text>
+        <text class="item-price">¥ {{commodity.act_price || commodity.price}}</text>
         <text class="item-count">X {{count}}</text>
       </view>
     </view>
@@ -40,12 +42,12 @@
     <text class='smaller-font'>共 {{count}} 件商品</text>
     <view class='smaller-font'>
       小计
-      <text class="item-price">¥ {{count * commodity.price || 0}}</text>
+      <text class="item-price">¥ {{count * (commodity.act_price || commodity.price) || 0}}</text>
     </view>
   </view>
   <view class='order-sum'>
     <view class='sum-price'>合计金额：
-      <text class="item-price">¥ {{count * commodity.price || 0}}</text>
+      <text class="item-price">¥ {{count * (commodity.act_price || commodity.price) || 0}}</text>
     </view>
     <text class="sum-submit" bindtap="submitOrder">提交订单</text>
   </view>

@@ -16,32 +16,37 @@
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  padding: 20px;
+  padding: 40rpx;
   width: 90%;
   margin-bottom: 10px;
-  border-left: 3px solid #ff7676;
-  border-radius: 2px;
+  border-left: 6rpx solid #ff7676;
+  border-radius: 4rpx;
 }
 
 .data-quota {
-  margin-top: 10px;
+  margin-top: 20rpx;
 }
 
 .data-key {
   width: 80vw;
-  display: inline-block;
+  /* display: inline-block; */
+  font-size: 11pt;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .data-key image {
-  width: 20px;
-  height: 20px;
+  width: 40rpx;
+  height: 40rpx;
   vertical-align: middle;
-  margin-right: 10px;
+  margin-right: 20rpx;
 }
 
 .data-value {
-  width: 20vw;
+  width: 40vw;
   text-align: right;
+  font-size: 11pt;  
 }
 
 .value-detail {
@@ -54,8 +59,8 @@
   bottom: 0;
   width: 100%;
   text-align: center;
-  height: 50px;
+  height: 100rpx;
   background-color: #ff3630;
-  line-height: 50px;
+  line-height: 100rpx;
   color: #fff;
 }

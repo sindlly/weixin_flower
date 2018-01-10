@@ -28,6 +28,7 @@ Page({
     reprintImgUrl: '../../files/reprint_disabled.png',
     tprintImgUrl: '../../files/tprint_disabled.png',
   },
+
   printQrCode: function () {
     const $root = app.globalData.ROOTPATH;
     const $host = app.globalData.HOST;

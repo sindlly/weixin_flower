@@ -1,10 +1,7 @@
-<!--pages/cardbg/cardbg.wxml-->
 <view class='container'>
-
   <view class='panel' wx:for="{{imgSrcArry}}" wx:key='0'>
     <image class='img' bindtap='bindbg' data-bgid='{{imgSrcArry[index].bgid}}' src="{{imgSrcArry[index].bg}}"></image>
     <text>{{imgSrcArry[index].name}}-{{imgSrcArry[index].blessings}}</text>
-  <view class='hot'>HOT</view>
+    <view class='hot'>HOT</view>
   </view>
-
 </view>

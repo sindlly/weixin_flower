@@ -13,7 +13,7 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: flex-start;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2rpx solid #eee;
   background-color: #fff;
   padding: 2vh 2vh 1vh 2vh;
 }
@@ -24,23 +24,23 @@
 }
 
 .image-item {
-  width: 110px;
-  height: 110px;
+  width: 220rpx;
+  height: 220rpx;
 }
 
 /* 右上 */
 
 .item-title {
   display: block;
-  font-size: 13pt;
+  font-size: 1rem;
   color: #333;
 }
 
 .item-subtitle {
   display: block;
   color: #666;
-  font-size: 11pt;
-  margin-top: 5px;
+  font-size: 0.8rem;
+  margin-top: 10rpx;
 }
 
 /* 右下 */
@@ -66,25 +66,37 @@
 
 .item-price {
   color: #ff3939;
-  font-size: 13pt;
+  font-size: 1rem;
 }
 
 .item-old-price {
   margin-left: 2vw;
-  font-size: 11pt;
+  font-size: 0.8rem;
+  position: relative;
   color: #999;
+}
+
+.item-old-price::after {
+  content: "";
+  width: 80rpx;
+  border-bottom: 2rpx solid #999;
+  height: 4rpx;
+  position: absolute;
+  box-sizing: border-box;
+  top: 20rpx;
+  left: 70rpx;
 }
 
 .item-payed {
   display: block;
-  font-size: 11pt;
+  font-size: 0.8rem;
   color: #999;
 }
 
 .item-buy {
   font-size: 11pt;
-  padding: 5px 10px;
+  padding: 10rpx 20rpx;
   background-color: #ff7676;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 10rpx;
 }

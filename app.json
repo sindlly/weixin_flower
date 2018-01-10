@@ -1,7 +1,10 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/index/index",
+<<<<<<< HEAD
+=======
+    "pages/login/login",
+>>>>>>> f326998910894720e90f78157ca968964d120c82
     "pages/detail/detail",
     "pages/bcards/bcards",
     "pages/editer/editer",
@@ -11,6 +14,7 @@
     "pages/register/register",
     "pages/editer/preview/preview",
     "pages/home/data/data",
+    "pages/home/qr/qr",
     "pages/editer/editaudio/editaudio",
     "pages/shop/shop",
     "pages/shop/order/order",
@@ -20,7 +24,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "花言",
+    "navigationBarTitleText": "花言心说",
     "navigationBarTextStyle": "black"
   }
 }

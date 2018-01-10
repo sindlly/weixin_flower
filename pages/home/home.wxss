@@ -100,8 +100,8 @@ navigator {
 .jump-public {
   width: 100%;
   border-radius: 0;
-  height: 50px;
-  line-height: 50px;
+  height: 100rpx;
+  line-height: 100rpx;
   background-color: #ff3630;
   position: fixed;
   bottom: 0;
@@ -118,4 +118,10 @@ navigator {
 .img {
   margin-top: 20rpx;
   width: 640rpx;
+}
+
+.qr-download {
+  font-size: 13pt;
+  text-align: center;
+  width: 100%;
 }

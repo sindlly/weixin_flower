@@ -1,26 +1,20 @@
-<!--pages/bcards/bcards.wxml-->
 <view class='container'>
-  <!-- <view class='banner'>
-    <image class='banner-img' mode='widthFix' src='../../files/bcard_banner.png'>
-    </image>
-    <image bindtap='gotoEditer' class="goto-editer" mode='aspectFit' src='../../files/bcard_banner_btn.png'></image>
-  </view> -->
   <view class='title'>
     <view class='line'></view>
-    <view class="title-word">{{name}}</view>
+    <view class="title-word">{{userInfo.name}}</view>
   </view>
   <view class='container container-intro'>
     <view class='intro'>
-      <image class='log' src='{{log}}'></image>
+      <image class='log' src='{{logo}}' mode='aspectFill'></image>
       <view class='detail'>
-        <view class='info'>地址：{{address}}</view>
-        <view class='info'>电话：{{contact}}</view>
+        <view class='info'>地址：{{userInfo.address}}</view>
+        <view class='info'>电话：{{userInfo.contact}}</view>
       </view>
     </view>
   </view>
 </view>
 <view class='container container-img'>
-<image mode='widthFix' src='{{imgSrc}}'></image>
+  <image mode='widthFix' src='{{imgSrc}}'></image>
 </view>
 
 <view class='footbtn'>
