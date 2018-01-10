@@ -1,5 +1,3 @@
-/* pages/editerbcard/editerbcard.wxss */
-
 .container-img {
   display: flex;
   justify-content: center;
@@ -26,8 +24,8 @@ image {
   display: inline-block;
   width: 100%;
   height: 100%;
-  line-height: 46px;
-  font-size: 18px;
+  line-height: 100rpx;
+  font-size: 13pt;
   text-align: center;
   color: #fff;
 }

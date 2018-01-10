@@ -81,7 +81,7 @@
 
 .order-sum {
   padding: 0;
-  font-size: 12pt;
+  font-size: 13pt;
   margin: 0;
   width: 100vw;
   position: absolute;
@@ -127,7 +127,7 @@
 }
 
 .container-right-bottom {
-  margin-top: 4vh;
+  margin-top: 32rpx;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
