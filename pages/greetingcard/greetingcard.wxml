@@ -1,0 +1,18 @@
+<!--pages/greetingcard/greetingcard.wxml-->
+ <image class='bg-img' mode='widthFix' src='{{bgurl}}'></image>
+<view class='container'>
+  <view class='box'>
+  <image mode='widthFix' class='box-bg' src='../../files/cardbg.png'></image>
+    <image mode='widthFix' class='box-left' id='box-left' style='z-index:{{zIndex_1}}' animation='{{animationData_1}}'  src='../../files/cardfont.png'></image>
+    <image class='open' animation='{{animationData_2}}' style='z-index:{{zIndex_2}}' bindtap='opencard' mode='widthFix' bindtransitionend="afterdo" src="../../files/open.png"></image>
+  </view>
+</view> 
+ <view class='content container' id="content" animation='{{animationData_3}}' style='z-index:{{zIndex_3}}'>
+       <image class='bg-img' mode='widthFix' src='{{bgurl}}'></image> 
+       <view class='panle'>
+       <image  class='img' mode='widthFix'  bindtap='previewImg' src='{{imgurl}}'></image>
+     <text>{{blessing}}</text>
+       </view>
+          
+        
+</view> 

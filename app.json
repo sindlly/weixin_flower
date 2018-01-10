@@ -2,20 +2,20 @@
   "pages": [
     "pages/login/login",
     "pages/index/index",
-    
     "pages/detail/detail",
     "pages/bcards/bcards",
     "pages/editer/editer",
     "pages/cardbg/cardbg",
     "pages/home/home",
-    "pages/printer/printer",    
+    "pages/printer/printer",
     "pages/register/register",
     "pages/editer/preview/preview",
     "pages/home/data/data",
     "pages/editer/editaudio/editaudio",
     "pages/shop/shop",
     "pages/shop/order/order",
-    "pages/editerbcard/editerbcard"
+    "pages/editerbcard/editerbcard",
+    "pages/greetingcard/greetingcard"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -230,6 +230,7 @@ Page({
           blessing: _this.data.blessing,
           status: 'NONBLANK',
           union_id: 'asdfa',
+          background_id: _this.data.bgid
         }
         _this.upText(data);
       });   
@@ -245,6 +246,7 @@ Page({
              blessing: _this.data.blessing,
              status: 'NONBLANK',
              union_id: 'asdfa',
+             background_id: _this.data.bgid
            }
            _this.upText(data);
          })
@@ -258,6 +260,7 @@ Page({
           blessing: _this.data.blessing,
           status: 'NONBLANK',
           union_id: 'asdfa',
+          background_id:_this.data.bgid
         }
         _this.upText(data);
       })

@@ -19,14 +19,14 @@ Page({
       success:function(res){
         wx.setStorageSync('cardid', options.id)
         //如果status为BLANK，表示为首个用户
-        // if (res.dada.card.status != "BLANK"){
-        //   wx.reLaunch({
-        //     url: '../' + options.id,  //若有数据则跳到贺卡页。
-        //   })
-        // }
-        // else{
+        if (res.data.data.card.status == "NONBLANK"){
+          wx.reLaunch({
+            url: '../greetingcard/greetingcard?id=' + options.id,  //若有数据则跳到贺卡页。
+          })
+        }
+        else{
 
-        // }
+        }
       }
     })
   },
