@@ -11,7 +11,7 @@
   <view class="data-print data-item">
     <view class="data-key">
       <image src='../../../files/data_print.png'></image>
-      <text>打印总数</text>
+      <text>二维码打印总数</text>
     </view>
     <view class="data-value">
       <text class="value-detail">{{print}}</text> 张
@@ -19,8 +19,8 @@
   </view>
   <view class="data-read data-item">
     <view class="data-key">
-      <image src='../../../files/data_read.png'></image>    
-      <text>阅读总数</text>
+      <image src='../../../files/data_read.png'></image>
+      <text>贺卡阅读总数</text>
     </view>
     <view class="data-value">
       <text class="value-detail">{{read}}</text> 次
@@ -28,8 +28,8 @@
   </view>
   <view class="data-jump data-item">
     <view class="data-key">
-      <image src='../../../files/data_jump.png'></image>      
-      <text>二维码下载数</text>
+      <image src='../../../files/data_jump.png'></image>
+      <text>公众号二维码下载数</text>
     </view>
     <view class="data-value">
       <text class="value-detail">{{jump}}</text> 次

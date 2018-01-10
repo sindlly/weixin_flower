@@ -29,7 +29,11 @@
 
 .data-key {
   width: 80vw;
-  display: inline-block;
+  /* display: inline-block; */
+  font-size: 11pt;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .data-key image {
@@ -42,6 +46,7 @@
 .data-value {
   width: 40vw;
   text-align: right;
+  font-size: 11pt;  
 }
 
 .value-detail {

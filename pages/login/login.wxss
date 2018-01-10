@@ -37,8 +37,9 @@ input {
 button {
   margin-top: 40rpx;
   width: 640rpx;
-  background-color: #ff3939 !important;
+  background-color: #ff3939;
+  color: #fff;
   height: 100rpx;
-  line-height: 100prx;
-  font-size: 13pt;  
+  line-height: 100rpx;
+  font-size: 13pt;
 }

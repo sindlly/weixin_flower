@@ -111,5 +111,15 @@ Page({
         else wx.showModal({ title: '提示', content: res.data.msg, showCancel: false })
       }
     })
+  },
+
+  onPullDownRefresh: function () {
+    const userInfo = wx.getStorageSync('user_info');
+    const _this = this;
+
+    _this.setData({
+      userInfo
+    })
+    wx.stopPullDownRefresh();
   }
 })

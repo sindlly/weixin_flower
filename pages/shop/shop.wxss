@@ -72,7 +72,19 @@
 .item-old-price {
   margin-left: 2vw;
   font-size: 0.8rem;
+  position: relative;
   color: #999;
+}
+
+.item-old-price::after {
+  content: "";
+  width: 80rpx;
+  border-bottom: 2rpx solid #999;
+  height: 4rpx;
+  position: absolute;
+  box-sizing: border-box;
+  top: 20rpx;
+  left: 70rpx;
 }
 
 .item-payed {

@@ -33,11 +33,11 @@
 }
 
 .address-middle {
-  width: 70vw;
+  width: 65vw;
 }
 
 .address-right {
-  width: 10vw;
+  width: 15vw;
   text-align: right;
   color: #999;
 }

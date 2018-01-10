@@ -10,7 +10,7 @@
         </view>
       </view>
       <view>
-        <button type='warn' formType="submit">注册</button>
+        <button formType="submit">注册</button>
       </view>
     </form>
   </view>
