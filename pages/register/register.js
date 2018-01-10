@@ -25,17 +25,18 @@ Page({
         else{
           wx.showModal({
             title: '提示',
-            content: res.data.msg
+            content: res.data.msg,
+            showCancel: false
           })
         }
       },
       fail:function(res){
         wx.showModal({
           title: '提示',
-          content: res.data.msg
+          content: res.data.msg,
+          showCancel: false
         })
       }
     })
-    
   }
 })

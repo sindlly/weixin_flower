@@ -5,15 +5,15 @@
   </view>
   <view class="printer-qr">
     <image class="image-print" src="{{printImgUrl}}" mode='scaleToFill' bindtap="printQrCode"></image>
-    <text class="print-options" >打印二维码</text>
+    <text class="print-options">打印二维码</text>
   </view>
   <view class="printer-reprint">
-      <image class="image-print" src="{{reprintImgUrl}}" mode='scaleToFill' bindtap="rePrintQrCode"></image>  
-    <text class="print-options" >重打二维码</text>
+    <image class="image-print" src="{{reprintImgUrl}}" mode='scaleToFill' bindtap="rePrintQrCode"></image>
+    <text class="print-options">重打二维码</text>
   </view>
   <view class="printer-test">
     <image class="image-print" src="{{tprintImgUrl}}" mode='scaleToFill' bindtap="QrCodeTest"></image>
-    <text class="print-options" >打印测试纸</text>
+    <text class="print-options">打印测试纸</text>
   </view>
   <view class='printer-tag'>
     <checkbox-group bindchange="checkboxChange">

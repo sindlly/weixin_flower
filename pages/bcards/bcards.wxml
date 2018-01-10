@@ -5,7 +5,7 @@
   </view>
   <view class='container container-intro'>
     <view class='intro'>
-      <image class='log' src='{{logo}}'></image>
+      <image class='log' src='{{logo}}' mode='aspectFill'></image>
       <view class='detail'>
         <view class='info'>地址：{{userInfo.address}}</view>
         <view class='info'>电话：{{userInfo.contact}}</view>

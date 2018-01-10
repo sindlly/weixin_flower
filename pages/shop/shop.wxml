@@ -10,8 +10,8 @@
       <view class='container-right-bottom'>
         <view class="item-container-price">
           <view>
-          <text class="item-price">¥{{item.price}}</text>
-          <text class="item-old-price">原价 ¥{{item.price}}</text> 
+            <text class="item-price">¥{{item.price}}</text>
+            <text class="item-old-price">原价 ¥{{item.price}}</text>
           </view>
           <text class="item-payed">100人付款</text>
         </view>

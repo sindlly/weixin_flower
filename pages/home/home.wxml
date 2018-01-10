@@ -34,5 +34,7 @@
   </view>
 </view>
 <view class='jump-public'>
-  <text bindtap='jumpPublic'>花店公众号二维码</text>
+  <navigator url="../home/qr/qr" hover-class="none" class="qr-download">
+    花店公众号二维码
+  </navigator>
 </view>

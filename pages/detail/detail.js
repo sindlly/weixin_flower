@@ -90,7 +90,8 @@ Page({
         wx.hideLoading();
         wx.showModal({
           title: '提示',
-          content: '图片上传失败'
+          content: '图片上传失败',
+          showCancel: false
         })
       });
     } else {
@@ -103,8 +104,8 @@ Page({
     wx.showModal({
       title: '获取步骤',
       content: '进入“公众号管理中心”，点击“设置”进入“账号信息”页面，找到“二维码”，随后点击“更多尺寸”下载需要的二维码。',
-      confirmColor: '#ff3630',
-      cancelColor: '#ff7676'
+      showCancel: false
+      // confirmColor: '#ff3630',
     })
   },
 
@@ -163,14 +164,16 @@ Page({
       } else {
         wx.showModal({
           title: '提示',
-          content: res.data.msg
+          content: res.data.msg,
+          showCancel: false
         })
       }
     }).catch(() => {
       wx.hideLoading();
       wx.showModal({
         title: '提示',
-        content: '信息保存失败'
+        content: '信息保存失败',
+        showCancel: false
       })
     })
   }

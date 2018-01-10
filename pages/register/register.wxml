@@ -13,6 +13,5 @@
         <button type='warn' formType="submit">注册</button>
       </view>
     </form>
-    
   </view>
 </view>

@@ -1,0 +1,37 @@
+/* pages/editerbcard/editerbcard.wxss */
+
+.container-img {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 0;
+  height: 80vh;
+}
+
+image {
+  width: 60vw;
+  border-radius: 20rpx;
+}
+
+.footbtn {
+  margin-top: 30rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.inline-block {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  line-height: 46px;
+  font-size: 18px;
+  text-align: center;
+  color: #fff;
+}
+
+.download-btn {
+  background-color: rgb(255, 57, 57);
+}

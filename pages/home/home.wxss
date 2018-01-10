@@ -119,3 +119,9 @@ navigator {
   margin-top: 20rpx;
   width: 640rpx;
 }
+
+.qr-download {
+  font-size: 13pt;
+  text-align: center;
+  width: 100%;
+}

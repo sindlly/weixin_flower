@@ -2,8 +2,8 @@
 <view class="container">
   <view class="order-address">
     <view class='address-left'>
-      <image class='position-logo' bindtap='preview'src='../../../files/position.png'></image>
-</view>
+      <image class='position-logo' bindtap='preview' src='../../../files/position.png'></image>
+    </view>
     <view class='address-middle'>
       <view class="address-contact">
         <text>{{userInfo.name}}</text>
@@ -13,7 +13,9 @@
         <text class='smaller-font'>{{userInfo.address}}</text>
       </view>
     </view>
-    <view class='address-right'> <navigator class="item-buy" url="../../detail/detail?isFirstLogin=false" hover-class="none">></navigator></view>
+    <view class='address-right'>
+      <navigator class="item-buy" url="../../detail/detail?isFirstLogin=false" hover-class="none">></navigator>
+    </view>
   </view>
   <view class='order-commodity' wx:if="{{commodity}}">
     <view class="item-container-left">
