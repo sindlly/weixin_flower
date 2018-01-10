@@ -9,6 +9,12 @@ Page({
     bgurl: '',
     imgurl: '',
     blessing: '',
+    hasVideo:false,
+    hasVideo_bg:false,
+    videoSrc:'',
+    hasVoice:false,
+    voiceSrc:'',
+    isPlay:false,
     animationData_1: '',
     animationData_2: '',
     animationData_3: '',
@@ -19,13 +25,18 @@ Page({
     y: 0
   },
   afterdo:function(){
-    console.log("afterdo")
-    this.move();
+    var _this =this;
+    setTimeout(function(){
+     _this.setData({
+        hasVideo: true,
+      })
+    },1000)
+   
   },
   opencard: function () {
     var _this =this;
     var animation_2 = wx.createAnimation({
-      duration: 1500,
+      duration: 1000,
       timingFunction: 'ease',
       transformOrigin: 'right',
     })
@@ -34,37 +45,25 @@ Page({
     this.setData({
       animationData_2: this.animation_2.export()
     })
-    // setTimeout(function(){
-    //   _this.move();
-    // },1000);
+    setTimeout(function(){
+      _this.move();
+    },500);
     setTimeout(function () {
       _this.setData({
         zIndex_1: 0
       })
-    }, 3000);
-    
-    
-    // var animation_1 = wx.createAnimation({
-    //   duration: 3000,
-    //   timingFunction: 'ease',
-    //   transformOrigin: 'left',
-    // })
-    // this.animation_1 = animation_1;
-    // animation_1.rotateY(180).step()
-    // this.setData({
-    //   animationData_1: this.animation_1.export()
-    // })
+    }, 1100);
 
   },
   move: function () {
     var _this = this;
     var animation_3 = wx.createAnimation({
-      duration: 2000,
+      duration: 1000,
       timingFunction: 'ease',
       scale: 0.6,
     })
     this.animation_3 = animation_3; 
-    animation_3.translateX(160).scale(0.6).step();
+    animation_3.translateX(130).scale(0.6).step();
     animation_3.translateX(0).scale(1).step();
     //  animation_3.scale(1).step();
     // animation_3.translateX(-160).step();
@@ -85,12 +84,23 @@ Page({
         _this.setData({
           bgurl: _this.data.$root + "/files/" + res.data.data.card.background_id,
           imgurl: _this.data.$root + "/files/" + res.data.data.card.picture_id,
+          videoSrc: _this.data.$root + "/files/" + res.data.data.card.video_id,
+          voiceSrc: _this.data.$root + "/files/" + res.data.data.card.voice_id,
           blessing: res.data.data.card.blessing,
         })
-
-
+        if (res.data.data.card.video_id) {
+          _this.setData({
+            hasVideo_bg: true,
+          })
+        }
+        if (res.data.data.card.voice_id) {
+          _this.setData({
+            hasVoice: true,
+          })
+        }
       }
     })
+    
   },
   previewImg: function () {
     var src = [this.data.imgurl];
@@ -101,19 +111,43 @@ Page({
     })
 
   },
+  audioPlay: function () {
+    // 测试用例
+    var _this = this;
+    var path = ''
+    this.innerAudioContext.src = this.data.voiceSrc;
+    
+    if (this.data.seek) {
+      this.innerAudioContext.startTime = this.data.seek;
+      this.innerAudioContext.play();
+    }
+    else {
+      this.innerAudioContext.play();
+    }
+
+    this.setData({
+      isPlay: true
+    });
+  },
+  audioPause: function () {
+    this.innerAudioContext.pause();
+    this.setData({
+      isPlay: false,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // var _this = this;
-    // setInterval(function(){
-    //   console.log(_this.target());
-    //   if (_this.target()>0){
-    //     _this.setData({
-    //       zIndex:10
-    //     })
-    //   }
-    // })
+    this.innerAudioContext = wx.createInnerAudioContext();
+    var _this = this;
+    this.innerAudioContext.onPause(() => {
+      var ct = this.innerAudioContext.currentTime
+      console.log(ct)
+      _this.setData({
+        seek: ct
+      })
+    })
 
   },
 

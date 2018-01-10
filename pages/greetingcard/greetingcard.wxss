@@ -53,7 +53,7 @@ page {
   flex-shrink: 0;
   top:0;
   z-index: 1;
-   transform: scale(.6) 
+    transform: scale(.6)  
 }
 .panle{
   width: 90%;
@@ -68,8 +68,42 @@ page {
 .img{
   width: 100%;
 }
+video{
+  width: 100%;
+  height: 360rpx;
+}
+.video-bg{
+  width: 100%;
+  height: 360rpx;
+  background: #000;
+}
 text{
   margin-top: 10rpx;
   width: 100%;
+}
+.audio-area{
+  width: 100%;
+  height: 110rpx; 
+  margin-top:40rpx;
+  border-radius: 10rpx;
+  background: rgba(255, 255, 255, .9);
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+}
+.audio-text{
+  font-size:14pt;
+  margin-left: 50rpx;
+  color: #888;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+.audio-area image{
+  width: 111rpx;
+  height: 110rpx;
+}
+.audio-text{
+  height: 110rpx; 
 }
 

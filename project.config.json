@@ -21,79 +21,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
-			"list": [
-				{
-					"id": -1,
-					"name": "二维码下载页面",
-					"pathName": "pages/home/qr/qr",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "home页",
-					"pathName": "pages/home/home",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "printer",
-					"pathName": "pages/printer/printer",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "printer",
-					"pathName": "pages/home/data/data",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "shop",
-					"pathName": "pages/shop/shop",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "order",
-					"pathName": "pages/shop/order/order",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "detail",
-					"pathName": "pages/detail/detail",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "bcards",
-					"pathName": "pages/bcards/bcards",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "editbcard",
-					"pathName": "pages/editerbcard/editerbcard",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "data",
-					"pathName": "pages/home/data/data",
-					"query": "",
-					"scene": "1011"
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
