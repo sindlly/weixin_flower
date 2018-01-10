@@ -23,14 +23,14 @@ form {
 
 .bline {
   width: 640rpx;
-  border-bottom: 1rpx solid #eee;
+  border-bottom: 2rpx solid #eee;
 }
 
 input {
   width: 640rpx;
   border: none;
   line-height: 64rpx;
-  font-size: 13pt;
+  font-size: 11pt;
   margin: 10px 0 0px -8px;
 }
 
@@ -38,4 +38,7 @@ button {
   margin-top: 40rpx;
   width: 640rpx;
   background-color: #ff3939 !important;
+  height: 100rpx;
+  line-height: 100prx;
+  font-size: 13pt;  
 }

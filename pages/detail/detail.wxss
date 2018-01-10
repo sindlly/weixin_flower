@@ -33,13 +33,16 @@ input {
   width: 640rpx;
   border: none;
   line-height: 64rpx;
-  font-size: 13pt;
+  font-size: 11pt;
   margin: 10px 0 0px -8px;
 }
 
 button {
   margin-top: 40rpx;
   width: 640rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 13pt
 }
 
 .btn {
@@ -69,7 +72,7 @@ button {
   align-items: center;
   border-bottom: 1px solid #eee;
   padding: 10rpx 0;
-  font-size: 13pt;
+  font-size: 11pt;
   color: #495060;
 }
 

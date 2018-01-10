@@ -2,27 +2,27 @@ Page({
   formSubmit: function (e) {
     const $root = getApp().globalData.ROOTPATH;
     const requestTask = wx.request({
-      url: $root+'/users', 
-      method:"POST",
+      url: $root + '/users',
+      method: "POST",
       data: e.detail.value,
       header: {
         'content-type': 'application/json'
       },
       success: function (res) {
-        if(res.data.code == 200){
+        if (res.data.code == 200) {
           wx.showToast({
             title: '注册成功',
             icon: 'success',
             duration: 1000,
-            complete:function(){
+            complete: function () {
               wx.reLaunch({
                 url: '../login/login'
               })
-            } 
+            }
           })
-          
+
         }
-        else{
+        else {
           wx.showModal({
             title: '提示',
             content: res.data.msg,
@@ -30,7 +30,7 @@ Page({
           })
         }
       },
-      fail:function(res){
+      fail: function (res) {
         wx.showModal({
           title: '提示',
           content: res.data.msg,

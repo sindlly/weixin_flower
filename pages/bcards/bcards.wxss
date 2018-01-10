@@ -7,7 +7,6 @@
   position: relative;
   display: flex;
   justify-content: center;
-  /* border-top:1rpx solid #fff; */
 }
 
 .banner-img {
@@ -25,7 +24,7 @@
 
 .title {
   width: 100%;
-  height: 46px;
+  height: 92rpx;
   display: flex;
   align-items: center;
 }
@@ -37,14 +36,14 @@
 }
 
 .view-margin {
-  margin-top: 10px;
+  margin-top: 20rpx;
 }
 
 .line {
   background-color: rgb(255, 144, 64);
   width: 12rpx;
   height: 40rpx;
-  border-radius: 5px;
+  border-radius: 10rpx;
 }
 
 .container-intro {
@@ -98,8 +97,8 @@ button {
   flex-direction: row;
   flex-wrap: nowrap;
   border-radius: 0;
-  height: 50px;
-  line-height: 50px;
+  height: 100rpx;
+  line-height: 100rpx;
   position: fixed;
   color: #fff;
   text-align: center;
@@ -113,7 +112,7 @@ navigator {
   display: inline-block;
   width: 50%;
   height: 100%;
-  line-height: 50px;
+  line-height: 100rpx;
   text-align: center;
   font-size: 13pt;
   color: #fff;

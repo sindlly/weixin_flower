@@ -34,9 +34,11 @@ Page({
         'access_token': _this.data.token,
       },
     }).then((res) => {
-      let filePath ='';
+      let filePath = '';
       if (res.statusCode === 200) {
         filePath = res.tempFilePath;
+
+        // 保存二维码至本地相册
         wx.saveImageToPhotosAlbum({
           filePath,
           success(res) {
@@ -47,46 +49,43 @@ Page({
               showCancel: false
             })
           }
+        });
+
+        // 更新二维码下载数据
+        requestPromisified({
+          url: _this.data.$root + '/users/' + _this.data.userInfo.id + '/qr',
+          method: 'PUT',
+          header: {
+            'content-type': 'application/json',
+            'access_token': _this.data.token,
+          }
+        }).then((res) => {
+          wx.hideLoading();
+          if (res.data.code == 200) {
+            wx.setStorageSync("user_info", res.data.data);
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.msg,
+              showCancel: false
+            })
+          }
+        }).catch((e) => {
+          console.log(e);
+          wx.hideLoading();
+          wx.showModal({
+            title: '提示',
+            content: '用户信息保存失败',
+            showCancel: false
+          })
         })
       }
-
-      // requestPromisified({
-      //   url: _this.data.$root + '/users/' + _this.data.userInfo.id,
-      //   method: 'PUT',
-      //   data: {
-      //     picture_ids: [obj.data[0].id]
-      //   },
-      //   header: {
-      //     'content-type': 'application/json',
-      //     'access_token': _this.data.token,
-      //   }
-      // }).then((res) => {
-      //   wx.hideLoading();
-      //   if (res.data.code == 200) {
-      //     wx.setStorageSync("user_info", res.data.data);
-      //     wx.reLaunch({
-      //       url: '../home/home'
-      //     })
-      //   } else {
-      //     wx.showModal({
-      //       title: '提示',
-      //       content: res.data.msg
-      //     })
-      //   }
-      // }).catch((e) => {
-      //   console.log(e);
-      //   wx.hideLoading();
-      //   wx.showModal({
-      //     title: '提示',
-      //     content: '用户信息保存失败'
-      //   })
-      // })
     }).catch(() => {
       wx.hideLoading();
       wx.showModal({
         title: '提示',
         content: '二维码下载失败',
-        showCancel: false        
+        showCancel: false
       })
     });
   },

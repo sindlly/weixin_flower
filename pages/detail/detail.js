@@ -143,7 +143,7 @@ Page({
 
   saveInfo: function (_this, data) {
     const requestPromisified = util.wxPromisify(wx.request);
-    console.log(_this.data.$root + '/users/' + _this.data.userInfo.id);
+
     requestPromisified({
       method: "PUT",
       url: _this.data.$root + '/users/' + _this.data.userInfo.id,

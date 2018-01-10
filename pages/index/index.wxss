@@ -22,7 +22,7 @@ page {
 }
 
 .title-word {
-  margin-left: 15px;
+  margin-left: 30rpx;
   font-size: 1rem;
 }
 
@@ -33,19 +33,19 @@ video {
 }
 
 .view-margin {
-  margin-top: 0rpx;
+  margin-top: 0;
 }
 
 .line {
   background-color: rgb(255, 144, 64);
-  width: 6px;
+  width: 12rpx;
   height: 40rpx;
-  border-radius: 5px;
+  border-radius: 10rpx;
 }
 
 .contact {
   width: 100%;
-  padding-left: 21px;
+  padding-left: 42rpx;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -56,7 +56,7 @@ video {
   font-size: 11pt;
   font-family: "PingFangSC";
   color: #333;
-  border-bottom: 1px dashed silver;
+  border-bottom: 2rpx dashed silver;
   line-height: 80rpx;
   flex-shrink: 0;
 }
@@ -73,15 +73,15 @@ video {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  margin-top: 20rpx;
+  justify-content: center;
+  margin-top: 30rpx;
 }
 
 .img-list {
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50rpx;
-  background: gray;
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 60rpx;
+  margin: 0 10rpx;
 }
 
 .footbtn {
@@ -96,7 +96,7 @@ video {
   display: inline-block;
   width: 50%;
   height: 100%;
-  line-height: 50px;
+  line-height: 100rpx;
   font-size: 13pt;
   text-align: center;
   color: #fff;

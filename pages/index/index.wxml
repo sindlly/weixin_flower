@@ -31,7 +31,7 @@
       <view class="title-word">合作花店</view>
     </view>
     <view class="partner-list">
-      <image wx:for="{{img_list}}" class='img-list' wx:key="unique"></image>
+      <image wx:for="{{cooperations}}" src="{{item}}" class='img-list' wx:key="unique" mode='aspectFill'></image>
     </view>
   </view>
 </view>

@@ -1,4 +1,5 @@
-const app = getApp()
+const app = getApp();
+const utils = require('../../utils/util.js');
 
 Page({
   data: {
@@ -12,21 +13,11 @@ Page({
   },
 
   onLoad: function () {
-    this.dataInit();
+    utils.dataInit(this);
   },
 
   onPullDownRefresh: function () {
-    this.dataInit();
-  },
-
-  dataInit: function () {
-    const _this = this;
-    const userInfo = wx.getStorageSync("user_info");
-
-    _this.setData({
-      userInfo,
-      avatar: userInfo.avatar_id ? `${_this.data.$root}/files/${userInfo.avatar_id}` : '../../files/defaultLog.png',
-      imgSrc: userInfo.picture_ids[0] ? `${_this.data.$root}/files/${userInfo.picture_ids[0]}` : '../../files/defaultLog.png',
-    })
+    utils.dataInit(this);
+    wx.stopPullDownRefresh();
   }
 })

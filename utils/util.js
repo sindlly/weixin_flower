@@ -15,6 +15,17 @@ function wxPromisify(fn) {
   }
 }
 
+// 更新用户数据
+function dataInit (_this) {
+  const userInfo = wx.getStorageSync("user_info");
+
+  _this.setData({
+    userInfo,
+    avatar: userInfo.avatar_id ? `${_this.data.$root}/files/${userInfo.avatar_id}` : '../../files/defaultLog.png',
+    imgSrc: userInfo.picture_ids[0] ? `${_this.data.$root}/files/${userInfo.picture_ids[0]}` : '../../files/defaultLog.png',
+  })
+}
+
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
@@ -50,7 +61,8 @@ module.exports = {
   formatTime: formatTime,
   encodeToGb2312: encodeToGb2312,
   Arry2Arry: Arry2Arry,
-  wxPromisify
+  wxPromisify,
+  dataInit
 }
 function Arry2Arry(arry1, arry2) {
   var b = new Uint8Array(arry1.length + arry2.length);
