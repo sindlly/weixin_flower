@@ -16,6 +16,11 @@ Page({
     voice_id:'',
     video_id:'',
     picture_id:'',
+    union_id: wx.getStorageSync('union_id'),
+    editor_info:{
+      nick_name: wx.getStorageSync('nick_name'),
+      avatar_url:wx.getStorageSync('avatar_url')
+    },
     uploadUrl:'',
     hasPicture: false,
     pictureUrl:'',
@@ -229,7 +234,8 @@ Page({
           picture_id:id,
           blessing: _this.data.blessing,
           status: 'NONBLANK',
-          union_id: 'asdfa',
+          editor_info: _this.data.editor_info,
+          union_id: _this.data.union_id,
           background_id: _this.data.bgid
         }
         _this.upText(data);
@@ -246,7 +252,8 @@ Page({
              picture_id: picture_id,
              blessing: _this.data.blessing,
              status: 'NONBLANK',
-             union_id: 'asdfa',
+             editor_info: _this.data.editor_info,
+             union_id: _this.data.union_id,
              background_id: _this.data.bgid
            }
            _this.upText(data);
@@ -261,7 +268,8 @@ Page({
           video_id: id,
           blessing: _this.data.blessing,
           status: 'NONBLANK',
-          union_id: 'asdfa',
+          editor_info: _this.data.editor_info,
+          union_id: _this.data.union_id,
           background_id:_this.data.bgid
         }
         _this.upText(data);
@@ -295,7 +303,12 @@ Page({
         wx.showToast({
           title: '上传成功',
           icon: 'success',
-          duration: 2000
+          duration: 2000,
+          complete:function(){
+            wx.reLaunch({
+              url: '../greetingcard/greetingcard?id=' + wx.getStorageSync('cardid'),  
+          })
+          }
         })
       }
     })
@@ -334,9 +347,11 @@ Page({
     wx.setStorageSync("audioSrc", '');
     wx.setStorageSync("videoSrc", '')
     wx.setStorageSync("blessing", this.data.blessing);
+    console.log("options:" + options)
     this.setData({
       bgid: options.bgid,
-      bgurl: this.data.$root + "/files/" + options.bgid
+      bgurl: this.data.$root + "/files/" + options.bgid,
+      blessing: options.blessing
     })
     // this.data.bgurl = 
     console.log(this.data.bgurl);

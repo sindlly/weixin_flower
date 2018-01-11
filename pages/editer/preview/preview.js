@@ -21,8 +21,9 @@ Page({
   audioPlay:function(){
     // 测试用例
     var _this = this;
-    this.innerAudioContext.src = this.data.audioSrc;
-    // this.innerAudioContext.src = path;
+    var path = "http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46"
+    // this.innerAudioContext.src = this.data.audioSrc;
+     this.innerAudioContext.src = path;
     // console.log("seek"+this.data.seek);
     if(this.data.seek){
       this.innerAudioContext.startTime=this.data.seek;
@@ -36,7 +37,7 @@ Page({
       isPlay: true
     });
   },
-  audioPause:function(){
+  audioPause:function(){ 
     this.innerAudioContext.pause();
     this.setData({
       isPlay: false,

@@ -43,7 +43,38 @@ page {
   width: 460rpx;
   position: absolute;
   right: 2rpx;
-  /* top: -20rpx; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.open-img{
+  width: 100%;
+   position: absolute; 
+}
+.origin{
+  align-self: center;
+  width: 200rpx;
+  z-index: 5;
+  color: #fff;  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-left: 200rpx;
+}
+.header{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  background: #487
+}
+.time{
+  font-size: 1rem;
+}
+.user{
+  font-size: .7rem;
+}
+.action{
+  font-size: .7rem;
 }
 .content{
   height: 100%;
@@ -53,7 +84,7 @@ page {
   flex-shrink: 0;
   top:0;
   z-index: 1;
-    transform: scale(.6)  
+    /* transform: scale(.6)   */
 }
 .panle{
   width: 90%;
@@ -75,10 +106,10 @@ video{
 .video-bg{
   width: 100%;
   height: 360rpx;
-  background: #000;
+  background: #fff;
 }
 text{
-  margin-top: 10rpx;
+  margin-top: 20rpx;
   width: 100%;
 }
 .audio-area{

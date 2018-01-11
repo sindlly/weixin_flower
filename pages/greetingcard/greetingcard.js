@@ -21,8 +21,10 @@ Page({
     zIndex_1: 2,
     zIndex_2: 3,
     zIndex_3: 1,
-    x: 0,
-    y: 0
+    headerUrl:'',
+    user:'校长',
+    time:'Nov.7'
+
   },
   afterdo:function(){
     var _this =this;
@@ -78,29 +80,34 @@ Page({
    */
   onLoad: function (options) {
     var _this = this;
-    wx.request({
-      url: _this.data.$root + '/cards/' + options.id,
-      success: function (res) {
-        _this.setData({
-          bgurl: _this.data.$root + "/files/" + res.data.data.card.background_id,
-          imgurl: _this.data.$root + "/files/" + res.data.data.card.picture_id,
-          videoSrc: _this.data.$root + "/files/" + res.data.data.card.video_id,
-          voiceSrc: _this.data.$root + "/files/" + res.data.data.card.voice_id,
-          blessing: res.data.data.card.blessing,
-        })
-        if (res.data.data.card.video_id) {
+    //获取贺卡信息
+    return new Promise(function (resolve, reject) {
+      wx.request({
+        url: _this.data.$root + '/cards/' + options.id,
+        success: function (res) {
           _this.setData({
-            hasVideo_bg: true,
+            bgurl: _this.data.$root + "/files/" + res.data.data.card.background_id,
+            imgurl: _this.data.$root + "/files/" + res.data.data.card.picture_id,
+            videoSrc: _this.data.$root + "/files/" + res.data.data.card.video_id,
+            voiceSrc: _this.data.$root + "/files/" + res.data.data.card.voice_id,
+            blessing: res.data.data.card.blessing,
+            headerUrl: res.data.data.card.editor_info.avatar_url,
+            user: res.data.data.card.editor_info.nick_name,
           })
+          if (res.data.data.card.video_id) {
+            _this.setData({
+              hasVideo_bg: true,
+            })
+          }
+          if (res.data.data.card.voice_id) {
+            _this.setData({
+              hasVoice: true,
+            })
+          }
+          resolve(res.data.data.card.user_id)
         }
-        if (res.data.data.card.voice_id) {
-          _this.setData({
-            hasVoice: true,
-          })
-        }
-      }
+      })
     })
-    
   },
   previewImg: function () {
     var src = [this.data.imgurl];
@@ -114,8 +121,10 @@ Page({
   audioPlay: function () {
     // 测试用例
     var _this = this;
-    var path = ''
-    this.innerAudioContext.src = this.data.voiceSrc;
+    var path = "http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46";
+    console.log("voiceSrc:"+this.data.voiceSrc)
+    // this.innerAudioContext.src = this.data.voiceSrc;
+    this.innerAudioContext.src = path;
     
     if (this.data.seek) {
       this.innerAudioContext.startTime = this.data.seek;
@@ -147,6 +156,10 @@ Page({
       _this.setData({
         seek: ct
       })
+    });
+    this.innerAudioContext.onError((res) => {
+      console.log(res.errMsg)
+      console.log(res.errCode)
     })
 
   },

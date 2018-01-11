@@ -1,4 +1,5 @@
 // pages/cardbg/cardbg.js
+const app = getApp()
 Page({
 
   /**
@@ -13,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var userInfo = app.getuserInfo();
     var _this = this;
     wx.request({
       url: _this.data.$root+'/cards/'+options.id,
@@ -20,9 +22,9 @@ Page({
         wx.setStorageSync('cardid', options.id)
         //如果status为BLANK，表示为首个用户
         if (res.data.data.card.status == "NONBLANK"){
-          wx.reLaunch({
-            url: '../greetingcard/greetingcard?id=' + options.id,  //若有数据则跳到贺卡页。
-          })
+          // wx.reLaunch({
+          //   url: '../greetingcard/greetingcard?id=' + options.id,  //若有数据则跳到贺卡页。
+          // })
         }
         else{
 
@@ -31,9 +33,9 @@ Page({
     })
   },
   bindbg:function(e){
-    console.log(e.currentTarget.dataset.bgid)
+    console.log(e.currentTarget)
     wx.navigateTo({
-      url: '../editer/editer?bgid=' + e.currentTarget.dataset.bgid,
+      url: '../editer/editer?bgid=' + e.currentTarget.dataset.bgid + "&blessing=" + e.currentTarget.dataset.blessing,
     })
   },
   /**
@@ -55,7 +57,8 @@ Page({
               bg: bg,
               blessings: arr[i].blessings[j],
               name:arr[i].name,
-              bgid: arr[i].background_ids[j]
+              bgid: arr[i].background_ids[j],
+              music_id: arr[i].music_ids[j],
             })
           }
         }
@@ -71,7 +74,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    //获取用户数据
   },
 
   /**

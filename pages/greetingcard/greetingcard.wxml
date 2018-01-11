@@ -1,18 +1,26 @@
 <!--pages/greetingcard/greetingcard.wxml-->
- <image class='bg-img' mode='widthFix' src='{{bgurl}}'></image>
+<!-- <image class='bg-img' mode='widthFix' src='{{bgurl}}'></image>
 <view class='container'>
   <view class='box'>
     <image mode='widthFix' class='box-bg' src='../../files/cardbg.png'></image>
     <image mode='widthFix' class='box-left' id='box-left' style='z-index:{{zIndex_1}}' animation='{{animationData_1}}' src='../../files/cardfont.png'></image>
-    <image class='open' animation='{{animationData_2}}' style='z-index:{{zIndex_2}}' bindtap='opencard' mode='widthFix'  src="../../files/open.png"></image>
+    <view class='open' animation='{{animationData_2}}' style='z-index:{{zIndex_2}}' bindtap='opencard'>
+      <image class='open-img' mode='widthFix' src="../../files/open.png"></image>
+      <view class='origin'>
+        <image class='header' src='{{headerUrl}}'></image>
+        <view class='time'>{{time}}</view>
+        <view class='user'>{{user}}</view>
+        <view class='action'>发来贺卡</view>
+      </view>
+    </view>
   </view>
-</view> 
+</view> -->
 <view class='content container' id="content" animation='{{animationData_3}}' bindtransitionend="afterdo" style='z-index:{{zIndex_3}}'>
   <image class='bg-img' mode='widthFix' src='{{bgurl}}'></image>
   <view class='panle'>
     <image class='img' mode='widthFix' bindtap='previewImg' src='{{imgurl}}' wx:if="{{!hasVideo_bg}}"></image>
-    <view class='video-bg' wx:if="{{hasVideo_bg&&!hasVideo}}" ></view>
-    <video src='{{videoSrc}}' wx:if="{{hasVideo}}"></video>
+    <!-- <view class='video-bg' wx:if="{{hasVideo_bg&&!hasVideo}}"></view> -->
+    <video preload="auto" custom-cache="{{false}}" src='{{videoSrc}}' wx:if="{{!hasVideo}}"></video>
     <text>{{blessing}}</text>
     <view class='audio-area' wx:if="{{hasVoice}}">
       <image src='../../files/pre_audio_play.png' wx:if='{{!isPlay}}' bindtap='audioPlay'></image>
