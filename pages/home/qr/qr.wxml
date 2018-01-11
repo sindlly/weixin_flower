@@ -1,5 +1,5 @@
 <view class='container container-img'>
-  <image src="{{imgSrc}}" mode='aspectFill'></image>
+  <image src="{{imgSrc}}" mode='aspectFit'></image>
   <view class='footbtn'>
     <view class='inline-block download-btn' bindtap="downloadImg">下载二维码</view>
   </view>

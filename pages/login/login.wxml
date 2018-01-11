@@ -3,10 +3,10 @@
     <form bindsubmit="formSubmit">
       <view class="panel">
         <view class='bline'>
-          <input name="phone" value='15086915671' type="number" placeholder="手机号" />
+          <input name="phone" value='{{userPhone}}' type="number" placeholder="请输入手机号" />
         </view>
         <view class=''>
-          <input name="password" type="password" value="003020" placeholder="密码" />
+          <input name="password" type="password" value="{{userPassword}}" placeholder="请输入密码" />
         </view>
       </view>
       <view>

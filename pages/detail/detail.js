@@ -33,7 +33,35 @@ Page({
     const uploadPromisified = util.wxPromisify(wx.uploadFile);
     const promiseArray = [];
 
-    if (e.detail.value.url == "") delete e.detail.value.url;
+    const { name, address, contact } = e.detail.value;
+
+    if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{1,10}$/.test(name)) {
+      wx.showModal({
+        title: '提示',
+        content: '花店名称只能包含字母、数字及中文字符，且长度不能超过10',
+        showCancel: false
+      })
+      return;
+    }
+
+    if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{1,15}$/.test(address)) {
+      wx.showModal({
+        title: '提示',
+        content: '联系地址只能包含字母、数字及中文字符，且长度不能超过15',
+        showCancel: false
+      })
+      return;
+    }
+
+    if (!/^[1][0-9]{10}$/.test(contact)) {
+      wx.showModal({
+        title: '提示',
+        content: '联系电话需为手机号',
+        showCancel: false
+      })
+      return;
+    }
+
     wx.showLoading({
       title: '保存中...',
     })

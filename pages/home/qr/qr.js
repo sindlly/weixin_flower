@@ -16,7 +16,7 @@ Page({
     _this.setData({
       userInfo,
       token,
-      imgSrc: userInfo.url ? `${_this.data.$root}/files/${userInfo.url}` : '../../files/defaultLog.png',
+      imgSrc: userInfo.url ? `${_this.data.$root}/files/${userInfo.url}` : '../../../files/defaultLog.png',
     })
   },
 
@@ -24,6 +24,14 @@ Page({
     const _this = this;
     const downloadPromisified = util.wxPromisify(wx.downloadFile);
     const requestPromisified = util.wxPromisify(wx.request);
+    if (!!~_this.data.imgSrc.indexOf('defaultLog.png')) {
+      wx.showModal({
+        title: '提示',
+        content: '花店尚未上传公众号二维码',
+        showCancel: false
+      })
+      return
+    }
 
     wx.showLoading({
       title: '下载中...',

@@ -113,3 +113,7 @@ video {
 .wapper {
   width: 100%;
 }
+
+.logo-word {
+  margin-left: 10rpx
+}

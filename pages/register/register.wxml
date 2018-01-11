@@ -3,13 +3,13 @@
     <form bindsubmit="formSubmit">
       <view class="panel">
         <view class='bline'>
-          <input name="phone" value='' type="number" placeholder="手机号" />
+          <input name="phone" value='' type="number" placeholder="请输入手机号" />
         </view>
         <view class=''>
-          <input name="password" type="password" value="" placeholder="密码" />
+          <input name="password" type="password" value="" placeholder="请输入密码" />
         </view>
       </view>
-      <view>
+      <view class='btn-submit'>
         <button formType="submit">注册</button>
       </view>
     </form>

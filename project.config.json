@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -90,6 +90,13 @@
 					"id": -1,
 					"name": "data",
 					"pathName": "pages/home/data/data",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login",
 					"query": "",
 					"scene": "1011"
 				}

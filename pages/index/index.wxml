@@ -3,7 +3,7 @@
   <view class='wapper'>
     <view class='title'>
       <image mode='widthFix' class="log-img" src='../../files/log.png'></image>
-      <view class="title-word">花言宣传语</view>
+      <view class="title-word logo-word">花言宣传语</view>
     </view>
     <video src="https://upfiles.heclouds.com/other_files/cm_marathon_intro.mp4">
     </video>

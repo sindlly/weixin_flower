@@ -19,13 +19,13 @@
       </view>
       <view class="panel">
         <view class='bline'>
-          <input name="name" data-name='name' value="{{userInfo.name}}" type="text" placeholder="花店名字" />
+          <input name="name" data-name='name' value="{{userInfo.name}}" type="text" placeholder="请输入花店名称" />
         </view>
         <view class='bline'>
-          <input name="address" data-name='address' type="text" value="{{userInfo.address}}" placeholder="花店地址" />
+          <input name="address" data-name='address' type="text" value="{{userInfo.address}}" placeholder="请输入花店地址" />
         </view>
         <view class="bline">
-          <input name="contact" data-name='contact' type="number" placeholder="花店联系电话" value="{{userInfo.contact}}" />
+          <input name="contact" data-name='contact' type="number" placeholder="请输入花店联系电话" value="{{userInfo.contact}}" />
         </view>
       </view>
       <view>
