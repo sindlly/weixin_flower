@@ -223,19 +223,21 @@ Page({
     var _this = this;
     //图片+文字
     if (_this.data.pictureUrl && !wx.getStorageSync("audioSrc")){
-
+      console.log("图片+文字")
       _this.getPicture_id().then(function(id){
         var data = {
           picture_id:id,
           blessing: _this.data.blessing,
           status: 'NONBLANK',
           union_id: 'asdfa',
+          background_id: _this.data.bgid
         }
         _this.upText(data);
       });   
     }
     //图片+录音+文字
     else if (wx.getStorageSync("audioSrc") && _this.data.pictureUrl){
+      console.log("图片+录音+文字")
        _this.getPicture_id().then(function(id){
          var picture_id = id;
          _this.getMedia_id().then(function(id){
@@ -245,6 +247,7 @@ Page({
              blessing: _this.data.blessing,
              status: 'NONBLANK',
              union_id: 'asdfa',
+             background_id: _this.data.bgid
            }
            _this.upText(data);
          })
@@ -252,12 +255,14 @@ Page({
     }
     //录像+文字
     else if (wx.getStorageSync("videoSrc")){
+      console.log("录像+文字")
       _this.getMedia_id().then(function (id) {
         var data = {
           video_id: id,
           blessing: _this.data.blessing,
           status: 'NONBLANK',
           union_id: 'asdfa',
+          background_id:_this.data.bgid
         }
         _this.upText(data);
       })
@@ -281,7 +286,7 @@ Page({
     wx.request({
       url: _this.data.$root + '/cards/' + wx.getStorageSync('cardid'),
       data:data,
-      method: "PATCH",
+      method: "PUT",
       header: {
         'access_token': _this.data.token,
         'x-csrf-token': _this.data.csrfToken

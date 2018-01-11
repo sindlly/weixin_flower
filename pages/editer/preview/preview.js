@@ -21,10 +21,9 @@ Page({
   audioPlay:function(){
     // 测试用例
     var _this = this;
-    var path = ''
-    // this.innerAudioContext.src = this.data.audioSrc;
-    this.innerAudioContext.src = path;
-    console.log("seek"+this.data.seek);
+    this.innerAudioContext.src = this.data.audioSrc;
+    // this.innerAudioContext.src = path;
+    // console.log("seek"+this.data.seek);
     if(this.data.seek){
       this.innerAudioContext.startTime=this.data.seek;
       this.innerAudioContext.play();

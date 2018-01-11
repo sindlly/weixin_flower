@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
+  
     "pages/login/login",
+    "pages/index/index",
     "pages/detail/detail",
     "pages/bcards/bcards",
     "pages/editer/editer",
@@ -15,7 +16,8 @@
     "pages/editer/editaudio/editaudio",
     "pages/shop/shop",
     "pages/shop/order/order",
-    "pages/editerbcard/editerbcard"
+    "pages/editerbcard/editerbcard",
+    "pages/greetingcard/greetingcard"
   ],
   "window": {
     "backgroundTextStyle": "light",
