@@ -24,7 +24,7 @@ Page({
     zIndex_3: 1,
     headerUrl:'',
     user:'',
-    time:'Nov.7',
+    time:'',
     name:'',
     log:'',
 
@@ -32,11 +32,11 @@ Page({
   afterdo:function(){
     var _this =this;
     //显示视频
-    // setTimeout(function(){
-    //  _this.setData({
-    //     hasVideo: true,
-    //   })
-    // },1000)
+    setTimeout(function(){
+     _this.setData({
+        hasVideo: true,
+      })
+    },1000)
    
   },
   opencard: function () {
@@ -100,12 +100,13 @@ Page({
             blessing: res.data.data.card.blessing,
             headerUrl: res.data.data.card.editor_info.avatar_url,
             user: res.data.data.card.editor_info.nick_name,
+            time: _this.changeTime(res.data.data.card.created_at) 
           })
-          // if (res.data.data.card.video_id) {
-          //   _this.setData({
-          //     hasVideo_bg: true,
-          //   })
-          // }
+          if (res.data.data.card.video_id) {
+            _this.setData({
+              hasVideo_bg: true,
+            })
+          }
           if (res.data.data.card.voice_id) {
             _this.setData({
               hasVoice: true,
@@ -126,6 +127,62 @@ Page({
         }
       })
     })
+  },
+  changeTime:function(timeString){
+    var moonth = timeString.split("-")[1];
+    var day = timeString.split("-")[2].split("T")[0];
+    var time ="";
+    switch(moonth){
+      case "01":{
+        time = "Jan";
+        break;
+      }
+      case "02": {
+        time = "Feb";
+        break;
+      }
+      case "03": {
+        time = "Mar";
+        break;
+      }
+      case "04": {
+        time = "Apr";
+        break;
+      }
+      case "05": {
+        time = "May";
+        break;
+      }
+      case "06": {
+        time = "Jun";
+        break;
+      }
+      case "07": {
+        time = "Jul";
+        break;
+      }
+      case "08": {
+        time = "Aug";
+        break;
+      }
+      case "09": {
+        time = "Sep";
+        break;
+      }
+      case "10": {
+        time = "Oct";
+        break;
+      }
+      case "11": {
+        time = "Nov";
+        break;
+      }
+      case "12": {
+        time = "Dec";
+        break;
+      }
+    }
+    return time+"."+day;
   },
   previewImg: function () {
     var src = [this.data.imgurl];
