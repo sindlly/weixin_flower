@@ -1,5 +1,6 @@
 /* pages/editer/editaudio/editaudio.wxss */
 /* pages/home/data/data.wxss */
+
 .wapper {
   position: fixed;
   width: 100%;
@@ -18,7 +19,11 @@
   margin-top:30px;
   box-sizing:border-box;
   padding: 20px;
-  color: #000;
+  color: rgb( 51, 51, 51 );
+}
+.content{
+  margin-top: 20rpx;
+  color: rgb( 51, 51, 51 );
 }
 .changetext{
   width: 100%;
@@ -76,12 +81,13 @@ div.wx-audio-default{
   justify-content:center;
   align-items: center;
   margin-top:20rpx;
+  
 
 }
 .name{
   width: 120rpx;
   text-align: center;
-  color: #000;
+  color: rgb( 51, 51, 51 );
 }
 .name-1{
   margin-right: 60rpx; 

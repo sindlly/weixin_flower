@@ -1,4 +1,5 @@
 // pages/editer/editaudio/editaudio.js
+const backgroundAudioManager = wx.getBackgroundAudioManager()
 Page({
 
   /**
@@ -6,7 +7,9 @@ Page({
    */
   data: {
     $root: getApp().globalData.ROOTPATH,
-    text: ["好汉，干了这碗长寿酒"],
+    blessings: [],
+    text:'',
+    text_count:1,
     audioSrc: '',
     isStart: false,
     isSave: false,
@@ -50,13 +53,6 @@ Page({
   //试播
   playVoice: function () {
     const _this = this;
-    // 测试用例
-    //const innerAudioContext = wx.createInnerAudioContext()
-    var path = ''
-    // this.audioCtx.setSrc(path)
-    // this.audioCtx.play()
-    // this.innerAudioContext.src = path;
-    console.log("录音文件"+this.data.audioSrc)
     this.innerAudioContext.src = this.data.audioSrc
     this.innerAudioContext.play();
     this.innerAudioContext.onPlay(() => {
@@ -93,13 +89,43 @@ Page({
       timer_id: 0
     })
   },
+  changeText:function(){
+    var len = this.data.blessings.length;
+    var _this = this;
+    console.log(_this.data.text_count);
+    if (_this.data.text_count<len){
+      _this.setData({
+        text: _this.data.blessings[_this.data.text_count],
+      })
+    }else{
+      _this.setData({
+        text_count:0,
+        text: _this.data.blessings[0],
+      })
+    }
+    _this.setData({
+      text_count: _this.data.text_count+1
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    console.log(options.category_id)
+    backgroundAudioManager.pause()
+    var _this = this;
     this.setData({
       bgurl: this.data.$root + "/files/" + options.bgid
+    })
+    wx.request({
+      url: _this.data.$root + "/card_categories/" + options.category_id, 
+      success:function(res){
+        _this.setData({
+          blessings: res.data.data.blessings,
+          text: res.data.data.blessings[0]
+        })
+      }
+
     })
   },
 
@@ -108,7 +134,13 @@ Page({
    */
   onReady: function () {
     //this.audioCtx = wx.createAudioContext('myAudio')
+    var _this = this;
     this.innerAudioContext = wx.createInnerAudioContext()
+    this.innerAudioContext.onEnded(() => {
+      _this.setData({
+        isPlay: false,
+      })
+    })
   },
 
   /**
@@ -122,14 +154,15 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+   
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
+    this.pauseVoice();
   },
 
   /**

@@ -4,10 +4,10 @@
 <view class='container'>
   <view class='panle'>
     <text>您可以这样说：</text>
-    <view>
-      <text>{{text[0]}}</text>
+    <view class='content'>
+      <text>{{text}}</text>
     </view>
-    <view class='changetext'>
+    <view class='changetext' bindtap='changeText'>
       <image src='../../../files/changetext.png'></image>
       <text>换一句</text>
     </view>

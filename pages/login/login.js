@@ -1,7 +1,7 @@
 Page({
   data: {
-    userPhone: '',
-    userPassword: ''
+    userPhone: '15086915671',
+    userPassword: '003020'
   },
 
   onLoad: function () {

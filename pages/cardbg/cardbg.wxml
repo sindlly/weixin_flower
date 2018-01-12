@@ -1,6 +1,6 @@
 <view class='container'>
   <view class='panel' wx:for="{{imgSrcArry}}" wx:key='0'>
-    <image class='img' bindtap='bindbg' data-bgid='{{imgSrcArry[index].bgid}}' data-blessing='{{imgSrcArry[index].blessings}}' data-music="{{imgSrcArry[index].music_id}}" src="{{imgSrcArry[index].bg}}"></image>
+    <image class='img' bindtap='bindbg' data-bgid='{{imgSrcArry[index].bgid}}' data-blessing='{{imgSrcArry[index].blessings}}' data-category_id="{{imgSrcArry[index].category_id}}" data-music='{{imgSrcArry[index].music}}'src="{{imgSrcArry[index].bg}}"></image>
     <text>{{imgSrcArry[index].name}}-{{imgSrcArry[index].blessings}}</text>
     <view class='hot'>HOT</view>
   </view>

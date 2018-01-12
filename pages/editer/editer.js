@@ -1,4 +1,5 @@
 // pages/home/data/data.js
+const backgroundAudioManager = wx.getBackgroundAudioManager()
 Page({
 
   /**
@@ -33,6 +34,7 @@ Page({
     media_id:'',
     saveData:{
     },
+    category_id:''
   },
   addPicture:function(){
     var _this =this;
@@ -54,7 +56,9 @@ Page({
     })
   },
   bindTextAreaBlur:function(e){
-    console.log(e.detail.value);
+    this.setData({
+      blessing: e.detail.value
+    })
     wx.setStorageSync("blessing", e.detail.value);
   },
   upVideo: function(){
@@ -134,14 +138,14 @@ Page({
               hasVideo: false,
             })
             wx.navigateTo({
-              url: '../editer/editaudio/editaudio?bgid='+_this.data.bgid
+              url: '../editer/editaudio/editaudio?bgid=' + _this.data.bgid + '&category_id=' + _this.data.category_id
             })
           }
         }
       })
     }else{
       wx.navigateTo({
-        url: '../editer/editaudio/editaudio?bgid=' + _this.data.bgid
+        url: '../editer/editaudio/editaudio?bgid=' + _this.data.bgid + '&category_id=' + _this.data.category_id
       })
     }
     
@@ -171,6 +175,7 @@ Page({
             'files': _this.data.pictureUrl
           },
           success: function (res) {
+            console.log(res.data);
             var obj = JSON.parse(res.data)
             console.log('Picture_id>>' + obj.data[0].id);
             // _this.setData({
@@ -236,7 +241,8 @@ Page({
           status: 'NONBLANK',
           editor_info: _this.data.editor_info,
           union_id: _this.data.union_id,
-          background_id: _this.data.bgid
+          background_id: _this.data.bgid,
+          category_id: _this.data.category_id
         }
         _this.upText(data);
       });   
@@ -254,7 +260,8 @@ Page({
              status: 'NONBLANK',
              editor_info: _this.data.editor_info,
              union_id: _this.data.union_id,
-             background_id: _this.data.bgid
+             background_id: _this.data.bgid,
+             category_id: _this.data.category_id
            }
            _this.upText(data);
          })
@@ -270,7 +277,8 @@ Page({
           status: 'NONBLANK',
           editor_info: _this.data.editor_info,
           union_id: _this.data.union_id,
-          background_id:_this.data.bgid
+          background_id:_this.data.bgid,
+          category_id: _this.data.category_id
         }
         _this.upText(data);
       })
@@ -346,15 +354,15 @@ Page({
     wx.setStorageSync("pictureUrl",'');
     wx.setStorageSync("audioSrc", '');
     wx.setStorageSync("videoSrc", '')
-    wx.setStorageSync("blessing", this.data.blessing);
+    wx.setStorageSync("blessing", options.blessing);
     console.log("options:" + options)
     this.setData({
       bgid: options.bgid,
       bgurl: this.data.$root + "/files/" + options.bgid,
-      blessing: options.blessing
+      blessing: options.blessing,
+      category_id: options.category_id
     })
-    // this.data.bgurl = 
-    console.log(this.data.bgurl);
+    backgroundAudioManager.src = this.data.$root + "/files/" + options.music
   },
 
   /**
@@ -368,7 +376,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    backgroundAudioManager.play();
   },
 
   /**

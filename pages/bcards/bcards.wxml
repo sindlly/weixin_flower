@@ -17,7 +17,7 @@
   <image mode='widthFix' src='{{imgSrc}}'></image>
 </view>
 
-<view class='footbtn'>
+<view class='footbtn' wx:if="{{!isGuest}}">
   <navigator url="../detail/detail" hover-class="none">
     <view class='inline-block reg-btn'>编辑基础信息</view>
   </navigator>

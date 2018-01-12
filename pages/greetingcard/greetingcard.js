@@ -1,4 +1,5 @@
 // pages/greetingcard/greetingcard.js
+const backgroundAudioManager = wx.getBackgroundAudioManager()
 Page({
 
   /**
@@ -22,17 +23,20 @@ Page({
     zIndex_2: 3,
     zIndex_3: 1,
     headerUrl:'',
-    user:'校长',
-    time:'Nov.7'
+    user:'',
+    time:'Nov.7',
+    name:'',
+    log:'',
 
   },
   afterdo:function(){
     var _this =this;
-    setTimeout(function(){
-     _this.setData({
-        hasVideo: true,
-      })
-    },1000)
+    //显示视频
+    // setTimeout(function(){
+    //  _this.setData({
+    //     hasVideo: true,
+    //   })
+    // },1000)
    
   },
   opencard: function () {
@@ -85,6 +89,9 @@ Page({
       wx.request({
         url: _this.data.$root + '/cards/' + options.id,
         success: function (res) {
+          //播放背景音乐
+          backgroundAudioManager.src = _this.data.$root + "/files/" + res.data.data.category.music_ids[0],
+
           _this.setData({
             bgurl: _this.data.$root + "/files/" + res.data.data.card.background_id,
             imgurl: _this.data.$root + "/files/" + res.data.data.card.picture_id,
@@ -94,16 +101,27 @@ Page({
             headerUrl: res.data.data.card.editor_info.avatar_url,
             user: res.data.data.card.editor_info.nick_name,
           })
-          if (res.data.data.card.video_id) {
-            _this.setData({
-              hasVideo_bg: true,
-            })
-          }
+          // if (res.data.data.card.video_id) {
+          //   _this.setData({
+          //     hasVideo_bg: true,
+          //   })
+          // }
           if (res.data.data.card.voice_id) {
             _this.setData({
               hasVoice: true,
             })
           }
+          //获取花店信息
+          wx.request({
+            url: _this.data.$root + '/users/' + res.data.data.card.user_id,
+            success:function(res){
+              wx.setStorageSync("user_info", res.data.data)
+              _this.setData({
+                name:res.data.data.name,
+                log: _this.data.$root + "/files/" +res.data.data.avatar_id
+              })
+            }
+          })
           resolve(res.data.data.card.user_id)
         }
       })
@@ -121,10 +139,10 @@ Page({
   audioPlay: function () {
     // 测试用例
     var _this = this;
-    var path = "http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46";
-    console.log("voiceSrc:"+this.data.voiceSrc)
-    // this.innerAudioContext.src = this.data.voiceSrc;
-    this.innerAudioContext.src = path;
+    //暂停背景音乐
+    backgroundAudioManager.pause();
+    this.innerAudioContext.src = this.data.voiceSrc;
+    // this.innerAudioContext.src = path;
     
     if (this.data.seek) {
       this.innerAudioContext.startTime = this.data.seek;
@@ -139,6 +157,7 @@ Page({
     });
   },
   audioPause: function () {
+    backgroundAudioManager.play();
     this.innerAudioContext.pause();
     this.setData({
       isPlay: false,
@@ -157,13 +176,24 @@ Page({
         seek: ct
       })
     });
+    this.innerAudioContext.onEnded(() => {
+      _this.setData({
+        isPlay: false,
+      })
+      //播放背景音乐
+      backgroundAudioManager.play()
+    })
     this.innerAudioContext.onError((res) => {
       console.log(res.errMsg)
       console.log(res.errCode)
     })
 
   },
-
+  toStore:function(){
+    wx.reLaunch({
+  url: '../bcards/bcards?who=guest',
+})
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -182,7 +212,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    backgroundAudioManager.stop();
   },
 
   /**

@@ -1,5 +1,5 @@
 <!--pages/greetingcard/greetingcard.wxml-->
-<!-- <image class='bg-img' mode='widthFix' src='{{bgurl}}'></image>
+<image class='bg-img' mode='widthFix' src='{{bgurl}}'></image>
 <view class='container'>
   <view class='box'>
     <image mode='widthFix' class='box-bg' src='../../files/cardbg.png'></image>
@@ -14,20 +14,29 @@
       </view>
     </view>
   </view>
-</view> -->
+</view>
 <view class='content container' id="content" animation='{{animationData_3}}' bindtransitionend="afterdo" style='z-index:{{zIndex_3}}'>
   <image class='bg-img' mode='widthFix' src='{{bgurl}}'></image>
   <view class='panle'>
-    <image class='img' mode='widthFix' bindtap='previewImg' src='{{imgurl}}' wx:if="{{!hasVideo_bg}}"></image>
-    <!-- <view class='video-bg' wx:if="{{hasVideo_bg&&!hasVideo}}"></view> -->
-    <video preload="auto" custom-cache="{{false}}" src='{{videoSrc}}' wx:if="{{!hasVideo}}"></video>
-    <text>{{blessing}}</text>
+    <image class='img' mode='aspectFit' bindtap='previewImg' src='{{imgurl}}' wx:if="{{!hasVideo_bg}}"></image>
+    <view class='video-bg' wx:if="{{hasVideo_bg&&!hasVideo}}"></view>
+    <video preload="auto" custom-cache="{{false}}" src='{{videoSrc}}' wx:if="{{hasVideo}}"></video>
+    <view class='text'>{{blessing}}</view>
     <view class='audio-area' wx:if="{{hasVoice}}">
       <image src='../../files/pre_audio_play.png' wx:if='{{!isPlay}}' bindtap='audioPlay'></image>
       <image src='../../files/pre_audio_pause.png' wx:if='{{isPlay}}' bindtap='audioPause'></image>
       <view class='audio-text'>听听TA还说了什么</view>
     </view>
   </view>
-
-
+  <view class='foot'>
+    <image class='preview-btn' bindtap='toStore' src='../../files/pre01.png'></image>
+    <view class='store'>
+      <image class='log' src='{{log}}'></image>
+      <view class='name'>{{name}}</view>
+    </view>
+    <button open-type="share" class='save-btn'>
+    <image class='save-btn' bindtap="share" src='../../files/pre02.png'></image>
+    </button>
+    
+  </view>
 </view>

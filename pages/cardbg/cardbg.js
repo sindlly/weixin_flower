@@ -35,7 +35,7 @@ Page({
   bindbg:function(e){
     console.log(e.currentTarget)
     wx.navigateTo({
-      url: '../editer/editer?bgid=' + e.currentTarget.dataset.bgid + "&blessing=" + e.currentTarget.dataset.blessing,
+      url: '../editer/editer?bgid=' + e.currentTarget.dataset.bgid + "&blessing=" + e.currentTarget.dataset.blessing + "&category_id=" + e.currentTarget.dataset.category_id + "&music=" + e.currentTarget.dataset.music,
     })
   },
   /**
@@ -58,7 +58,8 @@ Page({
               blessings: arr[i].blessings[j],
               name:arr[i].name,
               bgid: arr[i].background_ids[j],
-              music_id: arr[i].music_ids[j],
+              category_id: arr[i].id,
+              music: arr[i].music_ids[0],
             })
           }
         }
