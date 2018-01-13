@@ -20,7 +20,7 @@
   <view class='panle'>
     <image class='img' mode='aspectFit' bindtap='previewImg' src='{{imgurl}}' wx:if="{{!hasVideo_bg}}"></image>
     <view class='video-bg' wx:if="{{hasVideo_bg&&!hasVideo}}"></view>
-    <video preload="auto" custom-cache="{{false}}" src='{{videoSrc}}' wx:if="{{hasVideo}}"></video>
+    <video preload="auto" custom-cache="{{false}}" src='{{videoSrc}}' wx:if="{{hasVideo_bg&&hasVideo}}"></video>
     <view class='text'>{{blessing}}</view>
     <view class='audio-area' wx:if="{{hasVoice}}">
       <image src='../../files/pre_audio_play.png' wx:if='{{!isPlay}}' bindtap='audioPlay'></image>
