@@ -24,7 +24,9 @@ Page({
   startAudio: function () {
     const _this = this;
     const recorderManager = wx.getRecorderManager();
-    recorderManager.start();
+    recorderManager.start({
+      format: 'mp3'
+    });
     recorderManager.onStart(function () {
       _this.timer()
     })
