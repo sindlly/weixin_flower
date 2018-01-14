@@ -23,6 +23,13 @@
 		"miniprogram": {
 			"current": -1,
 			"list": [
+				{
+					"id": -1,
+					"name": "shop",
+					"pathName": "pages/shop/shop",
+					"query": "",
+					"scene": "1011"
+				}
 			]
 		}
 	}
