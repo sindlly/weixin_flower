@@ -362,6 +362,7 @@ Page({
       blessing: options.blessing,
       category_id: options.category_id
     })
+    console.log("背景音乐地址：" + this.data.$root + "/files/" + options.music)
     backgroundAudioManager.src = this.data.$root + "/files/" + options.music
   },
 
