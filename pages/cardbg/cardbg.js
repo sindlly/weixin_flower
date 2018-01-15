@@ -42,7 +42,7 @@ Page({
         var arry = [];
         for (var i in arr) {
           for (var j in arr[i].background_ids) {
-            var bg = _this.data.$root + '/files/' + arr[i].background_ids[j] + '/thumbnail';
+            var bg = _this.data.$root + '/files/' + arr[i].background_ids[j];
             console.log("bg" + bg)
             arry.push({
               bg: bg,
