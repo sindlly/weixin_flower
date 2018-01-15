@@ -16,9 +16,6 @@ Page({
   onLoad: function (options) {
     var userInfo = app.getuserInfo();
     var _this = this;
-    console.log("options.q:" + options)
-    var src = decodeURIComponent(options.q)
-    console.log("src:" + src)
     wx.request({
       url: _this.data.$root+'/cards/'+options.id,
       success:function(res){
