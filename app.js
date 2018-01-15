@@ -7,7 +7,6 @@ App({
         var code = res.code ;
         wx.getUserInfo({
           success: function (res) {
-            
             wx.setStorageSync("union_id", code)
             wx.setStorageSync("nick_name", res.userInfo.nickName)
             wx.setStorageSync("avatar_url", res.userInfo.avatarUrl)
