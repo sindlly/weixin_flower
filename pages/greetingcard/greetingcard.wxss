@@ -50,7 +50,7 @@ page {
   justify-content: center;
   align-items: center;
 }
-<<<<<<< HEAD
+
 .open-center{
   width: 130rpx;
   height: 130rpx;
@@ -75,10 +75,6 @@ page {
 100% {transform:rotate(0deg)}
 }
 .open-img{
-=======
-
-.open-img {
->>>>>>> 51531a882ec5b8a89efb309e5ba21db76d9b443c
   width: 100%;
   position: absolute;
 }

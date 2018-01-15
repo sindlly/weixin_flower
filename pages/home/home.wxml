@@ -8,7 +8,7 @@
       </navigator>
       <navigator url="../printer/printer" hover-class="none">
         <image class='head-img' mode='widthFix' src='../../files/printer_setting.png'></image>
-        <text class='head-text'>打印二维码</text>
+        <text class='head-text'>设置打印机</text>
       </navigator>
       <navigator url="../bcards/bcards" hover-class="none">
         <image class='head-img' mode='widthFix' src='../../files/card.png'></image>

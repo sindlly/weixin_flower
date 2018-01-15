@@ -239,7 +239,6 @@ Page({
     })
 
   },
-<<<<<<< HEAD
   toStore:function(){
     wx.navigateTo({
   url: '../bcards/bcards?who=guest',
@@ -278,11 +277,5 @@ Page({
    */
   onReachBottom: function () {
 
-=======
-  toStore: function () {
-    wx.navigateTo({
-      url: '../bcards/bcards?who=guest',
-    });
->>>>>>> 51531a882ec5b8a89efb309e5ba21db76d9b443c
   },
 })
