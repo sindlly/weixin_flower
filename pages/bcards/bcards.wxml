@@ -25,3 +25,8 @@
     <view class='inline-block login-btn'>编辑图片</view>
   </navigator>
 </view>
+<view wx:else class='footbtn'>
+  <navigator url="../home/qr/qr" hover-class="none">
+    <view class='qr-btn'>花店公众号二维码</view>
+  </navigator>
+</view>

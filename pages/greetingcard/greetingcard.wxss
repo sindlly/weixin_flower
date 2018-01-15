@@ -1,10 +1,10 @@
 /* pages/greetingcard/greetingcard.wxss */
 
 page {
-   height: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   overflow: hidden;
 }
 
@@ -29,11 +29,13 @@ page {
   align-items: center;
   overflow-x: hidden;
 }
-.box-bg{
+
+.box-bg {
   width: 560rpx;
   height: 100%;
   z-index: -10;
 }
+
 .box-left {
   width: 310rpx;
   position: absolute;
@@ -48,6 +50,7 @@ page {
   justify-content: center;
   align-items: center;
 }
+<<<<<<< HEAD
 .open-center{
   width: 130rpx;
   height: 130rpx;
@@ -72,128 +75,146 @@ page {
 100% {transform:rotate(0deg)}
 }
 .open-img{
+=======
+
+.open-img {
+>>>>>>> 51531a882ec5b8a89efb309e5ba21db76d9b443c
   width: 100%;
-   position: absolute; 
+  position: absolute;
 }
-.origin{
+
+.origin {
   align-self: center;
   width: 200rpx;
   z-index: 5;
-  color: #fff;  
+  color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  /* align-items: flex-end; */
   margin-left: 200rpx;
 }
-.header{
+
+.header {
   width: 100rpx;
   height: 100rpx;
   border-radius: 50rpx;
 }
-.time{
+
+.time {
   font-size: 1rem;
 }
-.user{
-  font-size: .7rem;
+
+.user {
+  font-size: 0.7rem;
 }
-.action{
-  font-size: .7rem;
+
+.action {
+  font-size: 0.7rem;
 }
-.content{
+
+.content {
   height: 100%;
-   overflow-x: hidden;
+  overflow-x: hidden;
   position: absolute;
   align-self: center;
   justify-content: center;
   flex-shrink: 0;
-  top:0;
+  top: 0;
   z-index: 1;
-  transform: scale(.6)   
+  transform: scale(0.6);
 }
-.panle{
+
+.panle {
   width: 100%;
-  /* min-height: 300px; */
   border-radius: 10px;
-  background: rgba(255, 255, 255, .9);
-  margin-top:-100px; 
-  box-sizing:border-box;
+  background: rgba(255, 255, 255, 0.9);
+  margin-top: -100px;
+  box-sizing: border-box;
   padding: 20px;
   color: rgb(51, 51, 51);
 }
-.img{
+
+.img {
   width: 100%;
 }
-video{
+
+video {
   width: 100%;
   height: 360rpx;
 }
-.video-bg{
+
+.video-bg {
   width: 100%;
   height: 360rpx;
   background: #000;
 }
-.text{
+
+.text {
   margin-top: 30rpx;
   width: 100%;
   text-align: center;
-  
 }
-.audio-area{
+
+.audio-area {
   width: 100%;
-  height: 110rpx; 
-  margin-top:40rpx;
+  height: 110rpx;
+  margin-top: 40rpx;
   border-radius: 10rpx;
-  background: rgba(255, 255, 255, .9);
+  background: rgba(255, 255, 255, 0.9);
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
 }
-.audio-text{
-  font-size:14pt;
+
+.audio-text {
+  font-size: 14pt;
   margin-left: 50rpx;
   color: #888;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
 }
-.audio-area image{
+
+.audio-area image {
   width: 111rpx;
   height: 110rpx;
 }
-.audio-text{
-  height: 110rpx; 
+
+.audio-text {
+  height: 110rpx;
 }
-.foot{
+
+.foot {
   width: 100%;
   position: fixed;
   bottom: 40rpx;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: flex-end;
-  /* z-index: 10; */
-  /* margin-top:-60px; */
-
 }
-.store{
+
+.store {
   display: flex;
   align-items: center;
 }
-.name{
+
+.name {
   margin-left: 10rpx;
-  font-size: .7rem;
+  font-size: 0.7rem;
 }
-.log{
+
+.log {
   width: 60rpx;
   height: 60rpx;
   border-radius: 30rpx;
 }
-.preview-btn{
+
+.preview-btn {
   width: 200rpx;
   height: 95rpx;
-
 }
-.save-btn{
+
+.save-btn {
   width: 200rpx;
   height: 95rpx;
   margin-left: 0;
@@ -201,9 +222,10 @@ video{
   border-radius: 0;
   padding-right: 0;
   padding-left: 0;
-  background-color:rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
 }
-.save-btn::after{
-border-radius:0;
-border: none;
+
+.save-btn::after {
+  border-radius: 0;
+  border: none;
 }

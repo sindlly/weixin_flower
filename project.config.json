@@ -9,8 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.7.0",
-	"appid": "wx88168e0c2c6b3bf2",
-	"projectname": "flower_words",
+	"appid": "wx557ba9a6f91397ec",
+	"projectname": "huayanxinshuo",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -20,14 +20,32 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"game": {
 			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
 					"name": "shop",
 					"pathName": "pages/shop/shop",
 					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "home",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 2,
+					"name": "greeting",
+					"pathName": "pages/cardbg/cardbg",
+					"query": "id=cbf1ade0-f43f-11e7-b5f3-c93673e5d7ba",
 					"scene": "1011"
 				}
 			]

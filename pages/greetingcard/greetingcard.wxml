@@ -37,8 +37,7 @@
       <view class='name'>{{name}}</view>
     </view>
     <button open-type="share" class='save-btn'>
-    <image class='save-btn' bindtap="share" src='../../files/pre02.png'></image>
+      <image class='save-btn' bindtap="share" src='../../files/pre02.png'></image>
     </button>
-    
   </view>
 </view>
