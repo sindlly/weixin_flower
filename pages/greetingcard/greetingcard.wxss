@@ -41,12 +41,35 @@ page {
 }
 
 .open {
-  width: 460rpx;
+  width: 450rpx;
   position: absolute;
   right: -2rpx;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.open-center{
+  width: 130rpx;
+  height: 130rpx;
+  position: absolute;
+  left: 25rpx;
+  z-index: 11;
+}
+.open-btn{
+  width: 180rpx;
+  height: 180rpx;
+  position: absolute;
+  left: 0;
+  z-index: 10;
+  animation:mymove 8s infinite linear;
+}
+@keyframes mymove
+{
+0% {transform:rotate(0deg)}
+25% {transform:rotate(45deg)}
+50% {transform:rotate(0deg)}
+75% {transform:rotate(-45deg)}
+100% {transform:rotate(0deg)}
 }
 .open-img{
   width: 100%;
@@ -67,7 +90,6 @@ page {
   width: 100rpx;
   height: 100rpx;
   border-radius: 50rpx;
-  background: #487
 }
 .time{
   font-size: 1rem;
@@ -165,7 +187,6 @@ video{
   width: 60rpx;
   height: 60rpx;
   border-radius: 30rpx;
-  background: #487;
 }
 .preview-btn{
   width: 200rpx;

@@ -103,12 +103,11 @@ navigator {
   height: 100rpx;
   line-height: 100rpx;
   position: fixed;
+  background-color: #ff3630;
   bottom: 0;
   color: #fff;
   text-align: center;
   font-size: 13pt;
-  display: flex;
-  flex-direction: row;
 }
 
 .left {
@@ -122,14 +121,7 @@ navigator {
 }
 
 .qr-download {
-  background-color: #ff3630;
   font-size: 13pt;
   text-align: center;
-  width: 50%;
-}
-.logout{
-  background: #ff7676;
-  font-size: 13pt;
-  text-align: center;
-  width: 50%;
+  width: 100%;
 }

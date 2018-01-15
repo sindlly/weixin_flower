@@ -247,7 +247,7 @@ Page({
 
   },
   toStore:function(){
-    wx.reLaunch({
+    wx.navigateTo({
   url: '../bcards/bcards?who=guest',
 })
   },

@@ -37,7 +37,4 @@
   <navigator url="../home/qr/qr" hover-class="none" class="qr-download">
     花店公众号二维码
   </navigator>
-  <navigator url="../index/index" class="logout">
-    退出
-  </navigator>
 </view>

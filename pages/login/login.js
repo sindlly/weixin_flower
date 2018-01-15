@@ -42,8 +42,8 @@ Page({
           //判断是否是首次登录
           if (user.name || user.address || user.contact) {
             wx.reLaunch({
-              url: '../home/home?id=' + res.data.data.user.id
-              // url: '../cardbg/cardbg?id=cbf1ade0-f43f-11e7-b5f3-c93673e5d7ba'
+              // url: '../home/home?id=' + res.data.data.user.id
+              url: '../cardbg/cardbg?id=cbf1ade0-f43f-11e7-b5f3-c93673e5d7ba'
             });
           } else {
             wx.reLaunch({
