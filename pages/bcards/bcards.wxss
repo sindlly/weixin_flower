@@ -30,7 +30,6 @@
 }
 
 .title-word {
-  /* line-height: 46px; */
   margin-left: 30rpx;
   font-size: 1rem;
 }
@@ -132,4 +131,9 @@ image {
 
 .login-btn {
   background-color: #ff7676;
+}
+
+.qr-btn {
+  background-color: #ff3630;
+  font-size: 13pt;
 }

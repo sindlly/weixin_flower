@@ -31,5 +31,5 @@ image {
 }
 
 .download-btn {
-  background-color: rgb(255, 57, 57);
+  background-color: #ff3630;
 }

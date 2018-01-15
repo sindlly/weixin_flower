@@ -42,10 +42,10 @@
 					"scene": "1011"
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "greeting",
-					"pathName": "pages/greetingcard/greetingcard",
-					"query": "",
+					"pathName": "pages/cardbg/cardbg",
+					"query": "id=cbf1ade0-f43f-11e7-b5f3-c93673e5d7ba",
 					"scene": "1011"
 				}
 			]

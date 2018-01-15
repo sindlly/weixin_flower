@@ -2,45 +2,42 @@
 const backgroundAudioManager = wx.getBackgroundAudioManager()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     $root: getApp().globalData.ROOTPATH,
     bgurl: '',
     imgurl: '',
     blessing: '',
-    hasVideo:false,
-    hasVideo_bg:false,
-    videoSrc:'',
-    hasVoice:false,
-    voiceSrc:'',
-    isPlay:false,
+    hasVideo: false,
+    hasVideo_bg: false,
+    videoSrc: '',
+    hasVoice: false,
+    voiceSrc: '',
+    isPlay: false,
     animationData_1: '',
     animationData_2: '',
     animationData_3: '',
     zIndex_1: 2,
     zIndex_2: 3,
     zIndex_3: 1,
-    headerUrl:'',
-    user:'',
-    time:'',
-    name:'',
-    log:'',
+    headerUrl: '',
+    user: '',
+    time: '',
+    name: '',
+    log: '',
 
   },
-  afterdo:function(){
-    var _this =this;
+  afterdo: function () {
+    var _this = this;
     //显示视频
-    setTimeout(function(){
-     _this.setData({
+    setTimeout(function () {
+      _this.setData({
         hasVideo: true,
       })
-    },1000)
-   
+    }, 1000)
+
   },
   opencard: function () {
-    var _this =this;
+    var _this = this;
     var animation_2 = wx.createAnimation({
       duration: 1000,
       timingFunction: 'ease',
@@ -51,9 +48,9 @@ Page({
     this.setData({
       animationData_2: this.animation_2.export()
     })
-    setTimeout(function(){
+    setTimeout(function () {
       _this.move();
-    },500);
+    }, 500);
     setTimeout(function () {
       _this.setData({
         zIndex_1: 0
@@ -68,20 +65,16 @@ Page({
       timingFunction: 'ease',
       scale: 0.6,
     })
-    this.animation_3 = animation_3; 
+    this.animation_3 = animation_3;
     animation_3.translateX(130).scale(0.6).step();
     animation_3.translateX(0).scale(1).step();
-    //  animation_3.scale(1).step();
-    // animation_3.translateX(-160).step();
     _this.setData({
       zIndex_2: 0,
       animationData_3: _this.animation_3.export()
     })
 
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
     var _this = this;
     //获取贺卡信息
@@ -92,16 +85,16 @@ Page({
           //播放背景音乐
           backgroundAudioManager.src = _this.data.$root + "/files/" + res.data.data.category.music_ids[0],
 
-          _this.setData({
-            bgurl: _this.data.$root + "/files/" + res.data.data.card.background_id,
-            imgurl: _this.data.$root + "/files/" + res.data.data.card.picture_id,
-            videoSrc: _this.data.$root + "/files/" + res.data.data.card.video_id,
-            voiceSrc: _this.data.$root + "/files/" + res.data.data.card.voice_id,
-            blessing: res.data.data.card.blessing,
-            headerUrl: res.data.data.card.editor_info.avatar_url,
-            user: res.data.data.card.editor_info.nick_name,
-            time: _this.changeTime(res.data.data.card.created_at) 
-          })
+            _this.setData({
+              bgurl: _this.data.$root + "/files/" + res.data.data.card.background_id,
+              imgurl: _this.data.$root + "/files/" + res.data.data.card.picture_id,
+              videoSrc: _this.data.$root + "/files/" + res.data.data.card.video_id,
+              voiceSrc: _this.data.$root + "/files/" + res.data.data.card.voice_id,
+              blessing: res.data.data.card.blessing,
+              headerUrl: res.data.data.card.editor_info.avatar_url,
+              user: res.data.data.card.editor_info.nick_name,
+              time: _this.changeTime(res.data.data.card.created_at)
+            })
           if (res.data.data.card.video_id) {
             _this.setData({
               hasVideo_bg: true,
@@ -115,11 +108,11 @@ Page({
           //获取花店信息
           wx.request({
             url: _this.data.$root + '/users/' + res.data.data.card.user_id,
-            success:function(res){
+            success: function (res) {
               wx.setStorageSync("user_info", res.data.data)
               _this.setData({
-                name:res.data.data.name,
-                log: _this.data.$root + "/files/" +res.data.data.avatar_id
+                name: res.data.data.name,
+                log: _this.data.$root + "/files/" + res.data.data.avatar_id
               })
             }
           })
@@ -128,12 +121,12 @@ Page({
       })
     })
   },
-  changeTime:function(timeString){
+  changeTime: function (timeString) {
     var moonth = timeString.split("-")[1];
     var day = timeString.split("-")[2].split("T")[0];
-    var time ="";
-    switch(moonth){
-      case "01":{
+    var time = "";
+    switch (moonth) {
+      case "01": {
         time = "Jan";
         break;
       }
@@ -182,8 +175,9 @@ Page({
         break;
       }
     }
-    return time+"."+day;
+    return time + "." + day;
   },
+
   previewImg: function () {
     var src = [this.data.imgurl];
     //图片预览
@@ -193,14 +187,14 @@ Page({
     })
 
   },
+
   audioPlay: function () {
     // 测试用例
     var _this = this;
     //暂停背景音乐
     backgroundAudioManager.pause();
     this.innerAudioContext.src = this.data.voiceSrc;
-    // this.innerAudioContext.src = path;
-    
+
     if (this.data.seek) {
       this.innerAudioContext.startTime = this.data.seek;
       this.innerAudioContext.play();
@@ -220,9 +214,7 @@ Page({
       isPlay: false,
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+
   onReady: function () {
     this.innerAudioContext = wx.createInnerAudioContext();
     var _this = this;
@@ -236,7 +228,8 @@ Page({
     this.innerAudioContext.onEnded(() => {
       _this.setData({
         isPlay: false,
-      })
+      });
+
       //播放背景音乐
       backgroundAudioManager.play()
     })
@@ -246,50 +239,9 @@ Page({
     })
 
   },
-  toStore:function(){
-    wx.reLaunch({
-  url: '../bcards/bcards?who=guest',
-})
+  toStore: function () {
+    wx.navigateTo({
+      url: '../bcards/bcards?who=guest',
+    });
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    backgroundAudioManager.stop();
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
