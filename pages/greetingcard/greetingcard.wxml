@@ -24,12 +24,12 @@
     <view class='video-bg' wx:if="{{hasVideo_bg&&!hasVideo}}"></view>
     <video preload="auto" custom-cache="{{false}}" src='{{videoSrc}}' wx:if="{{hasVideo_bg&&hasVideo}}"></video>
     <view class='text'>{{blessing}}</view>
-    <view class='audio-area' wx:if="{{hasVoice}}">
+  </view>
+  <view class='audio-area' wx:if="{{hasVoice}}">
       <image src='../../files/pre_audio_play.png' wx:if='{{!isPlay}}' bindtap='audioPlay'></image>
       <image src='../../files/pre_audio_pause.png' wx:if='{{isPlay}}' bindtap='audioPause'></image>
       <view class='audio-text'>听听TA还说了什么</view>
     </view>
-  </view>
   <view class='foot'>
     <image class='preview-btn' bindtap='toStore' src='../../files/pre01.png'></image>
     <view class='store'>

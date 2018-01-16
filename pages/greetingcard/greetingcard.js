@@ -57,7 +57,7 @@ Page({
       _this.setData({
         zIndex_1: 0
       })
-    }, 1100);
+    }, 1400);
 
   },
 
@@ -69,7 +69,7 @@ Page({
       scale: 0.6,
     })
     this.animation_3 = animation_3;
-    animation_3.translateX(130).scale(0.6).step();
+    animation_3.translateX(155).scale(0.6).step();
     animation_3.translateX(0).scale(1).step();
     _this.setData({
       zIndex_2: 0,
@@ -90,6 +90,7 @@ Page({
           const randomNum = _this.randomNumber(0, musics);
 
           //播放背景音乐
+
           backgroundAudioManager.src = _this.data.$root + "/files/" + res.data.data.category.music_ids[randomNum];
           backgroundAudioManager.title = '花言心说背景音乐';
           backgroundAudioManager.epname = '花言心说背景音乐';
@@ -105,6 +106,7 @@ Page({
             user: res.data.data.card.editor_info.nick_name,
             time: _this.changeTime(res.data.data.card.created_at)
           })
+
           if (res.data.data.card.video_id) {
             _this.setData({
               hasVideo_bg: true,
