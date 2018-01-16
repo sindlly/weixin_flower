@@ -1,5 +1,6 @@
 // pages/greetingcard/greetingcard.js
-const backgroundAudioManager = wx.getBackgroundAudioManager()
+const backgroundAudioManager = wx.getBackgroundAudioManager();
+
 Page({
 
   data: {
@@ -24,8 +25,8 @@ Page({
     time: '',
     name: '',
     log: '',
-
   },
+
   afterdo: function () {
     var _this = this;
     //显示视频
@@ -36,6 +37,7 @@ Page({
     }, 1000)
 
   },
+
   opencard: function () {
     var _this = this;
     var animation_2 = wx.createAnimation({
@@ -58,6 +60,7 @@ Page({
     }, 1100);
 
   },
+
   move: function () {
     var _this = this;
     var animation_3 = wx.createAnimation({
@@ -82,19 +85,26 @@ Page({
       wx.request({
         url: _this.data.$root + '/cards/' + options.id,
         success: function (res) {
-          //播放背景音乐
-          backgroundAudioManager.src = _this.data.$root + "/files/" + res.data.data.category.music_ids[0],
+          const musicLength = res.data.data.category.music_ids.length;
+          const musics = musicLength === 0 ? 0 : musicLength - 1;
+          const randomNum = _this.randomNumber(0, musics);
 
-            _this.setData({
-              bgurl: _this.data.$root + "/files/" + res.data.data.card.background_id,
-              imgurl: _this.data.$root + "/files/" + res.data.data.card.picture_id,
-              videoSrc: _this.data.$root + "/files/" + res.data.data.card.video_id,
-              voiceSrc: _this.data.$root + "/files/" + res.data.data.card.voice_id,
-              blessing: res.data.data.card.blessing,
-              headerUrl: res.data.data.card.editor_info.avatar_url,
-              user: res.data.data.card.editor_info.nick_name,
-              time: _this.changeTime(res.data.data.card.created_at)
-            })
+          //播放背景音乐
+          backgroundAudioManager.src = _this.data.$root + "/files/" + res.data.data.category.music_ids[randomNum];
+          backgroundAudioManager.title = '花言心说背景音乐';
+          backgroundAudioManager.epname = '花言心说背景音乐';
+          backgroundAudioManager.singer = '花言心说';
+
+          _this.setData({
+            bgurl: _this.data.$root + "/files/" + res.data.data.card.background_id,
+            imgurl: _this.data.$root + "/files/" + res.data.data.card.picture_id,
+            videoSrc: _this.data.$root + "/files/" + res.data.data.card.video_id,
+            voiceSrc: _this.data.$root + "/files/" + res.data.data.card.voice_id,
+            blessing: res.data.data.card.blessing,
+            headerUrl: res.data.data.card.editor_info.avatar_url,
+            user: res.data.data.card.editor_info.nick_name,
+            time: _this.changeTime(res.data.data.card.created_at)
+          })
           if (res.data.data.card.video_id) {
             _this.setData({
               hasVideo_bg: true,
@@ -121,6 +131,7 @@ Page({
       })
     })
   },
+
   changeTime: function (timeString) {
     var moonth = timeString.split("-")[1];
     var day = timeString.split("-")[2].split("T")[0];
@@ -185,7 +196,6 @@ Page({
       current: src, // 当前显示图片的http链接
       urls: src // 需要预览的图片http链接列表
     })
-
   },
 
   audioPlay: function () {
@@ -207,6 +217,7 @@ Page({
       isPlay: true
     });
   },
+
   audioPause: function () {
     backgroundAudioManager.play();
     this.innerAudioContext.pause();
@@ -237,45 +248,21 @@ Page({
       console.log(res.errMsg)
       console.log(res.errCode)
     })
-
   },
-  toStore:function(){
+
+  toStore: function () {
     wx.navigateTo({
-  url: '../bcards/bcards?who=guest',
-})
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+      url: '../bcards/bcards?who=guest',
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onUnload: function () {
     backgroundAudioManager.stop();
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
+  randomNumber: function (Min, Max) {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return (Min + Math.round(Rand * Range)); 
+  }
 })

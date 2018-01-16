@@ -80,10 +80,12 @@ Page({
     const { value } = e.detail;
     this.data.tag = value[0] === "checked";
   },
+
   onShow: function () {
     bluetooth.OpenPrint();//打开打印机
     timer(this);
   },
+
   onHide: function () {
     clearInterval(TimerCheck);
     bluetooth.ClosePirint();   //关闭打印机
