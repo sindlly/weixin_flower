@@ -13,7 +13,7 @@
 style="width:{{ images.width }}rpx; height:{{ images.height }}rpx;"></image>  -->
       <video class='dispaly-video' src="{{videoSrc}}" wx:if="{{hasVideo}}"></video>
     </view>
-    <textarea bindblur="bindTextAreaBlur" auto-height value="{{blessing}}" />
+    <textarea bindblur="bindTextAreaBlur" auto-focus="true" auto-height value="{{blessing}}" />
     <!-- <audio src="{{audioSrc}}" id="myAudio" controls loop></audio> -->
   </view>
 </view>
