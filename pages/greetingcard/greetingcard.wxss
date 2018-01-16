@@ -27,7 +27,6 @@ page {
   position: relative;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
 }
 
 .box-bg {
@@ -37,15 +36,16 @@ page {
 }
 
 .box-left {
-  width: 310rpx;
+  width: 326rpx;
   position: absolute;
+  margin-top: 1rpx;
   left: 0rpx;
 }
 
 .open {
   width: 450rpx;
   position: absolute;
-  right: -2rpx;
+  right: 0rpx;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,15 +64,15 @@ page {
   position: absolute;
   left: 0;
   z-index: 10;
-  animation:mymove 8s infinite linear;
+  animation:mymove 20s infinite linear;
 }
 @keyframes mymove
 {
 0% {transform:rotate(0deg)}
-25% {transform:rotate(45deg)}
+/* 25% {transform:rotate(45deg)}
 50% {transform:rotate(0deg)}
-75% {transform:rotate(-45deg)}
-100% {transform:rotate(0deg)}
+75% {transform:rotate(-45deg)} */
+100% {transform:rotate(360deg)}
 }
 .open-img{
   width: 100%;
