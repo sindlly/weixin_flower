@@ -84,11 +84,6 @@ Page({
         success: function (res) {
           //播放背景音乐
           backgroundAudioManager.src = _this.data.$root + "/files/" + res.data.data.category.music_ids[0];
-            backgroundAudioManager.play();
-            backgroundAudioManager.onError(function(code){
-              console.log("errorCode:" + code)
-              console.log("errorCode:" + code.errcode)
-            });
             _this.setData({
               bgurl: _this.data.$root + "/files/" + res.data.data.card.background_id,
               imgurl: _this.data.$root + "/files/" + res.data.data.card.picture_id,
