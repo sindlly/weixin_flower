@@ -35,9 +35,9 @@
 					"scene": "1011"
 				},
 				{
-					"id": -1,
-					"name": "home",
-					"pathName": "pages/home/home",
+					"id": 1,
+					"name": "editer",
+					"pathName": "pages/editer/editer",
 					"query": "",
 					"scene": "1011"
 				},

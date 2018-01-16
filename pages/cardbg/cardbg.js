@@ -33,7 +33,6 @@ Page({
     })
   },
   bindbg:function(e){
-    console.log(e.currentTarget)
     wx.navigateTo({
       url: '../editer/editer?bgid=' + e.currentTarget.dataset.bgid + "&blessing=" + e.currentTarget.dataset.blessing + "&category_id=" + e.currentTarget.dataset.category_id + "&music=" + e.currentTarget.dataset.music,
     })
@@ -52,7 +51,6 @@ Page({
         for(var i in arr){
           for (var j in arr[i].background_ids){
            var bg = _this.data.$root + '/files/' + arr[i].background_ids[j] + '/thumbnail';
-            console.log("bg"+bg)
             arry.push({
               bg: bg,
               blessings: arr[i].blessings[j],
@@ -63,7 +61,6 @@ Page({
             })
           }
         }
-        console.log("arry"+arry)
        _this.setData({
           imgSrcArry:arry
         })

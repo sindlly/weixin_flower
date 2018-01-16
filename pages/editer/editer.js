@@ -287,6 +287,7 @@ Page({
       wx.showModal({
         title: '提示',
         content: '请至少上传一张图片或视频',
+        showCancel:false,
         success: function (res) {
           if (res.confirm) {
             console.log('用户点击确定')
