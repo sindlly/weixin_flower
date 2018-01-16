@@ -55,7 +55,7 @@ page {
   width: 130rpx;
   height: 130rpx;
   position: absolute;
-  left: 25rpx;
+  left: 26rpx;
   z-index: 11;
 }
 .open-btn{
