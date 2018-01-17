@@ -25,12 +25,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": -1,
 			"list": [
 				{
-					"id": -1,
-					"name": "shop",
-					"pathName": "pages/shop/shop",
+					"id": 0,
+					"name": "detail",
+					"pathName": "pages/detail/detail",
 					"query": "",
 					"scene": "1011"
 				},

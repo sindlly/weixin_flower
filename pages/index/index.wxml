@@ -3,7 +3,7 @@
   <view class='wapper'>
     <view class='title'>
       <image mode='widthFix' class="log-img" src='../../files/log.png'></image>
-      <view class="title-word logo-word">花言宣传语</view>
+      <view class="title-word logo-word">花言指南</view>
     </view>
     <video src="https://upfiles.heclouds.com/other_files/cm_marathon_intro.mp4">
     </video>
@@ -15,7 +15,7 @@
     </view>
     <view class='contact'>
       <view class="contact-detail">官方联系方式
-        <span class="detail-black">：15711111551 </span>
+        <span class="detail-black" bindtap="call" >：<span class='phone'>15711111551</span> </span>
       </view>
       <view class="contact-detail">商务合作官方微信号
         <span class="detail-black">：huayan</span>

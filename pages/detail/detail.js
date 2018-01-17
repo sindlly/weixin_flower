@@ -9,6 +9,7 @@ Page({
     qrUrl: '', // 二维码图片地址
     isFirstLogin: '',
     userInfo: '',
+    address:'花店地址'
   },
 
   onLoad: function (options) {
@@ -150,7 +151,20 @@ Page({
       }
     })
   },
-
+  chooseLocation:function(){
+    var _this= this;
+    wx.chooseLocation({
+      success:function(res){
+        console.log(res.name)
+        console.log(res.address)
+        console.log(res.latitude)
+        console.log(res.longitude)
+        _this.setData({
+          address: res.address
+        })
+      }
+    })
+  },
   changeQr: function () {
     const _this = this;
     wx.chooseImage({

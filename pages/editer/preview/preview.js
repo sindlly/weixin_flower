@@ -8,6 +8,7 @@ Page({
   data: {
     $root: getApp().globalData.ROOTPATH,
     text: "",
+    isPlaybgMusic: false,
     hasPicture: false,
     pictureUrl: '',
     videoSrc: '',
@@ -19,6 +20,18 @@ Page({
     bgurl:'',
     
 
+  },
+  closeMusic: function () {
+    backgroundAudioManager.pause()
+    this.setData({
+      isPlaybgMusic: true
+    })
+  },
+  openMusic: function () {
+    backgroundAudioManager.play()
+    this.setData({
+      isPlaybgMusic: false
+    })
   },
   audioPlay:function(){
     //暂停背景音乐

@@ -12,6 +12,7 @@ Page({
     //token: '353cf243-4667-4675-8d38-c3eae21bac72',
     csrfToken: wx.getStorageSync("csrfToken"),
     //csrfToken:'353cf243-4667-4675-8d38-c3eae21bac72',
+    isPlaybgMusic: false,
     id:"",
     blessing:"陪伴才是最好的礼物，用最好的陪伴，献给最美的母亲，在你老去前，我来疼爱你。 ",
     voice_id:'',
@@ -35,6 +36,18 @@ Page({
     saveData:{
     },
     category_id:''
+  },
+  closeMusic: function () {
+    backgroundAudioManager.pause()
+    this.setData({
+      isPlaybgMusic: true
+    })
+  },
+  openMusic: function () {
+    backgroundAudioManager.play()
+    this.setData({
+      isPlaybgMusic: false
+    })
   },
   addPicture:function(){
     var _this =this;

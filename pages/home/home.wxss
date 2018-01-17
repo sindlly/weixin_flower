@@ -125,3 +125,6 @@ navigator {
   text-align: center;
   width: 100%;
 }
+.color-type{
+  color: #40d8ff;
+}

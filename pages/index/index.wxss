@@ -68,7 +68,9 @@ video {
 .detail-black {
   color: black;
 }
-
+.phone{
+  color: #40d8ff
+}
 .partner-list {
   width: 100%;
   display: flex;

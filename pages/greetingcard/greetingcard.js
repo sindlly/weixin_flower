@@ -13,6 +13,7 @@ Page({
     hasVoice: false,
     voiceSrc: '',
     isPlay: false,
+    isPlaybgMusic:false,
     animationData_1: '',
     animationData_2: '',
     animationData_3: '',
@@ -25,6 +26,18 @@ Page({
     name: '',
     log: '',
 
+  },
+  closeMusic:function(){
+    backgroundAudioManager.pause()
+    this.setData({
+      isPlaybgMusic: true
+    })
+  },
+  openMusic:function(){
+    backgroundAudioManager.play()
+    this.setData({
+      isPlaybgMusic:false
+    })
   },
   afterdo: function () {
     var _this = this;

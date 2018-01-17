@@ -21,8 +21,15 @@
         <view class='bline'>
           <input name="name" data-name='name' value="{{userInfo.name}}" type="text" placeholder="请输入花店名称" />
         </view>
-        <view class='bline'>
-          <input name="address" data-name='address' type="text" value="{{userInfo.address}}" placeholder="请输入花店地址" />
+        <!-- <view class='bline'>
+           <input name="address" data-name='address' type="text" value="{{userInfo.address}}" placeholder="请输入花店地址" /> 
+        </view> -->
+        <view class="image-chosen" bindtap='chooseLocation'>
+          <text>{{address}}</text>
+          <view class="btn-container">
+          <image src='' mode='aspectFill'></image>
+            <text class="btn-chosen">></text>
+          </view>
         </view>
         <view class="bline">
           <input name="contact" data-name='contact' type="number" placeholder="请输入花店联系电话" value="{{userInfo.contact}}" />
