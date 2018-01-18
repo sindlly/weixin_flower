@@ -27,7 +27,6 @@ Page({
     name: '',
     log: '',
   },
-<<<<<<< HEAD
   closeMusic:function(){
     backgroundAudioManager.pause()
     this.setData({
@@ -40,9 +39,7 @@ Page({
       isPlaybgMusic:false
     })
   },
-=======
 
->>>>>>> a6e4715c4aeaa025cc23709a733134fd06c8218f
   afterdo: function () {
     var _this = this;
     //显示视频

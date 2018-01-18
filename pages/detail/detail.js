@@ -9,7 +9,11 @@ Page({
     qrUrl: '', // 二维码图片地址
     isFirstLogin: '',
     userInfo: '',
-    address:'花店地址'
+    address: {
+      location: wx.getStorageSync("user_info").address.location,
+      lon:'',
+      lat:''
+    }
   },
 
   onLoad: function (options) {
@@ -45,14 +49,14 @@ Page({
       return;
     }
 
-    if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{1,15}$/.test(address)) {
-      wx.showModal({
-        title: '提示',
-        content: '联系地址只能包含字母、数字及中文字符，且长度不能超过15',
-        showCancel: false
-      })
-      return;
-    }
+    // if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{1,15}$/.test(address)) {
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '联系地址只能包含字母、数字及中文字符，且长度不能超过15',
+    //     showCancel: false
+    //   })
+    //   return;
+    // }
 
     if (!/^[1][0-9]{10}$/.test(contact)) {
       wx.showModal({
@@ -160,7 +164,11 @@ Page({
         console.log(res.latitude)
         console.log(res.longitude)
         _this.setData({
-          address: res.address
+          address: {
+            location: res.address,
+            lon: res.longitude,
+            lat: res.latitude
+          }
         })
       }
     })

@@ -25,7 +25,7 @@
       <view class='intro'>
         <image class='log' src='{{avatar}}' mode='aspectFill'></image>
         <view class='detail'>
-          <view class='info' bindtap='location'>地址：<span class="color-type" bindTap='getLocation'>{{userInfo.address}}</span></view>
+          <view class='info' bindtap='location'>地址：<span class="color-type" bindTap='getLocation'>{{userInfo.address.location}}</span></view>
           <view class='info' bindtap='call'>电话：<span class="color-type" >{{userInfo.contact}}</span></view>
         </view>
       </view>

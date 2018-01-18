@@ -25,7 +25,7 @@
            <input name="address" data-name='address' type="text" value="{{userInfo.address}}" placeholder="请输入花店地址" /> 
         </view> -->
         <view class="image-chosen" bindtap='chooseLocation'>
-          <text>{{address}}</text>
+          <input name="address" data-name='address' type="text" value="{{address.location}}" placeholder="请选择花店地址" /> 
           <view class="btn-container">
           <image src='' mode='aspectFill'></image>
             <text class="btn-chosen">></text>
