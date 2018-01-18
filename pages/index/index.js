@@ -24,6 +24,11 @@ Page({
     })
   },
   onLoad: function () {
+    wx.login({
+      success: function(res) {
+        console.log(res);
+      }
+    })
     const requestPromisified = util.wxPromisify(wx.request);
     const _this = this;
 
