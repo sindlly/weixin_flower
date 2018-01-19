@@ -26,6 +26,7 @@ Page({
     time: '',
     name: '',
     log: '',
+    over:false
   },
 
   closeMusic:function(){
@@ -47,6 +48,7 @@ Page({
     //显示视频
     setTimeout(function () {
       _this.setData({
+        over:true,
         hasVideo: true,
       })
     }, 1000)

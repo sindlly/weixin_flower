@@ -2,7 +2,7 @@
 <image class='bg-img' mode='widthFix' src='{{bgurl}}'></image>
 <image class='bg-music' bindtap='closeMusic' src='../../files/music_open.png' wx:if="{{!isPlaybgMusic}}"></image>
 <image class='bg-music' bindtap='closeMusic' src='../../files/music_close.png' bindtap='openMusic' wx:if="{{isPlaybgMusic}}"></image>
-<view class='container'>
+<view class='container' wx:if="{{!over}}">
   <view class='box'>
     <image mode='widthFix' class='box-bg' src='../../files/cardbg.png'></image>
     <image mode='widthFix' class='box-left' id='box-left' style='z-index:{{zIndex_1}}' animation='{{animationData_1}}' src='../../files/cardfont.png'></image>
