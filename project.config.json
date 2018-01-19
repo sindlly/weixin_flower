@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -45,7 +45,7 @@
 					"id": 2,
 					"name": "greeting",
 					"pathName": "pages/cardbg/cardbg",
-					"query": "id=cbf1ade0-f43f-11e7-b5f3-c93673e5d7ba",
+					"query": "id=2ba6e950-f1f5-11e7-a76c-7f2436ca4e8b",
 					"scene": "1011"
 				}
 			]
