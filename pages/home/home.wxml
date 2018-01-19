@@ -25,8 +25,12 @@
       <view class='intro'>
         <image class='log' src='{{avatar}}' mode='aspectFill'></image>
         <view class='detail'>
-          <view class='info' bindtap='location'>地址：<span class="color-type" bindTap='getLocation'>{{userInfo.address.location}}</span></view>
-          <view class='info' bindtap='call'>电话：<span class="color-type" >{{userInfo.contact}}</span></view>
+          <view class='info' bindtap='location'>地址：
+            <span class="color-type" bindTap='getLocation'>{{userInfo.address.location}}</span>
+          </view>
+          <view class='info' bindtap='call'>电话：
+            <span class="color-type">{{userInfo.contact}}</span>
+          </view>
         </view>
       </view>
     </view>
@@ -35,6 +39,7 @@
 </view>
 <view class='jump-public'>
   <navigator url="../home/qr/qr" hover-class="none" class="qr-download">
-    花店公众号二维码
+    公众号二维码
   </navigator>
+  <text class='login-out' bindtap='loginOut'>退出花言</text>
 </view>

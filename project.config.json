@@ -61,6 +61,20 @@
 					"pathName": "pages/login/login",
 					"query": "id=192b91d0-f47b-11e7-85c5-079453b28fba",
 					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "home",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "detail",
+					"pathName": "pages/detail/detail",
+					"query": "",
+					"scene": "1011"
 				}
 			]
 		}
