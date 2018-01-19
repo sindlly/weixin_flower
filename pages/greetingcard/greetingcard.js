@@ -27,12 +27,14 @@ Page({
     name: '',
     log: '',
   },
+
   closeMusic:function(){
     backgroundAudioManager.pause()
     this.setData({
       isPlaybgMusic: true
     })
   },
+
   openMusic:function(){
     backgroundAudioManager.play()
     this.setData({
@@ -112,7 +114,7 @@ Page({
           _this.setData({
             bgurl: _this.data.$root + "/files/" + res.data.data.card.background_id,
             imgurl: _this.data.$root + "/files/" + res.data.data.card.picture_id,
-            videoSrc: _this.data.$root + "/files/" + res.data.data.card.video_id,
+            videoSrc: res.data.data.card.video_url,
             voiceSrc: _this.data.$root + "/files/" + res.data.data.card.voice_id,
             blessing: res.data.data.card.blessing,
             headerUrl: res.data.data.card.editor_info.avatar_url,
@@ -120,7 +122,7 @@ Page({
             time: _this.changeTime(res.data.data.card.created_at)
           })
 
-          if (res.data.data.card.video_id) {
+          if (res.data.data.card.video_url) {
             _this.setData({
               hasVideo_bg: true,
             })
