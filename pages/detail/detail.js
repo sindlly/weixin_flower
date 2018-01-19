@@ -10,11 +10,11 @@ Page({
     isFirstLogin: '',
     userInfo: '',
     address: {
-      location: wx.getStorageSync("user_info").address.location||"",
-      lon:'',
-      lat:''
+      location: '',
+      lon: '',
+      lat: ''
     },
-    addressChange:false,
+    addressChange: false,
   },
 
   onLoad: function (options) {
@@ -23,6 +23,7 @@ Page({
     const token = wx.getStorageSync("token");
 
     _this.setData({
+      address: wx.getStorageSync("user_info").address,
       qrUrl: userInfo.url ? `${_this.data.$root}/files/${userInfo.url}` : '../../files/defaultLog.png',
       avatarUrl: userInfo.avatar_id ? `${_this.data.$root}/files/${userInfo.avatar_id}` : '../../files/defaultLog.png',
       userInfo,
@@ -35,7 +36,7 @@ Page({
 
     const _this = this;
     const logoSelected = _this.isFileSelected(_this.data.avatarUrl);
-    const qrSelected = _this.isFileSelected(_this.data.qrUrl);    
+    const qrSelected = _this.isFileSelected(_this.data.qrUrl);
     const uploadPromisified = util.wxPromisify(wx.uploadFile);
     const promiseArray = [];
 
@@ -97,19 +98,19 @@ Page({
         name: 'files',
       }));
     }
-    
+
     if (promiseArray[0]) {
       Promise.all(promiseArray).then((files) => {
         console.log(files);
         let avatar = undefined;
         let qr = undefined;
-        if ( promiseArray.length === 2 ) {
+        if (promiseArray.length === 2) {
           [avatar, qr] = files;
         } else {
           avatar = logoSelected ? files[0] : undefined;
-          qr = qrSelected ? files[0] : undefined;          
+          qr = qrSelected ? files[0] : undefined;
         }
-        
+
         const parsedAvatar = avatar && JSON.parse(avatar.data);
         const parsedQr = qr && JSON.parse(qr.data);
         const requestData = e.detail.value;
@@ -124,7 +125,7 @@ Page({
 
         _this.saveInfo(_this, requestData); // 保存信息
       }).catch((reason) => {
-        console.log(reason);        
+        console.log(reason);
         wx.hideLoading();
         wx.showModal({
           title: '提示',
@@ -164,16 +165,16 @@ Page({
       }
     })
   },
-  chooseLocation:function(){
-    var _this= this;
+  chooseLocation: function () {
+    var _this = this;
     wx.chooseLocation({
-      success:function(res){
+      success: function (res) {
         console.log(res.name)
         console.log(res.address)
         console.log(res.latitude)
         console.log(res.longitude)
         _this.setData({
-          addressChange:true,
+          addressChange: true,
           address: {
             location: res.address,
             lon: res.longitude,

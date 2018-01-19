@@ -71,7 +71,7 @@ Page({
                   success: (res) => {
                     wx.showModal({
                       title: '提示',
-                      content: '微信支付调起成功',
+                      content: '支付成功，系统将在1分钟内自动为您充值二维码额度',
                       showCancel: false,
                       success: (res) => {
                         if (res.confirm) wx.reLaunch({

@@ -49,6 +49,7 @@ video {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: 4rpx;
 }
 
 .contact-detail {
@@ -68,9 +69,15 @@ video {
 .detail-black {
   color: black;
 }
-.phone{
-  color: #40d8ff
+
+.phone {
+  color: #40d8ff;
 }
+
+.second-phone {
+  margin-left: 20rpx;
+}
+
 .partner-list {
   width: 100%;
   display: flex;
@@ -117,5 +124,5 @@ video {
 }
 
 .logo-word {
-  margin-left: 10rpx
+  margin-left: 10rpx;
 }

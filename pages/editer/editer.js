@@ -237,7 +237,7 @@ Page({
   save: function () {
     var _this = this;
     wx.showLoading({
-      title: '上传中',
+      title: '上传中...',
     });
 
     if (_this.data.pictureUrl && !wx.getStorageSync("audioSrc")) {
