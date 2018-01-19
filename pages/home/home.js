@@ -12,20 +12,14 @@ Page({
     avatar: '',
   },
   location:function(){
-    wx.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度  
-      success: function (res) {
-        var latitude = res.latitude
-        var longitude = res.longitude
-        wx.openLocation({
-          latitude: latitude,
-          longitude: longitude,
-          name: "重庆市渝北区金开大道",
-          scale: 28
-        })
-      }
-    })  
-  },
+    var _this = this;
+    wx.openLocation({
+      latitude: _this.data.userInfo.address.lat,
+      longitude: _this.data.userInfo.address.lon,
+      name: _this.data.userInfo.address.location,
+      scale: 28
+    })   
+  }, 
   call:function () {
     var _this = this;
     console.log("userInfo:" + _this.data.userInfo.contact)

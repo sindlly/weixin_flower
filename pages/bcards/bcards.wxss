@@ -137,3 +137,6 @@ image {
   background-color: #ff3630;
   font-size: 13pt;
 }
+.color-type{
+  color: #40d8ff;
+}

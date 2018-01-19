@@ -7,8 +7,8 @@
     <view class='intro'>
       <image class='log' src='{{logo}}' mode='aspectFill'></image>
       <view class='detail'>
-        <view class='info'>地址：{{userInfo.address.location}}</view>
-        <view class='info'>电话：{{userInfo.contact}}</view>
+        <view class='info' bindtap='location'>地址：<span class="color-type" >{{userInfo.address.location}}</span></view>
+        <view class='info' bindtap='call'>电话：<span class="color-type" >{{userInfo.contact}}</span></view>
       </view>
     </view>
   </view>

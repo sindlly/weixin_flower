@@ -10,10 +10,11 @@ Page({
     isFirstLogin: '',
     userInfo: '',
     address: {
-      location: wx.getStorageSync("user_info").address.location,
+      location: wx.getStorageSync("user_info").address.location||"",
       lon:'',
       lat:''
-    }
+    },
+    addressChange:false,
   },
 
   onLoad: function (options) {
@@ -38,7 +39,7 @@ Page({
     const uploadPromisified = util.wxPromisify(wx.uploadFile);
     const promiseArray = [];
 
-    const { name, address, contact } = e.detail.value;
+    const { name, contact } = e.detail.value;
 
     if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{1,10}$/.test(name)) {
       wx.showModal({
@@ -96,7 +97,7 @@ Page({
         name: 'files',
       }));
     }
-
+    
     if (promiseArray[0]) {
       Promise.all(promiseArray).then((files) => {
         console.log(files);
@@ -115,6 +116,10 @@ Page({
 
         if (parsedAvatar && parsedAvatar.data[0].id) requestData.avatar_id = parsedAvatar.data[0].id;
         if (parsedQr && parsedQr.data[0].id) requestData.url = parsedQr.data[0].id;
+        //上传地址
+        if (_this.data.addressChange) {
+          requestData.address = _this.data.address
+        }
         console.log(requestData);
 
         _this.saveInfo(_this, requestData); // 保存信息
@@ -129,6 +134,10 @@ Page({
       });
     } else {
       const requestData = e.detail.value;
+      //上传地址
+      if (_this.data.addressChange) {
+        requestData.address = _this.data.address
+      }
       _this.saveInfo(_this, requestData); // 保存信息
     }
   },
@@ -164,6 +173,7 @@ Page({
         console.log(res.latitude)
         console.log(res.longitude)
         _this.setData({
+          addressChange:true,
           address: {
             location: res.address,
             lon: res.longitude,
