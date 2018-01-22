@@ -115,7 +115,7 @@ Page({
 
           _this.setData({
             bgurl: _this.data.$root + "/files/" + res.data.data.card.background_id,
-            imgurl: _this.data.$root + "/files/" + res.data.data.card.picture_id,
+            imgurl: _this.data.$root + "/files/" + res.data.data.card.picture_id ? _this.data.$root + "/files/" + res.data.data.card.picture_id:'',
             videoSrc: res.data.data.card.video_url,
             voiceSrc: _this.data.$root + "/files/" + res.data.data.card.voice_id,
             blessing: res.data.data.card.blessing,
