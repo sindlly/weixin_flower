@@ -10,7 +10,9 @@ Page({
   onLoad: function (options) {
     var userInfo = app.getuserInfo();
     var _this = this;
-    const id = options.q ? decodeURIComponent(options.q).match(/id=.*/)[0].substr(3) : options.id;
+    let id = options.id;
+    if (options.q) id = decodeURIComponent(options.q).match(/id=.*/)[0].substr(3);
+    if (options.scene) id = _this.tn2uuid(decodeURIComponent(options.scene));
 
     wx.request({
       url: _this.data.$root + '/cards/' + id,
@@ -30,6 +32,10 @@ Page({
     wx.navigateTo({
       url: '../editer/editer?bgid=' + e.currentTarget.dataset.bgid + "&blessing=" + e.currentTarget.dataset.blessing + "&category_id=" + e.currentTarget.dataset.category_id + "&music=" + e.currentTarget.dataset.music,
     })
+  },
+
+  tn2uuid: function (tn) {
+    return `${tn.slice(0, 8)}-${tn.slice(8, 12)}-${tn.slice(12, 16)}-${tn.slice(16, 20)}-${tn.slice(20, 32)}`;
   },
 
   onReady: function () {

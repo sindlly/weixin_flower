@@ -24,7 +24,16 @@
   <view class='panle'>
     <image class='img' mode='aspectFit' bindtap='previewImg' src='{{imgurl}}' wx:if="{{!hasVideo_bg}}"></image>
     <view class='video-bg' wx:if="{{hasVideo_bg&&!hasVideo}}"></view>
-    <video preload="auto" custom-cache="{{false}}" src='{{videoSrc}}' wx:if="{{hasVideo_bg&&hasVideo}}"></video>
+    <video id='myVideo' preload="auto" controls="{{false}}" event-model="bubble" custom-cache="false" src='{{videoSrc}}' wx:if="{{hasVideo_bg&&hasVideo}}" >
+      <cover-view class="controls">
+        <cover-view class="play" bindtap="play">
+          <cover-image class="video-img" src="../../files/share_default.jpg" />
+        </cover-view>
+        <cover-view class="pause" bindtap="pause">
+          <cover-image class="img" src="../../files/pausevoice.png" />
+        </cover-view>
+      </cover-view>
+    </video>
     <view class='text'>{{blessing}}</view>
   </view>
   <view class='audio-area' wx:if="{{hasVoice}}">
@@ -38,8 +47,30 @@
       <image class='log' src='{{log}}' mode='aspectFill'></image>
       <view class='name'>{{name}}</view>
     </view>
-    <button open-type="share" class='save-btn'>
-      <image class='save-btn' bindtap="share" src='../../files/pre02.png'></image>
+    <button bindtap="share" class='save-btn'>
+      <image class='save-btn' src='../../files/pre02.png'></image>
     </button>
   </view>
+</view>
+<view class="cover" wx:if='{{showCover}}' bindtap='quit'></view>
+<view class="share" wx:if='{{shareClicked}}'>
+  <view class="share-choice">
+    <button class='choice-item' open-type="share">
+      <view class="share-choice-friend">
+        <image class='choice-image' src='../../files/share_friend.png'></image>
+        <text class='choice-text'>发送给好友</text>
+      </view>
+    </button>
+    <button class="choice-item" bindtap='shareCircle'>
+      <view class="share-choice-circle">
+        <image class='choice-image' src='../../files/share_circle.png'></image>
+        <text class='choice-text'>分享朋友圈</text>
+      </view>
+    </button>
+  </view>
+  <text class="share-quit" bindtap='quit'>取消</text>
+</view>
+<view class='code-preview' wx:if='{{isPreview}}'>
+  <image class='code-image' src='{{codeSrc}}'></image>
+  <text>您的“贺卡二维码”已保存至“手机相册”，将图片发送至朋友圈,“长按识别”即可打开贺卡</text>
 </view>
