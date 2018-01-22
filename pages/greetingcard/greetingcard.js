@@ -1,5 +1,5 @@
-// pages/greetingcard/greetingcard.js
 const backgroundAudioManager = wx.getBackgroundAudioManager();
+const util = require('../../utils/util.js')
 
 Page({
 
@@ -14,7 +14,7 @@ Page({
     hasVoice: false,
     voiceSrc: '',
     isPlay: false,
-    isPlaybgMusic:false,
+    isPlaybgMusic: false,
     animationData_1: '',
     animationData_2: '',
     animationData_3: '',
@@ -26,20 +26,26 @@ Page({
     time: '',
     name: '',
     log: '',
-    over:false
+    over: false,
+    shareClicked: false,
+    isPreview: false,
+    showCover: false,
+    codeSrc: '',
+    cardId: '',
+    codePreview: ''
   },
 
-  closeMusic:function(){
+  closeMusic: function () {
     backgroundAudioManager.pause()
     this.setData({
       isPlaybgMusic: true
     })
   },
 
-  openMusic:function(){
+  openMusic: function () {
     backgroundAudioManager.play()
     this.setData({
-      isPlaybgMusic:false
+      isPlaybgMusic: false
     })
   },
 
@@ -48,7 +54,7 @@ Page({
     //显示视频
     setTimeout(function () {
       _this.setData({
-        over:true,
+        over: true,
         hasVideo: true,
       })
     }, 1000)
@@ -97,6 +103,11 @@ Page({
 
   onLoad: function (options) {
     var _this = this;
+    _this.setData({
+      codePreview: `https://buildupstep.cn/api/v1/mini_program/code?id=${options.id}`,
+      cardId: options.id,
+    })
+
     //获取贺卡信息
     return new Promise(function (resolve, reject) {
       wx.request({
@@ -279,9 +290,88 @@ Page({
     backgroundAudioManager.stop();
   },
 
+  share: function () {
+    this.setData({
+      shareClicked: true,
+      showCover: true
+    })
+  },
+
+  quit: function () {
+    this.setData({
+      shareClicked: false,
+      showCover: false,
+      isPreview: false,
+      hasVideo_bg: true,
+    })
+  },
+
+  onShareAppMessage: function () {
+    return {
+      title: `来自“${this.data.user}”的花言祝福。`,
+      path: `pages/greetingcard/greetingcard?id=${this.data.cardId}`,
+      imageUrl: '../../files/share_default.png',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
+
+  shareCircle: function () {
+    const _this = this;
+    const downloadPromisified = util.wxPromisify(wx.downloadFile);
+    const requestPromisified = util.wxPromisify(wx.request);
+
+    if (!this.data.codePreview) {
+      wx.showModal({
+        title: '提示',
+        content: '无法获取贺卡id',
+        showCancel: false
+      })
+      return
+    }
+
+    wx.showLoading({
+      title: '生成中...',
+    })
+    downloadPromisified({
+      url: this.data.codePreview,
+    }).then((res) => {
+      let filePath = '';
+      if (res.statusCode === 200) {
+        filePath = res.tempFilePath;
+
+        // 保存二维码至本地相册
+        wx.saveImageToPhotosAlbum({
+          filePath,
+          success(res) {
+            wx.hideLoading();
+            _this.setData({
+              codeSrc: filePath,
+              shareClicked: false,
+              isPreview: true,
+              showCover: true,
+              hasVideo_bg: false,
+            })
+          }
+        });
+      }
+    }).catch(() => {
+      wx.hideLoading();
+      wx.showModal({
+        title: '提示',
+        content: '二维码下载失败',
+        showCancel: false
+      })
+    });
+  },
+
   randomNumber: function (Min, Max) {
     var Range = Max - Min;
     var Rand = Math.random();
-    return (Min + Math.round(Rand * Range)); 
+    return (Min + Math.round(Rand * Range));
   }
 })
