@@ -11,7 +11,7 @@
       <image class='open-center' src='../../files/open-center.png'></image>
       <image class='open-img' mode='widthFix' src="../../files/open.png"></image>
       <view class='origin'>
-        <image class='header' src='{{headerUrl}}'></image>
+        <image class='header' src='{{headerUrl}}' mode="aspectFill"></image>
         <view class='time'>{{time}}</view>
         <view class='user'>{{user}}</view>
         <view class='action'>发来贺卡</view>
@@ -28,14 +28,14 @@
     <view class='text'>{{blessing}}</view>
   </view>
   <view class='audio-area' wx:if="{{hasVoice}}">
-      <image src='../../files/pre_audio_play.png' wx:if='{{!isPlay}}' bindtap='audioPlay'></image>
-      <image src='../../files/pre_audio_pause.png' wx:if='{{isPlay}}' bindtap='audioPause'></image>
-      <view class='audio-text'>听听TA还说了什么</view>
-    </view>
+    <image src='../../files/pre_audio_play.png' wx:if='{{!isPlay}}' bindtap='audioPlay'></image>
+    <image src='../../files/pre_audio_pause.png' wx:if='{{isPlay}}' bindtap='audioPause'></image>
+    <view class='audio-text'>听听TA还说了什么</view>
+  </view>
   <view class='foot'>
     <image class='preview-btn' bindtap='toStore' src='../../files/pre01.png'></image>
     <view class='store'>
-      <image class='log' src='{{log}}'></image>
+      <image class='log' src='{{log}}' mode='aspectFill'></image>
       <view class='name'>{{name}}</view>
     </view>
     <button open-type="share" class='save-btn'>

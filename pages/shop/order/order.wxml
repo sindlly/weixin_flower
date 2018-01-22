@@ -10,7 +10,7 @@
         <text>{{userInfo.contact}}</text>
       </view>
       <view>
-        <text class='smaller-font'>{{userInfo.address}}</text>
+        <text class='smaller-font'>{{userInfo.address.location}}</text>
       </view>
     </view>
     <view class='address-right'>

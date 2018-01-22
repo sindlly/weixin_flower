@@ -10,11 +10,11 @@ Page({
     isFirstLogin: '',
     userInfo: '',
     address: {
-      location: wx.getStorageSync("user_info").address.location||"",
-      lon:'',
-      lat:''
+      location: '',
+      lon: '',
+      lat: ''
     },
-    addressChange:false,
+    addressChange: false,
   },
 
   onLoad: function (options) {
@@ -23,6 +23,7 @@ Page({
     const token = wx.getStorageSync("token");
 
     _this.setData({
+      address: wx.getStorageSync("user_info").address,
       qrUrl: userInfo.url ? `${_this.data.$root}/files/${userInfo.url}` : '../../files/defaultLog.png',
       avatarUrl: userInfo.avatar_id ? `${_this.data.$root}/files/${userInfo.avatar_id}` : '../../files/defaultLog.png',
       userInfo,
@@ -35,7 +36,7 @@ Page({
 
     const _this = this;
     const logoSelected = _this.isFileSelected(_this.data.avatarUrl);
-    const qrSelected = _this.isFileSelected(_this.data.qrUrl);    
+    const qrSelected = _this.isFileSelected(_this.data.qrUrl);
     const uploadPromisified = util.wxPromisify(wx.uploadFile);
     const promiseArray = [];
 
@@ -49,15 +50,6 @@ Page({
       })
       return;
     }
-
-    // if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{1,15}$/.test(address)) {
-    //   wx.showModal({
-    //     title: '提示',
-    //     content: '联系地址只能包含字母、数字及中文字符，且长度不能超过15',
-    //     showCancel: false
-    //   })
-    //   return;
-    // }
 
     if (!/^[1][0-9]{10}$/.test(contact)) {
       wx.showModal({
@@ -74,7 +66,6 @@ Page({
 
     // 上传logo
     if (logoSelected) {
-      console.log('asdf');
       promiseArray.push(uploadPromisified({
         url: _this.data.$root + '/files',
         filePath: _this.data.avatarUrl,
@@ -87,7 +78,6 @@ Page({
 
     // 上传公众号二维码
     if (qrSelected) {
-      console.log('=====?asdfssss');
       promiseArray.push(uploadPromisified({
         url: _this.data.$root + '/files',
         filePath: _this.data.qrUrl,
@@ -97,34 +87,31 @@ Page({
         name: 'files',
       }));
     }
-    
+
     if (promiseArray[0]) {
       Promise.all(promiseArray).then((files) => {
-        console.log(files);
-        let avatar = undefined;
-        let qr = undefined;
-        if ( promiseArray.length === 2 ) {
+        let avatar = '';
+        let qr = '';
+        if (promiseArray.length === 2) {
           [avatar, qr] = files;
         } else {
-          avatar = logoSelected ? files[0] : undefined;
-          qr = qrSelected ? files[0] : undefined;          
+          avatar = logoSelected ? files[0] : '';
+          qr = qrSelected ? files[0] : '';
         }
-        
+
         const parsedAvatar = avatar && JSON.parse(avatar.data);
         const parsedQr = qr && JSON.parse(qr.data);
         const requestData = e.detail.value;
 
-        if (parsedAvatar && parsedAvatar.data[0].id) requestData.avatar_id = parsedAvatar.data[0].id;
-        if (parsedQr && parsedQr.data[0].id) requestData.url = parsedQr.data[0].id;
+        if (parsedAvatar && parsedAvatar.data.id) requestData.avatar_id = parsedAvatar.data.id;
+        if (parsedQr && parsedQr.data.id) requestData.url = parsedQr.data.id;
         //上传地址
         if (_this.data.addressChange) {
           requestData.address = _this.data.address
         }
-        console.log(requestData);
 
         _this.saveInfo(_this, requestData); // 保存信息
       }).catch((reason) => {
-        console.log(reason);        
         wx.hideLoading();
         wx.showModal({
           title: '提示',
@@ -164,16 +151,12 @@ Page({
       }
     })
   },
-  chooseLocation:function(){
-    var _this= this;
+  chooseLocation: function () {
+    var _this = this;
     wx.chooseLocation({
-      success:function(res){
-        console.log(res.name)
-        console.log(res.address)
-        console.log(res.latitude)
-        console.log(res.longitude)
+      success: function (res) {
         _this.setData({
-          addressChange:true,
+          addressChange: true,
           address: {
             location: res.address,
             lon: res.longitude,

@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": -1,
 			"list": [
 				{
 					"id": 0,
@@ -45,7 +45,35 @@
 					"id": 2,
 					"name": "greeting",
 					"pathName": "pages/cardbg/cardbg",
-					"query": "id=2ba6e950-f1f5-11e7-a76c-7f2436ca4e8b",
+					"query": "id=192b91d0-f47b-11e7-85c5-079453b28fba",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "shop",
+					"pathName": "pages/shop/shop",
+					"query": "id=192b91d0-f47b-11e7-85c5-079453b28fba",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": "id=192b91d0-f47b-11e7-85c5-079453b28fba",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "home",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "detail",
+					"pathName": "pages/detail/detail",
+					"query": "",
 					"scene": "1011"
 				}
 			]

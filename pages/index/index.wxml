@@ -14,14 +14,17 @@
       <view class="title-word">联系我们</view>
     </view>
     <view class='contact'>
-      <view class="contact-detail">官方联系方式
-        <span class="detail-black" bindtap="call" >：<span class='phone'>15711111551</span> </span>
+      <view class="contact-detail">电话:
+        <span class="detail-black" bindtap="call">
+          <span class='phone'>15711111551</span>
+          <span class='phone second-phone'>15711552109</span>
+        </span>
       </view>
-      <view class="contact-detail">商务合作官方微信号
-        <span class="detail-black">：huayan</span>
+      <view class="contact-detail">官方微信:
+        <span class="detail-black">huayanxinshuo</span>
       </view>
-      <view class="contact-detail contact-email">官方邮箱
-        <span class="detail-black">：huayan@163.com</span>
+      <view class="contact-detail contact-email">官方邮箱:
+        <span class="detail-black">huayanxinshuo@126.com</span>
       </view>
     </view>
   </view>

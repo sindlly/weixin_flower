@@ -108,6 +108,8 @@ navigator {
   color: #fff;
   text-align: center;
   font-size: 13pt;
+  display: flex;
+  flex-direction: row, ;
 }
 
 .left {
@@ -123,8 +125,14 @@ navigator {
 .qr-download {
   font-size: 13pt;
   text-align: center;
-  width: 100%;
+  width: 50%;
 }
-.color-type{
+
+.login-out {
+  width: 50%;
+  background-color: #ff7676;
+}
+
+.color-type {
   color: #40d8ff;
 }

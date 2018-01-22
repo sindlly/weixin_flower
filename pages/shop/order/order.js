@@ -58,15 +58,27 @@ Page({
 
                 // 调起微信支付
                 wx.requestPayment({
-                  'timeStamp': payload.timeStamp,
-                  'nonceStr': payload.nonceStr,
-                  'package': payload.package,
-                  'signType': 'MD5',
-                  'paySign': payload.paySign,
-                  'success': function (res) {
+                  timeStamp: payload.timeStamp,
+                  nonceStr: payload.nonceStr,
+                  package: payload.package,
+                  signType: 'MD5',
+                  paySign: payload.paySign,
+                  success: (res) => {
                   },
-                  'fail': function (res) {
-                    wx.showModal({ title: '提示', content: res, showCancel: false })
+                  fail: (res) => {
+                    wx.showModal({ title: '提示', content: '微信支付调起失败', showCancel: false })
+                  },
+                  success: (res) => {
+                    wx.showModal({
+                      title: '提示',
+                      content: '支付成功，系统将在1分钟内自动为您充值二维码额度',
+                      showCancel: false,
+                      success: (res) => {
+                        if (res.confirm) wx.reLaunch({
+                          url: '../../home/home',
+                        })
+                      }
+                    })
                   }
                 })
               }
