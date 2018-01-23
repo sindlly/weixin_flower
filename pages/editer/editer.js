@@ -85,15 +85,23 @@ Page({
               camera: 'back',
               success: function (res) {
                 console.log(res)
-                _this.setData({
-                  videoSrc: res.tempFilePath,
-                  hasVideo: true,
-                  hasPicture: false,
-                  uploadUrl: res.tempFilePath,
-                  pictureUrl: '',
-                })
-                wx.setStorageSync("videoSrc", res.tempFilePath);//为预览暂存地址
-                wx.setStorageSync("pictureUrl", '');//若有视频，则清除图片
+                if(res.duration>40){
+                  wx.showModal({
+                    title: '提示',
+                    content: '上传录像不得超过40秒',
+                    })
+                }else{
+                  _this.setData({
+                    videoSrc: res.tempFilePath,
+                    hasVideo: true,
+                    hasPicture: false,
+                    uploadUrl: res.tempFilePath,
+                    pictureUrl: '',
+                  })
+                  wx.setStorageSync("videoSrc", res.tempFilePath);//为预览暂存地址
+                  wx.setStorageSync("pictureUrl", '');//若有视频，则清除图片
+                }
+                
               },
               fail: function (res) {
                 console.log(res)
@@ -109,15 +117,24 @@ Page({
         camera: 'back',
         success: function (res) {
           console.log(res)
-          _this.setData({
-            videoSrc: res.tempFilePath,
-            hasVideo: true,
-            hasPicture: false,
-            uploadUrl: res.tempFilePath,
-            pictureUrl: '',
-          })
-          wx.setStorageSync("videoSrc", res.tempFilePath);//为预览暂存地址
-          wx.setStorageSync("pictureUrl", '');//若有视频，则清除图片
+          if (res.duration > 40) {
+            wx.showModal({
+              title: '提示',
+              showCancel:false,
+              content: '上传录像不得超过40秒',
+            })
+          }else{
+            _this.setData({
+              videoSrc: res.tempFilePath,
+              hasVideo: true,
+              hasPicture: false,
+              uploadUrl: res.tempFilePath,
+              pictureUrl: '',
+            })
+            wx.setStorageSync("videoSrc", res.tempFilePath);//为预览暂存地址
+            wx.setStorageSync("pictureUrl", '');//若有视频，则清除图片
+          }
+          
         },
         fail: function (res) {
           console.log(res)
