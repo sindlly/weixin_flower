@@ -81,7 +81,7 @@ Page({
             wx.setStorageSync("audioSrc", '')
             wx.chooseVideo({
               sourceType: ['album', 'camera'],
-              maxDuration: 60,
+              maxDuration: 40,
               camera: 'back',
               success: function (res) {
                 console.log(res)
