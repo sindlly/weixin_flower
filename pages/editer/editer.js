@@ -184,11 +184,8 @@ Page({
         success: function (res) {
           console.log(res.data);
           var obj = JSON.parse(res.data)
-          console.log('Picture_id>>' + obj.data[0].id);
-          // _this.setData({
-          //     picture_id: obj.data[0].id, 
-          // })
-          resolve(obj.data[0].id);
+          console.log('Picture_id>>' + obj.data.id);
+          resolve(obj.data.id);
         },
         fail: function (res) {
           reject(res);
