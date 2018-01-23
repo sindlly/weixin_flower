@@ -24,16 +24,15 @@
   <view class='panle'>
     <image class='img' mode='aspectFit' bindtap='previewImg' src='{{imgurl}}' wx:if="{{!hasVideo_bg}}"></image>
     <view class='video-bg' wx:if="{{hasVideo_bg&&!hasVideo}}"></view>
-    <video id='myVideo' preload="auto" controls="{{false}}" event-model="bubble" custom-cache="false" src='{{videoSrc}}' wx:if="{{hasVideo_bg&&hasVideo}}" 
-    poster='http://pic.58pic.com/58pic/13/76/61/33N58PICRdp_1024.jpg'>
-      <!-- <cover-view class="controls">
+    <video id='myVideo' preload="auto"  event-model="bubble" src='{{videoSrc}}' wx:if="{{hasVideo_bg&&hasVideo}}"  show-play-btn="false" bindplay="play" bindpause="pause" bindended="pause">
+       <cover-view class="controls" wx:if='{{cover}}'>
         <cover-view class="play" bindtap="play">
           <cover-image class="video-img" src="../../files/playvoice.png" />
         </cover-view>
         <cover-view class="pause" bindtap="pause">
           <cover-image class="video-img" src="../../files/pausevoice.png" />
         </cover-view>
-      </cover-view> -->
+      </cover-view> 
     </video>
     <view class='text'>{{blessing}}</view>
   </view>

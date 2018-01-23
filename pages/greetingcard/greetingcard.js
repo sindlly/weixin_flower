@@ -33,6 +33,7 @@ Page({
     codeSrc: '',
     cardId: '',
     codePreview: '',
+    cover:true,
   },
 
   closeMusic: function () {
@@ -58,6 +59,7 @@ Page({
         hasVideo: true,
       })
     }, 1000)
+    this.videoContext = wx.createVideoContext('myVideo')
 
   },
 
@@ -100,7 +102,18 @@ Page({
     })
 
   },
-
+  play:function(){
+    this.setData({
+      cover:false
+    })
+    this.videoContext.play();
+  },
+  pause:function(){
+    this.setData({
+      cover: true
+    })
+    this.videoContext.pause();
+  },
   onLoad: function (options) {
     var _this = this;
     _this.setData({
