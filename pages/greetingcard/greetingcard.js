@@ -317,13 +317,22 @@ Page({
       showCover: false,      
       hasVideo_bg: true,
     })
+    wx.reLaunch({
+      url: `../greetingcard/greetingcard?id=${this.data.cardId}`,
+    })
   },
 
   onShareAppMessage: function () {
+    const _this = this;
     return {
       title: `来自“${this.data.user}”的花言祝福。`,
       path: `pages/greetingcard/greetingcard?id=${this.data.cardId}`,
       imageUrl: '../../files/share_default.jpg',
+      success: function (res) {
+        wx.reLaunch({
+          url: `../greetingcard/greetingcard?id=${_this.data.cardId}`,
+        })
+      },
     }
   },
 
