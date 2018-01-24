@@ -22,11 +22,12 @@ Page({
     tag: false, // 是否打印店铺名称
     userInfo: wx.getStorageSync('user_info') || null,
     token: wx.getStorageSync('token'),
-    rePrint: false, // 是否可重复打印
+    rePrint: true, // 是否可重复打印
     printUrl: '', // 二维码url地址
     printImgUrl: '../../files/print_disabled.png',
     reprintImgUrl: '../../files/reprint_disabled.png',
     tprintImgUrl: '../../files/tprint_disabled.png',
+    reprintCount: 0, // 重打次数
   },
 
   printQrCode: function () {
@@ -52,6 +53,7 @@ Page({
             PrintQRcode(url, $data.tag, $data.userInfo.name);
             that.setData({
               rePrint: true,
+              reprintCount: 0,
               printUrl: url,
               reprintImgUrl: '../../files/reprint.png',
             });
@@ -67,7 +69,24 @@ Page({
 
   rePrintQrCode: function() {
     const { data: $data } = this;
-    if ($data.rePrint) PrintQRcode($data.printUrl, $data.tag, $data.userInfo.name);
+    let { reprintCount } = $data;
+    if ($data.rePrint && $data.reprintCount < 2) {
+      PrintQRcode($data.printUrl, $data.tag, $data.userInfo.name);
+      reprintCount += 1;
+      this.setData({
+        reprintCount
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '同一张二维码重打次数不超过2次',
+        showCancel: false
+      })
+      this.setData({
+        rePrint: false,
+        reprintImgUrl: '../../files/reprint_disabled.png',        
+      })
+    }
   },
 
   QrCodeTest: function () {

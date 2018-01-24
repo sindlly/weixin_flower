@@ -8,7 +8,7 @@ Page({
     csrfToken: wx.getStorageSync("csrfToken"),
     isPlaybgMusic: false,
     id: "",
-    blessing: "陪伴才是最好的礼物，用最好的陪伴，献给最美的母亲，在你老去前，我来疼爱你。 ",
+    blessing: "",
     voice_id: '',
     video_url: '',
     picture_id: '',
@@ -291,9 +291,10 @@ Page({
         _this.upText(data);
       })
     } else {
+      wx.hideLoading();
       wx.showModal({
         title: '提示',
-        content: '请至少上传一张图片或视频',
+        content: '请上传图片或视频',
         showCancel: false,
       })
     }
@@ -357,15 +358,18 @@ Page({
   },
 
   onLoad: function (options) {
+    let { blessing } = options;
+    blessing = blessing === "undefined" ? "请写下您想要送出的祝福语" : blessing;
+
     //清理缓存
     wx.setStorageSync("pictureUrl", '');
     wx.setStorageSync("audioSrc", '');
     wx.setStorageSync("videoSrc", '')
-    wx.setStorageSync("blessing", options.blessing);
+    wx.setStorageSync("blessing", blessing);
     this.setData({
       bgid: options.bgid,
       bgurl: this.data.$root + "/files/" + options.bgid,
-      blessing: options.blessing,
+      blessing,
       category_id: options.category_id
     })
     backgroundAudioManager.src = this.data.$root + "/files/" + options.music;
