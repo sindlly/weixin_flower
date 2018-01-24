@@ -2,7 +2,7 @@
   <view class='base-info'>
     <form bindsubmit="formSubmit">
       <view class="image-container">
-        <view class="image-chosen"  bindtap='changeAvatar'>
+        <view class="image-chosen" bindtap='changeAvatar'>
           <text>花店LOGO</text>
           <view class="btn-container">
             <image src='{{avatarUrl}}' mode='aspectFill'></image>
@@ -22,9 +22,9 @@
           <input name="name" data-name='name' value="{{userInfo.name}}" type="text" placeholder="请输入花店名称" />
         </view>
         <view class="image-chosen" bindtap='chooseLocation'>
-          <input name="address" data-name='address' type="text" value="{{address.location}}" placeholder="请选择花店地址" /> 
+          <input name="address" data-name='address' type="text" value="{{address.location}}" placeholder="请选择花店地址" />
           <view class="btn-container">
-          <image src='' mode='aspectFill'></image>
+            <image src='' mode='aspectFill'></image>
             <text class="btn-chosen">></text>
           </view>
         </view>

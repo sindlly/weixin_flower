@@ -18,11 +18,13 @@ Page({
       url: '../login/login'
     })
   },
-  call:function(){
+
+  call: function () {
     wx.makePhoneCall({
-      phoneNumber: '15711111551' 
+      phoneNumber: '15711111551'
     })
   },
+
   onLoad: function () {
     const requestPromisified = util.wxPromisify(wx.request);
     const _this = this;

@@ -2,9 +2,6 @@
 const backgroundAudioManager = wx.getBackgroundAudioManager()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     $root: getApp().globalData.ROOTPATH,
     blessings: [],
@@ -20,6 +17,7 @@ Page({
     bgurl:''
 
   },
+
   // 开始录音
   startAudio: function () {
     const _this = this;
@@ -31,7 +29,6 @@ Page({
       _this.timer()
     })
     recorderManager.onStop((res) => {
-      console.log("timeid:" + _this.data.timer_id);
       clearInterval(_this.data.timer_id);
       wx.setStorageSync("audioSrc", res.tempFilePath)
       _this.setData({
@@ -43,6 +40,7 @@ Page({
     })
 
   },
+
   //结束录音
   endAudio: function () {
     const _this = this;
@@ -52,6 +50,7 @@ Page({
       isSave: true
     });
   },
+
   //试播
   playVoice: function () {
     const _this = this;
@@ -64,6 +63,7 @@ Page({
       isPlay: true
     });
   },
+
   //试播暂停
   pauseVoice: function () {
     const _this = this;
@@ -72,12 +72,14 @@ Page({
       isPlay: false
     })
   },
+
   //保存录音
   saveAudio: function () {
     wx.navigateBack({
       url: '../editer'
     })
   },
+
   //重录
   reset: function () {
     //重置数据
@@ -91,10 +93,10 @@ Page({
       timer_id: 0
     })
   },
+
   changeText:function(){
     var len = this.data.blessings.length;
     var _this = this;
-    console.log(_this.data.text_count);
     if (_this.data.text_count<len){
       _this.setData({
         text: _this.data.blessings[_this.data.text_count],
@@ -109,11 +111,8 @@ Page({
       text_count: _this.data.text_count+1
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
-    console.log(options.category_id)
     backgroundAudioManager.pause()
     var _this = this;
     this.setData({
@@ -131,11 +130,7 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
-    //this.audioCtx = wx.createAudioContext('myAudio')
     var _this = this;
     this.innerAudioContext = wx.createInnerAudioContext()
     this.innerAudioContext.onEnded(() => {
@@ -145,48 +140,6 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-   
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-    this.pauseVoice();
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   // 计时器
   timer: function () {
     var sec = 0;
@@ -201,16 +154,11 @@ Page({
         time_sec: _this.two_char(s)
       })
     }, 1000);
-    console.log("id1:" + _this.data.timer_id)
     _this.setData({
       timer_id: id
     })
-    console.log("id2:" + _this.data.timer_id)
-
-
   },
   two_char: function (n) {
     return n >= 10 ? n : "0" + n;
   }
-
 })

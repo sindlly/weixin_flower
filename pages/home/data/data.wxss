@@ -29,7 +29,6 @@
 
 .data-key {
   width: 80vw;
-  /* display: inline-block; */
   font-size: 11pt;
   display: flex;
   align-items: center;
@@ -46,7 +45,7 @@
 .data-value {
   width: 40vw;
   text-align: right;
-  font-size: 11pt;  
+  font-size: 11pt;
 }
 
 .value-detail {

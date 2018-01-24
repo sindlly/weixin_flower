@@ -39,7 +39,6 @@ Page({
     const qrSelected = _this.isFileSelected(_this.data.qrUrl);
     const uploadPromisified = util.wxPromisify(wx.uploadFile);
     const promiseArray = [];
-
     const { name, contact } = e.detail.value;
 
     if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{1,10}$/.test(name)) {
@@ -105,6 +104,7 @@ Page({
 
         if (parsedAvatar && parsedAvatar.data.id) requestData.avatar_id = parsedAvatar.data.id;
         if (parsedQr && parsedQr.data.id) requestData.url = parsedQr.data.id;
+
         //上传地址
         if (_this.data.addressChange) {
           requestData.address = _this.data.address
@@ -122,9 +122,7 @@ Page({
     } else {
       const requestData = e.detail.value;
       //上传地址
-      if (_this.data.addressChange) {
-        requestData.address = _this.data.address
-      }
+      requestData.address = _this.data.address;
       _this.saveInfo(_this, requestData); // 保存信息
     }
   },
@@ -134,7 +132,6 @@ Page({
       title: '获取步骤',
       content: '进入“公众号管理中心”，点击“设置”进入“账号信息”页面，找到“二维码”，随后点击“更多尺寸”下载需要的二维码。',
       showCancel: false
-      // confirmColor: '#ff3630',
     })
   },
 
@@ -146,11 +143,12 @@ Page({
       sourceType: ['album', 'camera'],
       success: function (res) {
         _this.setData({
-          avatarUrl: res.tempFilePaths[0], // tempFilePaths
+          avatarUrl: res.tempFilePaths[0],
         })
       }
     })
   },
+
   chooseLocation: function () {
     var _this = this;
     wx.chooseLocation({
@@ -166,6 +164,7 @@ Page({
       }
     })
   },
+
   changeQr: function () {
     const _this = this;
     wx.chooseImage({
@@ -174,7 +173,7 @@ Page({
       sourceType: ['album', 'camera'],
       success: function (res) {
         _this.setData({
-          qrUrl: res.tempFilePaths[0], // tempFilePaths
+          qrUrl: res.tempFilePaths[0],
         })
       }
     })

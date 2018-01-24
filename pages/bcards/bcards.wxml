@@ -1,45 +1,45 @@
 <view wx:if="{{show}}">
-<view class='container' wx:if="{{firstGuest}}">
-  <view class='banner'>
-    <image class='banner-img' mode='widthFix' src='../../files/bcard_banner.png'>
-    </image>
-    <image bindtap='gotoEditer' class="goto-editer" mode='aspectFit' src='../../files/bcard_banner_btn.png'></image>
+  <view class='container' wx:if="{{firstGuest}}">
+    <view class='banner'>
+      <image class='banner-img' mode='widthFix' src='../../files/bcard_banner.png'>
+      </image>
+      <image bindtap='gotoEditer' class="goto-editer" mode='aspectFit' src='../../files/bcard_banner_btn.png'></image>
+    </view>
   </view>
-</view>
-<view class='container'>
-  <view class='title'>
-    <view class='line'></view>
-    <view class="title-word">{{userInfo.name}}</view>
-  </view>
-  <view class='container container-intro'>
-    <view class='intro'>
-      <image class='log' src='{{logo}}' mode='aspectFill'></image>
-      <view class='detail'>
-        <view class='info' bindtap='location'>地址：
-          <span class="color-type">{{userInfo.address.location}}</span>
-        </view>
-        <view class='info' bindtap='call'>电话：
-          <span class="color-type">{{userInfo.contact}}</span>
+  <view class='container'>
+    <view class='title'>
+      <view class='line'></view>
+      <view class="title-word">{{userInfo.name}}</view>
+    </view>
+    <view class='container container-intro'>
+      <view class='intro'>
+        <image class='log' src='{{logo}}' mode='aspectFill'></image>
+        <view class='detail'>
+          <view class='info' bindtap='location'>地址：
+            <span class="color-type">{{userInfo.address.location}}</span>
+          </view>
+          <view class='info' bindtap='call'>电话：
+            <span class="color-type">{{userInfo.contact}}</span>
+          </view>
         </view>
       </view>
     </view>
   </view>
-</view>
-<view class='container container-img'>
-  <image mode='widthFix' src='{{imgSrc}}'></image>
-</view>
+  <view class='container container-img'>
+    <image mode='widthFix' src='{{imgSrc}}'></image>
+  </view>
 
-<view class='footbtn' wx:if="{{!isGuest}}">
-  <navigator url="../detail/detail" hover-class="none">
-    <view class='inline-block reg-btn'>编辑基础信息</view>
-  </navigator>
-  <navigator url="../editerbcard/editerbcard" hover-class="none">
-    <view class='inline-block login-btn'>编辑图片</view>
-  </navigator>
-</view>
-<view wx:else class='footbtn'>
-  <navigator url="../home/qr/qr" hover-class="none">
-    <view class='qr-btn'>花店公众号二维码</view>
-  </navigator>
-</view>
+  <view class='footbtn' wx:if="{{!isGuest}}">
+    <navigator url="../detail/detail" hover-class="none">
+      <view class='inline-block reg-btn'>编辑基础信息</view>
+    </navigator>
+    <navigator url="../editerbcard/editerbcard" hover-class="none">
+      <view class='inline-block login-btn'>编辑图片</view>
+    </navigator>
+  </view>
+  <view wx:else class='footbtn'>
+    <navigator url="../home/qr/qr" hover-class="none">
+      <view class='qr-btn'>花店公众号二维码</view>
+    </navigator>
+  </view>
 </view>

@@ -1,100 +1,110 @@
-/* pages/editer/editaudio/editaudio.wxss */
-/* pages/home/data/data.wxss */
-
 .wapper {
   position: fixed;
   width: 100%;
   height: 100%;
   z-index: -1;
 }
-.container{
-  justify-content: flex-start;
 
+.container {
+  justify-content: flex-start;
 }
-.panle{
+
+.panle {
   width: 100%;
-   min-height: 520rpx; 
+  min-height: 520rpx;
   border-radius: 10px;
-  background: rgba(255, 255, 255, .9);
-  margin-top:30px;
-  box-sizing:border-box;
+  background: rgba(255, 255, 255, 0.9);
+  margin-top: 30px;
+  box-sizing: border-box;
   padding: 20px;
-  color: rgb( 51, 51, 51 );
+  color: rgb(51, 51, 51);
 }
-.content{
+
+.content {
   margin-top: 20rpx;
-  color: rgb( 51, 51, 51 );
+  color: rgb(51, 51, 51);
 }
-.changetext{
+
+.changetext {
   width: 100%;
   margin-top: 150rpx;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   color: #888;
 }
-.changetext image{
+
+.changetext image {
   width: 30px;
   height: 40px;
-  margin-right:20rpx
+  margin-right: 20rpx;
 }
-audio{
-  width:0;
+
+audio {
+  width: 0;
   margin-top: 30px;
 }
-div.wx-audio-default{
+
+div.wx-audio-default {
   width: 100%;
 }
-.control-area{
+
+.control-area {
   width: 100%;
   display: flex;
-  justify-content:center;
-  align-items: center
+  justify-content: center;
+  align-items: center;
 }
-.timer{
+
+.timer {
   width: 100%;
   height: 40rpx;
   text-align: center;
   margin-top: 100rpx;
   margin-bottom: 20rpx;
-  color:#000;
+  color: #000;
 }
-.voice-btn{
+
+.voice-btn {
   width: 80px;
   height: 80px;
-  /* margin-right:30px */
 }
-.reset-btn{
+
+.reset-btn {
   width: 120rpx;
   height: 120rpx;
-  margin-right: 60rpx; 
+  margin-right: 60rpx;
 }
-.play-btn{
+
+.play-btn {
   width: 120rpx;
-  height: 120rpx; 
+  height: 120rpx;
   margin-left: 60rpx;
 }
-.name-area{
+
+.name-area {
   width: 100%;
   box-sizing: border-box;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
-  margin-top:20rpx;
-  
-
+  margin-top: 20rpx;
 }
-.name{
+
+.name {
   width: 120rpx;
   text-align: center;
-  color: rgb( 51, 51, 51 );
+  color: rgb(51, 51, 51);
 }
-.name-1{
-  margin-right: 60rpx; 
+
+.name-1 {
+  margin-right: 60rpx;
 }
-.name-2{
+
+.name-2 {
   width: 160rpx;
 }
-.name-3{
+
+.name-3 {
   margin-left: 60rpx;
 }

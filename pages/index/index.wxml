@@ -16,7 +16,7 @@
     <view class='contact'>
       <view class="contact-detail">电话:
         <span class="detail-black" bindtap="call">
-          <span class='phone'>15711111551</span>
+          <span class='phone'>16602136688</span>
           <span class='phone second-phone'>15711552109</span>
         </span>
       </view>

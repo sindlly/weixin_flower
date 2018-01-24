@@ -2,9 +2,6 @@
 const backgroundAudioManager = wx.getBackgroundAudioManager()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     $root: getApp().globalData.ROOTPATH,
     text: "",
@@ -15,46 +12,45 @@ Page({
     hasVideo: false,
     audioSrc: '',
     hasAudio: false,
-    isPlay:false,
-    seek:0,
-    bgurl:'',
-    
-
+    isPlay: false,
+    seek: 0,
+    bgurl: '',
   },
+
   closeMusic: function () {
     backgroundAudioManager.pause()
     this.setData({
       isPlaybgMusic: true
     })
   },
+
   openMusic: function () {
     backgroundAudioManager.play()
     this.setData({
       isPlaybgMusic: false
     })
   },
-  audioPlay:function(){
+
+  audioPlay: function () {
     //暂停背景音乐
     backgroundAudioManager.pause()
     // 测试用例
     var _this = this;
-    // var path = "http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46"
     this.innerAudioContext.src = this.data.audioSrc;
-    //  this.innerAudioContext.src = path;
-    // console.log("seek"+this.data.seek);
-    if(this.data.seek){
-      this.innerAudioContext.startTime=this.data.seek;
+    if (this.data.seek) {
+      this.innerAudioContext.startTime = this.data.seek;
       this.innerAudioContext.play();
     }
-    else{
+    else {
       this.innerAudioContext.play();
     }
-    
+
     this.setData({
       isPlay: true
     });
   },
-  audioPause:function(){ 
+
+  audioPause: function () {
     this.innerAudioContext.pause();
     this.setData({
       isPlay: false,
@@ -62,14 +58,13 @@ Page({
     //播放背景音乐
     backgroundAudioManager.play()
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
     this.setData({
       bgurl: this.data.$root + "/files/" + options.bgid,
     })
   },
+
   previewImg: function () {
     var src = this.data.pictureUrl;
     //图片预览
@@ -79,9 +74,7 @@ Page({
     })
 
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+
   onReady: function () {
     this.innerAudioContext = wx.createInnerAudioContext();
     var _this = this;
@@ -121,46 +114,4 @@ Page({
       })
     }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    this.audioPause();
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

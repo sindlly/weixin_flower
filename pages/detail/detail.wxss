@@ -42,7 +42,7 @@ button {
   width: 640rpx;
   height: 100rpx;
   line-height: 100rpx;
-  font-size: 13pt
+  font-size: 13pt;
 }
 
 .btn {
@@ -79,7 +79,7 @@ button {
 .image-chosen image {
   width: 100rpx;
   height: 100rpx;
-  border-radius: 100rpx
+  border-radius: 100rpx;
 }
 
 .btn-container {

@@ -22,17 +22,17 @@
 <view class='content container' id="content" animation='{{animationData_3}}' bindtransitionend="afterdo" style='z-index:{{zIndex_3}}'>
   <image class='bg-img' mode='widthFix' src='{{bgurl}}'></image>
   <view class='panle'>
-    <image class='img' mode='aspectFit' bindtap='previewImg' src='{{imgurl}}' wx:if="{{!hasVideo_bg}}"></image>
-    <view class='video-bg' wx:if="{{hasVideo_bg&&!hasVideo}}"></view>
-    <video id='myVideo' preload="auto"  event-model="bubble" src='{{videoSrc}}' wx:if="{{hasVideo_bg&&hasVideo}}"  show-play-btn="false" bindplay="play" bindpause="pause" bindended="pause">
-       <cover-view class="controls" wx:if='{{cover}}'>
+    <image class='img' mode='aspectFit' bindtap='previewImg' src='{{imgurl}}' wx:if="{{!videoTag}}"></image>
+    <view class='video-bg' wx:if="{{videoTag&&!hasVideo}}"></view>
+    <video id='myVideo' preload="auto" event-model="bubble" src='{{videoSrc}}' wx:if="{{videoTag&&hasVideo}}" show-play-btn="false" bindplay="play" bindpause="pause" bindended="pause">
+      <cover-view class="controls" wx:if='{{cover}}'>
         <cover-view class="play" bindtap="play">
           <cover-image class="video-img" src="../../files/playvoice.png" />
         </cover-view>
         <cover-view class="pause" bindtap="pause">
           <cover-image class="video-img" src="../../files/pausevoice.png" />
         </cover-view>
-      </cover-view> 
+      </cover-view>
     </video>
     <view class='text'>{{blessing}}</view>
   </view>

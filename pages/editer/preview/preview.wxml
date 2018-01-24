@@ -1,7 +1,6 @@
 <!--pages/editer/preview/preview.wxml-->
 <!--贺卡预览  -->
-<image class='wapper-img' src='{{bgurl}}'>
-</image>
+<image class='wapper-img' src='{{bgurl}}'></image>
 <image class='bg-music' bindtap='closeMusic' src='../../../files/music_open.png' wx:if="{{!isPlaybgMusic}}"></image>
 <image class='bg-music' bindtap='closeMusic' src='../../../files/music_close.png' bindtap='openMusic' wx:if="{{isPlaybgMusic}}"></image>
 <view class='wapper'>
@@ -20,8 +19,6 @@
     </view>
   </view>
 </view>
-
-
 
 <view class='foot'>
   <image class='preview-btn' src='../../../files/pre01.png'></image>

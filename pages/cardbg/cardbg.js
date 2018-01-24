@@ -14,6 +14,18 @@ Page({
     if (options.q) id = decodeURIComponent(options.q).match(/id=.*/)[0].substr(3);
     if (options.scene) id = _this.tn2uuid(decodeURIComponent(options.scene));
 
+    wx.request({
+      url: _this.data.$root + '/cards/' + id,
+      success: function (res) {
+        wx.setStorageSync('cardid', id);
+        //如果status为BLANK，表示为首个用户
+        if (res.data.data.card.status == "NONBLANK") {
+          wx.reLaunch({
+            url: '../greetingcard/greetingcard?id=' + id,  //若有数据则跳到贺卡页。
+          })
+        }
+      }
+    })
   },
 
   bindbg: function (e) {
@@ -30,7 +42,6 @@ Page({
     var _this = this;
     wx.request({
       url: _this.data.$root + '/card_categories',
-      // url: _this.data.$root + '/cards',
       success: function (res) {
         var arr = res.data.data.items;
         var arry = [];

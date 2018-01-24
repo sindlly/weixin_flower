@@ -18,15 +18,16 @@ Page({
   data: {
     motto: '连接打印机中....',
     disabled: false, // 按钮是否可用
-    loading: true, 
+    loading: true,
     tag: false, // 是否打印店铺名称
     userInfo: wx.getStorageSync('user_info') || null,
     token: wx.getStorageSync('token'),
-    rePrint: false, // 是否可重复打印
+    rePrint: true, // 是否可重复打印
     printUrl: '', // 二维码url地址
     printImgUrl: '../../files/print_disabled.png',
     reprintImgUrl: '../../files/reprint_disabled.png',
     tprintImgUrl: '../../files/tprint_disabled.png',
+    reprintCount: 0, // 重打次数
   },
 
   printQrCode: function () {
@@ -52,22 +53,40 @@ Page({
             PrintQRcode(url, $data.tag, $data.userInfo.name);
             that.setData({
               rePrint: true,
+              reprintCount: 0,
               printUrl: url,
               reprintImgUrl: '../../files/reprint.png',
             });
           }
           else wx.showModal({ title: '提示', content: res.data.msg })
         },
-        fail: function(e) {
+        fail: function (e) {
           wx.showModal({ title: '提示', content: '生成二维码失败！' })
         }
       })
     }
   },
 
-  rePrintQrCode: function() {
+  rePrintQrCode: function () {
     const { data: $data } = this;
-    if ($data.rePrint) PrintQRcode($data.printUrl, $data.tag, $data.userInfo.name);
+    let { reprintCount } = $data;
+    if ($data.rePrint && $data.reprintCount < 2) {
+      PrintQRcode($data.printUrl, $data.tag, $data.userInfo.name);
+      reprintCount += 1;
+      this.setData({
+        reprintCount
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '同一张二维码重打次数不超过2次',
+        showCancel: false
+      })
+      this.setData({
+        rePrint: false,
+        reprintImgUrl: '../../files/reprint_disabled.png',
+      })
+    }
   },
 
   QrCodeTest: function () {
@@ -76,7 +95,7 @@ Page({
     if (!$data.disabled) PrintQRcode(testUrl, $data.tag, '花言小程序');
   },
 
-  checkboxChange: function(e) {
+  checkboxChange: function (e) {
     const { value } = e.detail;
     this.data.tag = value[0] === "checked";
   },
@@ -92,8 +111,8 @@ Page({
   }
 })
 
-const PrintQRcode = (url, tag=false, name) => {
-  if(!tag) {
+const PrintQRcode = (url, tag = false, name) => {
+  if (!tag) {
     pos.PrintJumpLines(3);
     pos.PrintQRcode(url);
     pos.PrintJumpLines(6);
