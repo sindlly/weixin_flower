@@ -10,7 +10,6 @@ Page({
     blessing: '',
     hasVideo: false,
     hasVideo_bg: false,
-    videoTag: false,
     videoSrc: '',
     hasVoice: false,
     voiceSrc: '',
@@ -34,7 +33,7 @@ Page({
     codeSrc: '',
     cardId: '',
     codePreview: '',
-    cover: true,
+    cover:true,
   },
 
   closeMusic: function () {
@@ -101,31 +100,25 @@ Page({
       zIndex_2: 0,
       animationData_3: _this.animation_3.export()
     })
-  },
 
-  play: function () {
+  },
+  play:function(){
     this.setData({
-      cover: false
+      cover:false
     })
     this.videoContext.play();
   },
-
-  pause: function () {
+  pause:function(){
     this.setData({
       cover: true
     })
     this.videoContext.pause();
   },
-
   onLoad: function (options) {
     var _this = this;
-    let id = options.id;
-    if (options.q) id = decodeURIComponent(options.q).match(/id=.*/)[0].substr(3);
-    if (options.scene) id = _this.cn2uuid(decodeURIComponent(options.scene));
-
     _this.setData({
-      codePreview: `https://buildupstep.cn/api/v1/mini_program/code?id=${id}`,
-      cardId: id,
+      codePreview: `https://buildupstep.cn/api/v1/mini_program/code?id=${options.id}`,
+      cardId: options.id,
     })
 
     //获取贺卡信息
@@ -146,7 +139,7 @@ Page({
 
           _this.setData({
             bgurl: _this.data.$root + "/files/" + res.data.data.card.background_id,
-            imgurl: res.data.data.card.picture_id ? _this.data.$root + "/files/" + res.data.data.card.picture_id : '',
+            imgurl: res.data.data.card.picture_id ? _this.data.$root + "/files/" + res.data.data.card.picture_id: '',
             videoSrc: res.data.data.card.video_url,
             voiceSrc: _this.data.$root + "/files/" + res.data.data.card.voice_id,
             blessing: res.data.data.card.blessing,
@@ -158,7 +151,6 @@ Page({
           if (res.data.data.card.video_url) {
             _this.setData({
               hasVideo_bg: true,
-              videoTag: true,
             })
           }
           if (res.data.data.card.voice_id) {
@@ -302,7 +294,7 @@ Page({
     })
     backgroundAudioManager.onPlay(function () {
       _this.setData({
-        isPlaybgMusic: false
+        isPlaybgMusic:false
       })
     })
     backgroundAudioManager.onPause(function () {
@@ -329,12 +321,14 @@ Page({
   },
 
   quit: function () {
-    const _this = this;
-    _this.setData({
+    this.setData({
       shareClicked: false,
       isPreview: false,
-      showCover: false,
-      videoTag: _this.data.hasVideo_bg ? true : false,
+      showCover: false,      
+      hasVideo_bg: true,
+    })
+    wx.reLaunch({
+      url: `../greetingcard/greetingcard?id=${this.data.cardId}`,
     })
   },
 
@@ -357,11 +351,11 @@ Page({
     const downloadPromisified = util.wxPromisify(wx.downloadFile);
     const requestPromisified = util.wxPromisify(wx.request);
 
-    if (!this.data.cardId) {
+    if (!this.data.codePreview) {
       wx.showModal({
         title: '提示',
         content: '无法获取贺卡id',
-        showCancel: false,
+        showCancel: false
       })
       return
     }
@@ -386,15 +380,7 @@ Page({
               shareClicked: false,
               isPreview: true,
               showCover: true,
-              videoTag: false,
-            })
-          },
-          fail() {
-            wx.hideLoading();
-            wx.showModal({
-              title: '提示',
-              content: '分享失败，无法获取小程序二维码',
-              showCancel: false,
+              hasVideo_bg: false,
             })
           }
         });
@@ -413,17 +399,5 @@ Page({
     var Range = Max - Min;
     var Rand = Math.random();
     return (Min + Math.round(Rand * Range));
-  },
-
-  cn2uuid(cn) {
-    if (cn.length === 32) {
-      return `${cn.slice(0, 8)}-${cn.slice(8, 12)}-${cn.slice(12, 16)}-${cn.slice(16, 20)}-${cn.slice(20, 32)}`;
-    } else {
-      wx.showModal({
-        title: '提示',
-        content: '贺卡id解析失败',
-        showCancel: false
-      })
-    }
-  },
+  }
 })

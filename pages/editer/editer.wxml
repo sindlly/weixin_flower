@@ -10,7 +10,7 @@
         <image class="img_icon" src='../../files/add_img.png'></image>
         <span class="tips">添加图片</span>
       </view>
-      <image mode='aspectFit' src="{{ pictureUrl }}" wx:if="{{hasPicture}}"></image>
+      <image mode='aspectFit' bindtap="addPicture" src="{{ pictureUrl }}" wx:if="{{hasPicture}}"></image>
       <video class='dispaly-video' src="{{videoSrc}}" wx:if="{{hasVideo}}"></video>
     </view>
     <textarea bindblur="bindTextAreaBlur" auto-focus="true" auto-height value="{{blessing}}" />

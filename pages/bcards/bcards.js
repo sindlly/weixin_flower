@@ -52,13 +52,8 @@ Page({
             _this.setData({
               isGuest: true,
               firstGuest: true,
-<<<<<<< HEAD
-              id: options.id,
-              show:true
-=======
               id: id,
               show: true
->>>>>>> f5bda5f4ab5091d8459ebc1f164306ac66d08e41
             })
           }
         }
