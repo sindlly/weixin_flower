@@ -36,7 +36,6 @@ Page({
     const _this = this;
     let id = options.id;
     if (options.q) id = decodeURIComponent(options.q).match(/id=.*/)[0].substr(3);
-    if (options.scene) id = _this.tn2uuid(decodeURIComponent(options.scene));
 
     if (id) {
       wx.request({

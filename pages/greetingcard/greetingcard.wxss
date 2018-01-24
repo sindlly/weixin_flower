@@ -346,8 +346,8 @@ video {
 }
 
 .video-img {
-  width: 120rpx;
-  height: 120rpx;
+  width: 60%;
+  height: 70%;
   margin: 0 auto;
   padding-top: 20rpx;
 }

@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -44,9 +44,9 @@
 				{
 					"id": 2,
 					"name": "greeting",
-					"pathName": "pages/bcards/bcards",
-					"query": "id=81c03410-f1f8-11e7-a76c-7f2436ca4e8b",
-					"scene": "1011"
+					"pathName": "pages/greetingcard/greetingcard",
+					"query": "scene=81c03410f1f811e7a76c7f2436ca4e8b",
+					"scene": "1047"
 				},
 				{
 					"id": -1,
@@ -87,7 +87,7 @@
 					"id": 8,
 					"name": "card",
 					"pathName": "pages/bcards/bcards",
-					"query": "id=81c03410-f1f8-11e7-a76c-7f2436ca4e8b",
+					"query": "id=9ea630d0-0052-11e8-821a-059339d2bdee",
 					"scene": "1011"
 				},
 				{
