@@ -27,10 +27,10 @@
     <video id='myVideo' preload="auto" event-model="bubble" src='{{videoSrc}}' wx:if="{{videoTag&&hasVideo}}" show-play-btn="false" bindplay="play" bindpause="pause" bindended="pause">
       <cover-view class="controls" wx:if='{{cover}}'>
         <cover-view class="play" bindtap="play">
-          <cover-image class="video-img" src="../../files/playvoice.png" />
+          <cover-image class="video-img" src="../../files/video_play.png" />
         </cover-view>
         <cover-view class="pause" bindtap="pause">
-          <cover-image class="video-img" src="../../files/pausevoice.png" />
+          <cover-image class="video-img" src="../../files/video_pause.png" />
         </cover-view>
       </cover-view>
     </video>
