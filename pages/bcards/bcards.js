@@ -45,7 +45,8 @@ Page({
             _this.setData({
               isGuest: true,
               firstGuest: true,
-              id: options.id
+              id: options.id,
+              show:true
             })
           }
         }

@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 8,
 			"list": [
 				{
 					"id": 0,
@@ -87,7 +87,7 @@
 					"id": 8,
 					"name": "card",
 					"pathName": "pages/bcards/bcards",
-					"query": "id=537d94b0-f1f5-11e7-a76c-7f2436ca4e8b",
+					"query": "id=803cac80-004a-11e8-821a-059339d2bdee",
 					"scene": "1011"
 				},
 				{
