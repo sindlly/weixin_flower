@@ -117,9 +117,13 @@ Page({
   },
   onLoad: function (options) {
     var _this = this;
+    let id = options.id;
+    if (options.q) id = decodeURIComponent(options.q).match(/id=.*/)[0].substr(3);
+    if (options.scene) id = _this.cn2uuid(decodeURIComponent(options.scene));
+
     _this.setData({
-      codePreview: `https://buildupstep.cn/api/v1/mini_program/code?id=${options.id}`,
-      cardId: options.id,
+      codePreview: `https://buildupstep.cn/api/v1/mini_program/code?id=${id}`,
+      cardId: id,
     })
 
     //获取贺卡信息
@@ -351,7 +355,7 @@ Page({
     const downloadPromisified = util.wxPromisify(wx.downloadFile);
     const requestPromisified = util.wxPromisify(wx.request);
 
-    if (!this.data.codePreview) {
+    if (!this.data.cardId) {
       wx.showModal({
         title: '提示',
         content: '无法获取贺卡id',
@@ -407,5 +411,17 @@ Page({
     var Range = Max - Min;
     var Rand = Math.random();
     return (Min + Math.round(Rand * Range));
-  }
+  },
+
+  cn2uuid(cn) {
+      if (cn.length === 32) {
+        return `${cn.slice(0, 8)}-${cn.slice(8, 12)}-${cn.slice(12, 16)}-${cn.slice(16, 20)}-${cn.slice(20, 32)}`;
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: '贺卡id解析失败',
+          showCancel: false
+        })
+      }
+  },
 })
