@@ -1,6 +1,5 @@
 <!--pages/editer/editaudio/editaudio.wxml-->
-<image class='wapper' src='{{bgurl}}'>
-</image>
+<image class='wapper' src='{{bgurl}}'></image>
 <view class='container'>
   <view class='panle'>
     <text>您可以这样说：</text>
@@ -11,9 +10,7 @@
       <image src='../../../files/changetext.png'></image>
       <text>换一句</text>
     </view>
-    <!-- <audio src="{{audioSrc}}" id="myAudio" controls loop></audio> -->
   </view>
-
 </view>
 <view id="timer" class='timer'>
   <span wx:if="{{isStart}}">{{time_min}}:{{time_sec}}</span>
@@ -24,11 +21,9 @@
 </view>
 
 <view class='control-area' wx:if="{{isStart}}">
-  <image class='reset-btn' src='../../../files/revoice.png' wx:if="{{isSave}}"bindtap="reset"></image>
-
+  <image class='reset-btn' src='../../../files/revoice.png' wx:if="{{isSave}}" bindtap="reset"></image>
   <image class='voice-btn' wx:if="{{!isSave}}" src='../../../files/voice.png' bindtap="endAudio"></image>
   <image class='voice-btn' wx:if="{{isSave}}" src='../../../files/savevoice.png' bindtap="saveAudio"></image>
-
   <image class='play-btn' id='play' src='../../../files/playvoice.png' wx:if="{{isSave&!isPlay}}" bindtap="playVoice"></image>
   <image class='play-btn' id='pause' src='../../../files/pausevoice.png' wx:if="{{isSave&isPlay}}" bindtap="pauseVoice"></image>
 </view>
@@ -37,9 +32,9 @@
   <view class='name name-2'>点击录音</view>
 </view>
 <view class='name-area' wx:if="{{isStart}}">
-  <view class='name name-1' wx:if="{{isSave}}" >重录</view>
-  <view class='name name-2' wx:if="{{isSave}}" >完成</view>
+  <view class='name name-1' wx:if="{{isSave}}">重录</view>
+  <view class='name name-2' wx:if="{{isSave}}">完成</view>
   <view class='name name-2' wx:if="{{!isSave}}">录音中...</view>
   <view class='name name-3' wx:if="{{isSave}}">试听</view>
 </view>
-<audio  src="{{audioSrc}}" id="myAudio" ></audio>
+<audio src="{{audioSrc}}" id="myAudio"></audio>

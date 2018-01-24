@@ -18,7 +18,7 @@ Page({
   data: {
     motto: '连接打印机中....',
     disabled: false, // 按钮是否可用
-    loading: true, 
+    loading: true,
     tag: false, // 是否打印店铺名称
     userInfo: wx.getStorageSync('user_info') || null,
     token: wx.getStorageSync('token'),
@@ -60,14 +60,14 @@ Page({
           }
           else wx.showModal({ title: '提示', content: res.data.msg })
         },
-        fail: function(e) {
+        fail: function (e) {
           wx.showModal({ title: '提示', content: '生成二维码失败！' })
         }
       })
     }
   },
 
-  rePrintQrCode: function() {
+  rePrintQrCode: function () {
     const { data: $data } = this;
     let { reprintCount } = $data;
     if ($data.rePrint && $data.reprintCount < 2) {
@@ -84,7 +84,7 @@ Page({
       })
       this.setData({
         rePrint: false,
-        reprintImgUrl: '../../files/reprint_disabled.png',        
+        reprintImgUrl: '../../files/reprint_disabled.png',
       })
     }
   },
@@ -95,7 +95,7 @@ Page({
     if (!$data.disabled) PrintQRcode(testUrl, $data.tag, '花言小程序');
   },
 
-  checkboxChange: function(e) {
+  checkboxChange: function (e) {
     const { value } = e.detail;
     this.data.tag = value[0] === "checked";
   },
@@ -111,8 +111,8 @@ Page({
   }
 })
 
-const PrintQRcode = (url, tag=false, name) => {
-  if(!tag) {
+const PrintQRcode = (url, tag = false, name) => {
+  if (!tag) {
     pos.PrintJumpLines(3);
     pos.PrintQRcode(url);
     pos.PrintJumpLines(6);

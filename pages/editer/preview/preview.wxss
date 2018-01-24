@@ -1,120 +1,125 @@
 /* pages/editer/preview/preview.wxss */
-page{
+
+page {
   width: 100%;
   height: 100%;
 }
-.bg-music{
+
+.bg-music {
   width: 50rpx;
   height: 50rpx;
   border-radius: 25rpx;
   position: absolute;
-  top:20rpx;
+  top: 20rpx;
   right: 40rpx;
   z-index: 30;
 }
+
 .wapper-img {
   position: fixed;
   width: 100%;
   height: 100%;
   z-index: -1;
 }
-.wapper{
+
+.wapper {
   width: 100%;
   height: 90%;
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
-.container{
+
+.container {
   width: 100%;
   justify-content: flex-start;
-   height: auto;
-
+  height: auto;
 }
-.panle{
+
+.panle {
   width: 100%;
-  /* min-height: 300px; */
   border-radius: 10px;
-  background: rgba(255, 255, 255, .9);
-  /* margin-top:30px; */
-  box-sizing:border-box;
+  background: rgba(255, 255, 255, 0.9);
+  box-sizing: border-box;
   padding: 20px;
   color: #888;
 }
-textarea{
+
+textarea {
   text-align: center;
   width: 100%;
   min-height: 90px;
   font-family: "PingFangSC";
-  color: rgb( 51, 51, 51 );
+  color: rgb(51, 51, 51);
   line-height: 28px;
   overflow: hidden;
-  margin-top:10rpx; 
-}
-.display-area{
-  width: 100%;
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  /* min-height: 225px; */
+  margin-top: 10rpx;
 }
 
-.tips{
+.display-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tips {
   line-height: 48px;
   margin-left: 10px;
 }
-.display-area image{
-    max-width: 100%;  
+
+.display-area image {
+  max-width: 100%;
 }
-.dispaly-picture{
-   max-width: 100%; 
+
+.dispaly-picture {
+  max-width: 100%;
 }
-.audio-area{
+
+.audio-area {
   width: 100%;
-  height: 110rpx; 
-  margin-top:40rpx;
+  height: 110rpx;
+  margin-top: 40rpx;
   border-radius: 10rpx;
-  background: rgba(255, 255, 255, .9);
+  background: rgba(255, 255, 255, 0.9);
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
 }
-.audio-text{
-  font-size:14pt;
+
+.audio-text {
+  font-size: 14pt;
   margin-left: 100rpx;
   color: #888;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
 }
-.audio-area image{
+
+.audio-area image {
   width: 111rpx;
   height: 110rpx;
 }
-.audio-text{
-  height: 110rpx; 
-}
-#myAudio{
-  
+
+.audio-text {
+  height: 110rpx;
 }
 
-.foot{
+.foot {
   width: 100%;
   position: fixed;
   bottom: 40rpx;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
-  /* margin-top:-60px; */
-
 }
-.preview-btn{
+
+.preview-btn {
   width: 200rpx;
   height: 95rpx;
-
 }
-.save-btn{
+
+.save-btn {
   width: 200rpx;
   height: 95rpx;
-
 }

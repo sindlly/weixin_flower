@@ -13,7 +13,6 @@
 .banner-img {
   width: 100%;
   display: block;
-  /* position: fixed; */
 }
 
 .goto-editer {
@@ -21,7 +20,6 @@
   width: 262rpx;
   height: 72rpx;
   position: absolute;
-  /* margin-top: 80rpx; */
   z-index: 10;
 }
 
@@ -140,6 +138,7 @@ image {
   background-color: #ff3630;
   font-size: 13pt;
 }
-.color-type{
+
+.color-type {
   color: #40d8ff;
 }

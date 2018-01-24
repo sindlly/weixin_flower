@@ -43,9 +43,9 @@ button {
   background-color: #ff3939;
   font-size: 13pt;
   color: #fff;
-  display: inline-block
+  display: inline-block;
 }
 
 .btn-submit {
-  text-align: center
+  text-align: center;
 }

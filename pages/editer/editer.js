@@ -31,18 +31,21 @@ Page({
     },
     category_id: ''
   },
+
   closeMusic: function () {
     backgroundAudioManager.pause()
     this.setData({
       isPlaybgMusic: true
     })
   },
+
   openMusic: function () {
     backgroundAudioManager.play()
     this.setData({
       isPlaybgMusic: false
     })
   },
+
   addPicture: function () {
     var _this = this;
     wx.chooseImage({
@@ -69,6 +72,7 @@ Page({
     })
     wx.setStorageSync("blessing", e.detail.value);
   },
+
   upVideo: function () {
     var _this = this
     if (wx.getStorageSync("audioSrc") != '') {
@@ -85,12 +89,12 @@ Page({
               camera: 'back',
               success: function (res) {
                 console.log(res)
-                if(res.duration>40){
+                if (res.duration > 40) {
                   wx.showModal({
                     title: '提示',
                     content: '上传录像不得超过40秒',
-                    })
-                }else{
+                  })
+                } else {
                   _this.setData({
                     videoSrc: res.tempFilePath,
                     hasVideo: true,
@@ -101,7 +105,7 @@ Page({
                   wx.setStorageSync("videoSrc", res.tempFilePath);//为预览暂存地址
                   wx.setStorageSync("pictureUrl", '');//若有视频，则清除图片
                 }
-                
+
               },
               fail: function (res) {
                 console.log(res)
@@ -120,10 +124,10 @@ Page({
           if (res.duration > 40) {
             wx.showModal({
               title: '提示',
-              showCancel:false,
+              showCancel: false,
               content: '上传录像不得超过40秒',
             })
-          }else{
+          } else {
             _this.setData({
               videoSrc: res.tempFilePath,
               hasVideo: true,
@@ -134,7 +138,7 @@ Page({
             wx.setStorageSync("videoSrc", res.tempFilePath);//为预览暂存地址
             wx.setStorageSync("pictureUrl", '');//若有视频，则清除图片
           }
-          
+
         },
         fail: function (res) {
           console.log(res)

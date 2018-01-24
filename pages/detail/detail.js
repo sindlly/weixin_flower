@@ -151,6 +151,7 @@ Page({
       }
     })
   },
+
   chooseLocation: function () {
     var _this = this;
     wx.chooseLocation({
@@ -166,6 +167,7 @@ Page({
       }
     })
   },
+
   changeQr: function () {
     const _this = this;
     wx.chooseImage({

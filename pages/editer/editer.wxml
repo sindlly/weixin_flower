@@ -11,12 +11,9 @@
         <span class="tips">添加图片</span>
       </view>
       <image mode='aspectFit' src="{{ pictureUrl }}" wx:if="{{hasPicture}}"></image>
-      <!-- <image src="{{ pictureUrl }}" wx:if="{{hasPicture}}" bindload="imageLoad"
-style="width:{{ images.width }}rpx; height:{{ images.height }}rpx;"></image>  -->
       <video class='dispaly-video' src="{{videoSrc}}" wx:if="{{hasVideo}}"></video>
     </view>
     <textarea bindblur="bindTextAreaBlur" auto-focus="true" auto-height value="{{blessing}}" />
-    <!-- <audio src="{{audioSrc}}" id="myAudio" controls loop></audio> -->
   </view>
 </view>
 <view class="control-area">
@@ -30,6 +27,6 @@ style="width:{{ images.width }}rpx; height:{{ images.height }}rpx;"></image>  --
   <view class="name" wx:if="{{hasVideo}}">照片</view>
 </view>
 <view class='foot'>
-  <image class='preview-btn' bindtap='preview'src='../../files/preview.png'></image>
+  <image class='preview-btn' bindtap='preview' src='../../files/preview.png'></image>
   <image class='save-btn' src='../../files/save.png' bindtap="save"></image>
 </view>

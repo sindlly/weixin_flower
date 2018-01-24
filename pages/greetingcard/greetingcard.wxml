@@ -24,15 +24,15 @@
   <view class='panle'>
     <image class='img' mode='aspectFit' bindtap='previewImg' src='{{imgurl}}' wx:if="{{!videoTag}}"></image>
     <view class='video-bg' wx:if="{{videoTag&&!hasVideo}}"></view>
-    <video id='myVideo' preload="auto"  event-model="bubble" src='{{videoSrc}}' wx:if="{{videoTag&&hasVideo}}"  show-play-btn="false" bindplay="play" bindpause="pause" bindended="pause">
-       <cover-view class="controls" wx:if='{{cover}}'>
+    <video id='myVideo' preload="auto" event-model="bubble" src='{{videoSrc}}' wx:if="{{videoTag&&hasVideo}}" show-play-btn="false" bindplay="play" bindpause="pause" bindended="pause">
+      <cover-view class="controls" wx:if='{{cover}}'>
         <cover-view class="play" bindtap="play">
           <cover-image class="video-img" src="../../files/playvoice.png" />
         </cover-view>
         <cover-view class="pause" bindtap="pause">
           <cover-image class="video-img" src="../../files/pausevoice.png" />
         </cover-view>
-      </cover-view> 
+      </cover-view>
     </video>
     <view class='text'>{{blessing}}</view>
   </view>

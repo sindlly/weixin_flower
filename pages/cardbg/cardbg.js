@@ -42,7 +42,6 @@ Page({
     var _this = this;
     wx.request({
       url: _this.data.$root + '/card_categories',
-      // url: _this.data.$root + '/cards',
       success: function (res) {
         var arr = res.data.data.items;
         var arry = [];
