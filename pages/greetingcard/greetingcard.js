@@ -265,7 +265,7 @@ Page({
   },
 
   audioPause: function () {
-    backgroundAudioManager.play();
+    // backgroundAudioManager.play();
     this.innerAudioContext.pause();
     this.setData({
       isPlay: false,
@@ -288,11 +288,21 @@ Page({
       });
 
       //播放背景音乐
-      backgroundAudioManager.play()
+      backgroundAudioManager.play();
     })
     this.innerAudioContext.onError((res) => {
       console.log(res.errMsg)
       console.log(res.errCode)
+    })
+    backgroundAudioManager.onPlay(function () {
+      _this.setData({
+        isPlaybgMusic:false
+      })
+    })
+    backgroundAudioManager.onPause(function () {
+      _this.setData({
+        isPlaybgMusic: true
+      })
     })
   },
 
