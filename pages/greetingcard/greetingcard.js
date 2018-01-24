@@ -10,6 +10,7 @@ Page({
     blessing: '',
     hasVideo: false,
     hasVideo_bg: false,
+    videoTag: false,
     videoSrc: '',
     hasVoice: false,
     voiceSrc: '',
@@ -151,6 +152,7 @@ Page({
           if (res.data.data.card.video_url) {
             _this.setData({
               hasVideo_bg: true,
+              videoTag: true,
             })
           }
           if (res.data.data.card.voice_id) {
@@ -311,14 +313,12 @@ Page({
   },
 
   quit: function () {
-    this.setData({
+    const _this = this;
+    _this.setData({
       shareClicked: false,
       isPreview: false,
       showCover: false,      
-      hasVideo_bg: true,
-    })
-    wx.reLaunch({
-      url: `../greetingcard/greetingcard?id=${this.data.cardId}`,
+      videoTag: _this.data.hasVideo_bg ? true : false,
     })
   },
 
@@ -345,7 +345,7 @@ Page({
       wx.showModal({
         title: '提示',
         content: '无法获取贺卡id',
-        showCancel: false
+        showCancel: false,
       })
       return
     }
@@ -370,7 +370,15 @@ Page({
               shareClicked: false,
               isPreview: true,
               showCover: true,
-              hasVideo_bg: false,
+              videoTag: false,
+            })
+          },
+          fail() {
+            wx.hideLoading();
+            wx.showModal({
+              title: '提示',
+              content: '分享失败，无法获取小程序二维码',
+              showCancel: false,
             })
           }
         });

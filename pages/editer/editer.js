@@ -183,25 +183,20 @@ Page({
   getPicture_id: function () {
     //上传图片
     var _this = this;
-    console.log("有图片上传")
     return new Promise(function (resolve, reject) {
       wx.uploadFile({
         method: "POST",
         url: _this.data.$root + '/files',
         filePath: _this.data.pictureUrl[0],
         header: {
-          'content-type': 'multipart/form-data',
-          'access_token': _this.data.token,
-          'x-csrf-token': _this.data.csrfToken
+          'content-type': 'multipart/form-data'
         },
         name: 'files',
         formData: {
           'files': _this.data.pictureUrl
         },
         success: function (res) {
-          console.log(res.data);
           var obj = JSON.parse(res.data)
-          console.log('Picture_id>>' + obj.data.id);
           resolve(obj.data.id);
         },
         fail: function (res) {
@@ -221,15 +216,13 @@ Page({
     }
     //上传录音或录像
     if (_this.data.uploadUrl != '') {
-      console.log("上传录音或录像")
       return new Promise(function (resolve, reject) {
         wx.uploadFile({
           method: "POST",
           url: _this.data.$root + '/files',
           filePath: _this.data.uploadUrl,
           header: {
-            'content-type': 'multipart/form-data',
-            'access_token': _this.data.token,
+            'content-type': 'multipart/form-data'
           },
           name: 'files',
           formData: {
@@ -255,7 +248,6 @@ Page({
     });
 
     if (_this.data.pictureUrl && !wx.getStorageSync("audioSrc")) {
-      console.log("图片+文字")
       _this.getPicture_id().then(function (id) {
         var data = {
           picture_id: id,
@@ -269,7 +261,6 @@ Page({
         _this.upText(data);
       });
     } else if (wx.getStorageSync("audioSrc") && _this.data.pictureUrl) {
-      console.log("图片+录音+文字")
       _this.getPicture_id().then(function (id) {
         var picture_id = id;
         _this.uploadMedia().then(function (res) {
@@ -287,7 +278,6 @@ Page({
         })
       })
     } else if (wx.getStorageSync("videoSrc")) {
-      console.log("录像+文字")
       _this.uploadMedia().then(function (res) {
         var data = {
           video_url: res.url,
@@ -305,11 +295,6 @@ Page({
         title: '提示',
         content: '请至少上传一张图片或视频',
         showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          }
-        }
       })
     }
   },
@@ -321,10 +306,6 @@ Page({
       url: _this.data.$root + '/cards/' + wx.getStorageSync('cardid'),
       data: data,
       method: "PUT",
-      header: {
-        'access_token': _this.data.token,
-        'x-csrf-token': _this.data.csrfToken
-      },
       success: function (res) {
         wx.hideLoading();
         if (res.data.code === 200) {
@@ -341,12 +322,14 @@ Page({
         } else {
           wx.showModal({
             title: '提示',
+            showCancel: false,
             content: '保存失败',
           })
         }
       }
     })
   },
+
   //处理图片
   imageLoad: function (e) {
     var $width = e.detail.width,    //获取图片真实宽度
@@ -379,14 +362,12 @@ Page({
     wx.setStorageSync("audioSrc", '');
     wx.setStorageSync("videoSrc", '')
     wx.setStorageSync("blessing", options.blessing);
-    console.log("options:" + options)
     this.setData({
       bgid: options.bgid,
       bgurl: this.data.$root + "/files/" + options.bgid,
       blessing: options.blessing,
       category_id: options.category_id
     })
-    console.log("背景音乐地址：" + this.data.$root + "/files/" + options.music)
-    backgroundAudioManager.src = this.data.$root + "/files/" + options.music
+    backgroundAudioManager.src = this.data.$root + "/files/" + options.music;
   },
 })
