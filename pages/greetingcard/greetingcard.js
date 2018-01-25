@@ -20,9 +20,9 @@ Page({
     animationData_1: '',
     animationData_2: '',
     animationData_3: '',
-    zIndex_1: 2,
-    zIndex_2: 3,
-    zIndex_3: 1,
+    zIndex_1: 4,
+    zIndex_2: 6,
+    zIndex_3: 2,
     headerUrl: '',
     user: '',
     time: '',
@@ -67,6 +67,7 @@ Page({
 
   opencard: function () {
     var _this = this;
+    
     var query = wx.createSelectorQuery();
     query.select('#open').boundingClientRect();
     var height = 0;
@@ -91,6 +92,11 @@ Page({
     }, 500);
     setTimeout(function () {
       _this.setData({
+        zIndex_2: -1
+      })
+    }, 200);
+    setTimeout(function () {
+      _this.setData({
         zIndex_1: 0
       })
     }, 1400);
@@ -108,7 +114,7 @@ Page({
     animation_3.translateX(155).scale(0.6).step();
     animation_3.translateX(0).scale(1).step();
     _this.setData({
-      zIndex_2: 0,
+      // zIndex_2: 1,
       animationData_3: _this.animation_3.export()
     })
   },
@@ -336,6 +342,7 @@ Page({
   },
 
   onHide: function () {
+    backgroundAudioManager.stop();
     wx.stopBackgroundAudio();
   },
 
