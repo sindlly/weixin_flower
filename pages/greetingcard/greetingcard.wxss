@@ -5,7 +5,7 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .bg-music {
@@ -21,28 +21,33 @@ page {
 .bg-img {
   width: 100%;
   position: fixed;
-  z-index: -10;
+  z-index: -1000;
+  left: 0;
+  top: 0;
 }
 
 .container {
   width: 100%;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .box {
   width: 560rpx;
   height: 100%;
   display: flex;
+  display: -webkit-flex;
   position: relative;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: space-between;
   align-items: center;
 }
 
 .box-bg {
   width: 560rpx;
   height: 100%;
-  z-index: -10;
+  z-index: -100;
 }
 
 .box-left {
@@ -50,22 +55,41 @@ page {
   position: absolute;
   margin-top: 1rpx;
   left: 0rpx;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .open {
   width: 450rpx;
+  /* height: 100%; */
   position: absolute;
   right: 0rpx;
   display: flex;
-  justify-content: center;
+  display: -webkit-flex;
+  /* justify-content: center; */
   align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.open-btn-panel {
+  width: 180rpx;
+  height: 180rpx;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
 }
 
 .open-center {
   width: 130rpx;
   height: 130rpx;
   position: absolute;
-  left: 26rpx;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* transform: translateX(-50%) */
   z-index: 11;
 }
 
@@ -89,19 +113,30 @@ page {
 }
 
 .open-img {
-  width: 100%;
+  /* width: 100%; */
+  width: 450rpx;
+  flex-shrink: 0;
+  align-self: flex-end;
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
 }
 
 .origin {
   align-self: center;
   width: 200rpx;
-  z-index: 5;
+  z-index: 5000;
   color: #fff;
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
   justify-content: flex-end;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   margin-left: 200rpx;
+  flex-shrink: 0;
 }
 
 .header {
@@ -124,12 +159,13 @@ page {
 
 .content {
   height: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   position: absolute;
   align-self: center;
   justify-content: center;
   flex-shrink: 0;
   top: 0;
+  left: 0;
   z-index: 1;
   transform: scale(0.6);
 }
@@ -172,6 +208,7 @@ video {
   border-radius: 10rpx;
   background: rgba(255, 255, 255, 0.9);
   display: flex;
+  display: -webkit-flex;
   justify-content: flex-start;
   align-items: center;
 }
@@ -181,6 +218,7 @@ video {
   margin-left: 50rpx;
   color: #888;
   display: flex;
+  display: -webkit-flex;
   justify-content: center;
   align-items: center;
 }
@@ -197,14 +235,17 @@ video {
 .foot {
   width: 100%;
   position: fixed;
+  left: 0;
   bottom: 40rpx;
   display: flex;
+  display: -webkit-flex;
   justify-content: space-between;
   align-items: flex-end;
 }
 
 .store {
   display: flex;
+  display: -webkit-flex;
   align-items: center;
 }
 
@@ -259,6 +300,7 @@ video {
 .share .share-choice {
   height: 200rpx;
   display: flex;
+  display: -webkit-flex;
   flex-direction: row;
   align-items: center;
 }
@@ -277,6 +319,7 @@ video {
 
 .share .share-choice .choice-item view {
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
 }
 
@@ -317,6 +360,7 @@ video {
   z-index: 9999;
   border-radius: 30rpx;
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
   align-items: center;
 }
@@ -342,6 +386,7 @@ video {
 .controls .play {
   height: 100%;
   display: flex;
+  display: -webkit-flex;
   align-items: center;
 }
 

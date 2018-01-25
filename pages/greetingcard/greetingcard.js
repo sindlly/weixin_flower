@@ -67,10 +67,19 @@ Page({
 
   opencard: function () {
     var _this = this;
+    var query = wx.createSelectorQuery();
+    query.select('#open').boundingClientRect();
+    var height = 0;
+    query.exec(function (res) {
+      //取高度
+      height = res[0].height
+      console.log(typeof(res[0].height));
+    })
     var animation_2 = wx.createAnimation({
       duration: 1000,
       timingFunction: 'ease',
-      transformOrigin: 'right',
+      transformOrigin: '100% -50% 0',
+  
     })
     this.animation_2 = animation_2;
     animation_2.rotateY(180).step()

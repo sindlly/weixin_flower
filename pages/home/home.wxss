@@ -59,6 +59,7 @@ navigator {
 
 .container-intro {
   width: 100%;
+  height: 160rpx;
   padding: 0;
 }
 
