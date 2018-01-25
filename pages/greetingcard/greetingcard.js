@@ -145,6 +145,15 @@ Page({
     })
 
     //获取贺卡信息
+    if(!id) {
+      wx.showModal({
+        title: '提示',
+        content: '贺卡id获取失败',
+        showCancel: false
+      })
+      return;
+    }
+
     return new Promise(function (resolve, reject) {
       wx.request({
         url: _this.data.$root + '/cards/' + id,
