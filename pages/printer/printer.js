@@ -22,7 +22,7 @@ Page({
     tag: false, // 是否打印店铺名称
     userInfo: wx.getStorageSync('user_info') || null,
     token: wx.getStorageSync('token'),
-    rePrint: true, // 是否可重复打印
+    rePrint: false, // 是否可重复打印
     printUrl: '', // 二维码url地址
     printImgUrl: '../../files/print_disabled.png',
     reprintImgUrl: '../../files/reprint_disabled.png',
@@ -76,7 +76,7 @@ Page({
       this.setData({
         reprintCount
       })
-    } else {
+    } else if ($data.rePrint) {
       wx.showModal({
         title: '提示',
         content: '同一张二维码重打次数不超过2次',

@@ -1,7 +1,6 @@
 .container {
   display: flex;
   justify-content: flex-start;
-  height: 100vh;
   text-align: left;
   background-color: #f2f2f2;
 }

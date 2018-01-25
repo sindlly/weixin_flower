@@ -21,13 +21,13 @@ Page({
 
   callSecond: function () {
     wx.makePhoneCall({
-      phoneNumber: '16602136688'
+      phoneNumber: '15711552109'
     })
   },
 
-  callFirse: function () {
+  callFirst: function () {
     wx.makePhoneCall({
-      phoneNumber: '15711552109'
+      phoneNumber: '16602136688'
     })
   },
 

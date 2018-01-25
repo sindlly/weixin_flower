@@ -106,7 +106,7 @@
 
 .image-item {
   width: 200rpx;
-  height: 200rpx;
+  height: 200rpx !important;
 }
 
 .item-container-right {

@@ -106,10 +106,7 @@ Page({
         if (parsedQr && parsedQr.data.id) requestData.url = parsedQr.data.id;
 
         //上传地址
-        if (_this.data.addressChange) {
-          requestData.address = _this.data.address
-        }
-
+        requestData.address = _this.data.address;
         _this.saveInfo(_this, requestData); // 保存信息
       }).catch((reason) => {
         wx.hideLoading();
