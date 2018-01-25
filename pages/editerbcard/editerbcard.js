@@ -69,7 +69,7 @@ Page({
         url: _this.data.$root + '/users/' + _this.data.userInfo.id,
         method: 'PUT',
         data: {
-          picture_ids: [obj.data[0].id]
+          picture_ids: [obj.data.id]
         },
         header: {
           'content-type': 'application/json',
@@ -96,7 +96,7 @@ Page({
           content: '用户信息保存失败'
         })
       })
-    }).catch(() => {
+    }).catch((e) => {
       wx.hideLoading();
       wx.showModal({
         title: '提示',
