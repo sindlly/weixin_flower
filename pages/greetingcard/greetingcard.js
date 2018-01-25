@@ -1,4 +1,4 @@
-const backgroundAudioManager = wx.getBackgroundAudioManager();
+let backgroundAudioManager = wx.getBackgroundAudioManager();
 const util = require('../../utils/util.js')
 
 Page({
@@ -14,6 +14,7 @@ Page({
     videoSrc: '',
     hasVoice: false,
     voiceSrc: '',
+    musicSrc: '',
     isPlay: false,
     isPlaybgMusic: false,
     animationData_1: '',
@@ -138,8 +139,8 @@ Page({
           const randomNum = _this.randomNumber(0, musics);
 
           //播放背景音乐
-
-          backgroundAudioManager.src = _this.data.$root + "/files/" + res.data.data.category.music_ids[randomNum];
+          const musicSrc = _this.data.$root + "/files/" + res.data.data.category.music_ids[randomNum];
+          backgroundAudioManager.src = musicSrc;
           backgroundAudioManager.title = '花言心说背景音乐';
           backgroundAudioManager.epname = '花言心说背景音乐';
           backgroundAudioManager.singer = '花言心说';
@@ -149,6 +150,7 @@ Page({
             imgurl: res.data.data.card.picture_id ? _this.data.$root + "/files/" + res.data.data.card.picture_id : '',
             videoSrc: res.data.data.card.video_url,
             voiceSrc: _this.data.$root + "/files/" + res.data.data.card.voice_id,
+            musicSrc,
             blessing: res.data.data.card.blessing,
             headerUrl: res.data.data.card.editor_info.avatar_url,
             user: res.data.data.card.editor_info.nick_name,
@@ -320,6 +322,20 @@ Page({
 
   onUnload: function () {
     backgroundAudioManager.stop();
+    wx.stopBackgroundAudio();    
+    this.closeMusic();
+  },
+
+  onHide: function () {
+    wx.stopBackgroundAudio();
+  },
+
+  onShow: function () {
+    this.openMusic();
+    wx.playBackgroundAudio({
+      dataUrl: this.data.musicSrc,
+      title: '花言背景音乐'
+    })
   },
 
   share: function () {

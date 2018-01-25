@@ -19,9 +19,15 @@ Page({
     })
   },
 
-  call: function () {
+  callSecond: function () {
     wx.makePhoneCall({
-      phoneNumber: '15711111551'
+      phoneNumber: '16602136688'
+    })
+  },
+
+  callFirse: function () {
+    wx.makePhoneCall({
+      phoneNumber: '15711552109'
     })
   },
 

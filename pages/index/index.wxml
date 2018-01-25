@@ -15,9 +15,9 @@
     </view>
     <view class='contact'>
       <view class="contact-detail">电话:
-        <span class="detail-black" bindtap="call">
-          <span class='phone'>16602136688</span>
-          <span class='phone second-phone'>15711552109</span>
+        <span class="detail-black" >
+          <span class='phone' bindtap="callFirst">16602136688</span>
+          <span class='phone second-phone' bindtap="callSecond">15711552109</span>
         </span>
       </view>
       <view class="contact-detail">官方微信:
