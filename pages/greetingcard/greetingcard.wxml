@@ -6,9 +6,11 @@
   <view class='box'>
     <image mode='widthFix' class='box-bg' src='../../files/cardbg.png'></image>
     <image mode='widthFix' class='box-left' id='box-left' style='z-index:{{zIndex_1}}' animation='{{animationData_1}}' src='../../files/cardfont.png'></image>
-    <view class='open' animation='{{animationData_2}}' style='z-index:{{zIndex_2}}' bindtap='opencard'>
+    <view class='open' id="open" animation='{{animationData_2}}' style='z-index:{{zIndex_2}}' bindtap='opencard'>
+    <view class='open-btn-panel'>
       <image class='open-btn' src='../../files/open-btn.png'></image>
       <image class='open-center' src='../../files/open-center.png'></image>
+    </view>
       <image class='open-img' mode='widthFix' src="../../files/open.png"></image>
       <view class='origin'>
         <image class='header' src='{{headerUrl}}' mode="aspectFill"></image>
