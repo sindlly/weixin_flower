@@ -67,20 +67,17 @@ Page({
 
   opencard: function () {
     var _this = this;
-    
     var query = wx.createSelectorQuery();
     query.select('#open').boundingClientRect();
     var height = 0;
     query.exec(function (res) {
       //取高度
       height = res[0].height
-      console.log(typeof(res[0].height));
     })
     var animation_2 = wx.createAnimation({
       duration: 1000,
       timingFunction: 'ease',
       transformOrigin: '100% -50% 0',
-  
     })
     this.animation_2 = animation_2;
     animation_2.rotateY(180).step()
@@ -100,7 +97,6 @@ Page({
         zIndex_1: 0
       })
     }, 1400);
-
   },
 
   move: function () {
@@ -114,7 +110,6 @@ Page({
     animation_3.translateX(155).scale(0.6).step();
     animation_3.translateX(0).scale(1).step();
     _this.setData({
-      // zIndex_2: 1,
       animationData_3: _this.animation_3.export()
     })
   },
@@ -145,7 +140,7 @@ Page({
     })
 
     //获取贺卡信息
-    if(!id) {
+    if (!id) {
       wx.showModal({
         title: '提示',
         content: '贺卡id获取失败',
@@ -297,7 +292,6 @@ Page({
   },
 
   audioPause: function () {
-    // backgroundAudioManager.play();
     this.innerAudioContext.pause();
     this.setData({
       isPlay: false,
@@ -320,7 +314,7 @@ Page({
       });
 
       //播放背景音乐
-      backgroundAudioManager.play();
+      // backgroundAudioManager.play();
     })
     this.innerAudioContext.onError((res) => {
       console.log(res.errMsg)
@@ -346,7 +340,7 @@ Page({
 
   onUnload: function () {
     backgroundAudioManager.stop();
-    wx.stopBackgroundAudio();    
+    wx.stopBackgroundAudio();
     this.closeMusic();
   },
 

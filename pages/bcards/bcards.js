@@ -41,33 +41,60 @@ Page({
       wx.request({
         url: _this.data.$root + '/cards/' + id,
         success: function (res) {
-          wx.setStorageSync('cardid', id);
-          //如果status为BLANK，表示为首个用户
-          if (res.data.data.card.status == "NONBLANK") {
-            wx.reLaunch({
-              url: '../greetingcard/greetingcard?id=' + id,  //若有数据则跳到贺卡页。
+          if (!res.data.data) {
+            wx.showModal({
+              title: '提示',
+              content: '无法获取贺卡信息',
+              showCancel: false,
             })
-          } else {
-            _this.setData({
-              isGuest: true,
-              firstGuest: true,
-              id: id,
-              show: true
-            })
+            return;
           }
+          wx.setStorageSync('cardid', id);
+          const { user_id: userId, status } = res.data.data.card;
+          wx.request({
+            url: _this.data.$root + '/users/' + userId,
+            success: function (res) {
+              const userInfo = res.data.data;
+              if (userInfo) {
+                wx.setStorageSync("user_info", userInfo);
+              } else {
+                wx.showModal({
+                  title: '提示',
+                  content: '贺卡商家信息获取失败',
+                  showCancel: false
+                })
+                return;
+              }
+              //如果status为BLANK，表示为首个用户
+              if (status == "NONBLANK") {
+                wx.reLaunch({
+                  url: '../greetingcard/greetingcard?id=' + id,  //若有数据则跳到贺卡页。
+                })
+              } else {
+                _this.setData({
+                  isGuest: true,
+                  firstGuest: true,
+                  id,
+                  show: true,
+                  userInfo,
+                  logo: userInfo.avatar_id ? `${_this.data.$root}/files/${userInfo.avatar_id}` : '../../files/defaultLog.png',
+                  imgSrc: userInfo.picture_ids[0] ? `${_this.data.$root}/files/${userInfo.picture_ids[0]}` : '../../files/defaultLog.png',
+                })
+              }
+            }
+          })
         }
       })
     } else {
+      const userInfo = wx.getStorageSync("user_info");
       _this.setData({
+        userInfo,
+        logo: userInfo.avatar_id ? `${_this.data.$root}/files/${userInfo.avatar_id}` : '../../files/defaultLog.png',
+        imgSrc: userInfo.picture_ids[0] ? `${_this.data.$root}/files/${userInfo.picture_ids[0]}` : '../../files/defaultLog.png',
         show: true
-      })
+      });
     }
-    const userInfo = wx.getStorageSync("user_info");
-    _this.setData({
-      userInfo,
-      logo: userInfo.avatar_id ? `${_this.data.$root}/files/${userInfo.avatar_id}` : '../../files/defaultLog.png',
-      imgSrc: userInfo.picture_ids[0] ? `${_this.data.$root}/files/${userInfo.picture_ids[0]}` : '../../files/defaultLog.png',
-    });
+
     if (options.who == "guest") {
       _this.setData({
         isGuest: true

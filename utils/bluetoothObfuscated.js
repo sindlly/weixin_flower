@@ -266,7 +266,7 @@ function getBluetoothDevicesComplete() {
 
 function at2_Oa(_deviceName, O44) {
   r_cFd$21 = 9000;
-  if (_deviceName == huayanxinshuo) {
+  if (_deviceName == "huayanxinshuo") {
     vVimp10 = O44;
     wuhiKE23 = '\u627e\u5230\u53ef\u8fde\u63a5\u6253\u5370\u673a';
     vTN_Ci();

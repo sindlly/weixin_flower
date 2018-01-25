@@ -13,7 +13,6 @@
 .banner-img {
   width: 100%;
   display: block;
-  /* position: fixed; */
 }
 
 .goto-editer {
@@ -21,8 +20,10 @@
   width: 262rpx;
   height: 72rpx;
   position: absolute;
-  /* margin-top: 80rpx; */
   z-index: 10;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .title {
@@ -50,6 +51,7 @@
 
 .container-intro {
   width: 100%;
+  height: 160rpx;
   padding: 0;
 }
 
@@ -140,6 +142,7 @@ image {
   background-color: #ff3630;
   font-size: 13pt;
 }
-.color-type{
+
+.color-type {
   color: #40d8ff;
 }

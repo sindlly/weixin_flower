@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 8,
 			"list": [
 				{
 					"id": 0,
@@ -45,7 +45,7 @@
 					"id": 2,
 					"name": "greeting",
 					"pathName": "pages/greetingcard/greetingcard",
-					"query": "scene=81c03410f1f811e7a76c7f2436ca4e8b",
+					"query": "scene=9ea630d0005211e8821a059339d2bdee",
 					"scene": "1047"
 				},
 				{
@@ -87,7 +87,7 @@
 					"id": 8,
 					"name": "card",
 					"pathName": "pages/bcards/bcards",
-					"query": "id=9ea630d0-0052-11e8-821a-059339d2bdee",
+					"query": "id=5c4fffe0-01e7-11e8-809f-bf31de49cbc8",
 					"scene": "1011"
 				},
 				{
