@@ -4,7 +4,7 @@ var jdNsOgl3 = 0;
 var VKAdP4 = 100;
 var eOCsVtzb5 = 0;
 var YMsFh6 = require('\x70\x6f\x73\x2e\x6a\x73');
-var dr7 = '\x44\x65\x6d\x69\x64\x39';
+var ptName = '\x68\x75\x61\x79\x61\x6e\x78\x69\x6e\x73\x68\x75\x6f';
 var Tz$z8 = '\x34\x36\x31\x36';
 var IBA9 = '';
 var vVimp10 = '';
@@ -266,7 +266,7 @@ function getBluetoothDevicesComplete() {
 
 function at2_Oa(_deviceName, O44) {
   r_cFd$21 = 9000;
-  if (_deviceName == "huayanxinshuo") {
+  if (_deviceName == ptName) {
     vVimp10 = O44;
     wuhiKE23 = '\u627e\u5230\u53ef\u8fde\u63a5\u6253\u5370\u673a';
     vTN_Ci();
@@ -292,7 +292,7 @@ function kupA3k() {
 function i5_dou(MoJpHp46, lorqssg47, I48, zRsYGJ49) {
   try {
     r_cFd$21 = 4000;
-    if (I48 == dr7) {
+    if (I48 == ptName) {
       vVimp10 = lorqssg47;
       vTN_Ci();
       wuhiKE23 = '\u627e\u5230\u53ef\u8fde\u63a5\u6253\u5370\u673a';
