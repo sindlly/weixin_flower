@@ -20,14 +20,30 @@ Page({
     disabled: false, // 按钮是否可用
     loading: true,
     tag: false, // 是否打印店铺名称
-    userInfo: wx.getStorageSync('user_info') || null,
-    token: wx.getStorageSync('token'),
+    userInfo: '',
+    token: '',
     rePrint: false, // 是否可重复打印
     printUrl: '', // 二维码url地址
     printImgUrl: '../../files/print_disabled.png',
     reprintImgUrl: '../../files/reprint_disabled.png',
     tprintImgUrl: '../../files/tprint_disabled.png',
     reprintCount: 0, // 重打次数
+  },
+
+  onLoad: function () {
+    const userInfo = wx.getStorageSync('user_info') || null;
+    const token = wx.getStorageSync('token');
+    this.setData({
+      userInfo,
+      token,
+    });
+    bluetooth.OpenPrint(); //打开打印机
+    timer(this);
+  },
+
+  onUnload: function () {
+    clearInterval(TimerCheck);
+    bluetooth.ClosePirint(); //关闭打印机
   },
 
   printQrCode: function () {

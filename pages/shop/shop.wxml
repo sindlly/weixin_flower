@@ -13,7 +13,7 @@
             <text class="item-price">¥{{item.act_price || item.price}}</text>
             <text wx:if="{{item.act_price}}" class="item-old-price">原价 ¥{{item.price}}</text>
           </view>
-          <text class="item-payed">100人付款</text>
+          <text class="item-payed">{{item.sales}} 人付款</text>
         </view>
         <view class="item-container-buy">
           <navigator class="item-buy" url="../shop/order/order?id={{item.id}}" hover-class="navigator-hover">立即购买</navigator>
