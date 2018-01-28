@@ -50,10 +50,10 @@ Page({
       return;
     }
 
-    if (!/^[1][0-9]{10}$/.test(contact)) {
+    if (!/^([1][0-9]{10})|(0\d{2,3}-?\d{7,8})$/.test(contact)) {
       wx.showModal({
         title: '提示',
-        content: '联系电话需为手机号',
+        content: '联系电话需为座机/手机号，座机需加区号',
         showCancel: false
       })
       return;

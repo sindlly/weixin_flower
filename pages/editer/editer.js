@@ -4,19 +4,16 @@ Page({
 
   data: {
     $root: getApp().globalData.ROOTPATH,
-    token: wx.getStorageSync("token"),
-    csrfToken: wx.getStorageSync("csrfToken"),
     isPlaybgMusic: false,
     id: "",
     blessing: "",
+    editor_info: {
+      nick_name: '',
+      avatar_url: ''
+    },
     voice_id: '',
     video_url: '',
     picture_id: '',
-    union_id: wx.getStorageSync('union_id'),
-    editor_info: {
-      nick_name: wx.getStorageSync('nick_name'),
-      avatar_url: wx.getStorageSync('avatar_url')
-    },
     uploadUrl: '',
     hasPicture: false,
     pictureUrl: '',
@@ -58,7 +55,6 @@ Page({
           pictureUrl: res.tempFilePaths,
           hasPicture: true,
           hasVideo: false,
-          // uploadUrl: res.tempFilePaths[0],
         })
         wx.setStorageSync("pictureUrl", res.tempFilePaths);//为预览暂存地址
         wx.setStorageSync("videoSrc", '')
@@ -102,10 +98,9 @@ Page({
                     uploadUrl: res.tempFilePath,
                     pictureUrl: '',
                   })
-                  wx.setStorageSync("videoSrc", res.tempFilePath);//为预览暂存地址
-                  wx.setStorageSync("pictureUrl", '');//若有视频，则清除图片
+                  wx.setStorageSync("videoSrc", res.tempFilePath); //为预览暂存地址
+                  wx.setStorageSync("pictureUrl", ''); //若有视频，则清除图片
                 }
-
               },
               fail: function (res) {
                 console.log(res)
@@ -251,57 +246,63 @@ Page({
       title: '上传中...',
     });
 
-    if (_this.data.pictureUrl && !wx.getStorageSync("audioSrc")) {
-      _this.getPicture_id().then(function (id) {
-        var data = {
-          picture_id: id,
-          blessing: _this.data.blessing,
-          status: 'NONBLANK',
-          editor_info: _this.data.editor_info,
-          union_id: _this.data.union_id,
-          background_id: _this.data.bgid,
-          category_id: _this.data.category_id
+    wx.login({
+      success: res => {
+        const union_id = res.code;
+        const { editor_info } = _this.data;
+        if (_this.data.pictureUrl && !wx.getStorageSync("audioSrc")) {
+          _this.getPicture_id().then(function (id) {
+            var data = {
+              picture_id: id,
+              blessing: _this.data.blessing,
+              status: 'NONBLANK',
+              editor_info,
+              union_id,
+              background_id: _this.data.bgid,
+              category_id: _this.data.category_id
+            }
+            _this.upText(data);
+          });
+        } else if (wx.getStorageSync("audioSrc") && _this.data.pictureUrl) {
+          _this.getPicture_id().then(function (id) {
+            var picture_id = id;
+            _this.uploadMedia().then(function (res) {
+              var data = {
+                voice_id: res.id,
+                picture_id: picture_id,
+                blessing: _this.data.blessing,
+                status: 'NONBLANK',
+                editor_info,
+                union_id,
+                background_id: _this.data.bgid,
+                category_id: _this.data.category_id
+              }
+              _this.upText(data);
+            })
+          })
+        } else if (wx.getStorageSync("videoSrc")) {
+          _this.uploadMedia().then(function (res) {
+            var data = {
+              video_url: res.url,
+              blessing: _this.data.blessing,
+              status: 'NONBLANK',
+              editor_info,
+              union_id,
+              background_id: _this.data.bgid,
+              category_id: _this.data.category_id
+            }
+            _this.upText(data);
+          })
+        } else {
+          wx.hideLoading();
+          wx.showModal({
+            title: '提示',
+            content: '请上传图片或视频',
+            showCancel: false,
+          })
         }
-        _this.upText(data);
-      });
-    } else if (wx.getStorageSync("audioSrc") && _this.data.pictureUrl) {
-      _this.getPicture_id().then(function (id) {
-        var picture_id = id;
-        _this.uploadMedia().then(function (res) {
-          var data = {
-            voice_id: res.id,
-            picture_id: picture_id,
-            blessing: _this.data.blessing,
-            status: 'NONBLANK',
-            editor_info: _this.data.editor_info,
-            union_id: _this.data.union_id,
-            background_id: _this.data.bgid,
-            category_id: _this.data.category_id
-          }
-          _this.upText(data);
-        })
-      })
-    } else if (wx.getStorageSync("videoSrc")) {
-      _this.uploadMedia().then(function (res) {
-        var data = {
-          video_url: res.url,
-          blessing: _this.data.blessing,
-          status: 'NONBLANK',
-          editor_info: _this.data.editor_info,
-          union_id: _this.data.union_id,
-          background_id: _this.data.bgid,
-          category_id: _this.data.category_id
-        }
-        _this.upText(data);
-      })
-    } else {
-      wx.hideLoading();
-      wx.showModal({
-        title: '提示',
-        content: '请上传图片或视频',
-        showCancel: false,
-      })
-    }
+      }
+    })
   },
 
   //保存
@@ -363,7 +364,21 @@ Page({
 
   onLoad: function (options) {
     let { blessing } = options;
+    const _this = this;
     blessing = blessing === "undefined" ? "请写下您想要送出的祝福语" : blessing;
+    wx.getUserInfo({
+      success: function (res) {
+        const userInfo = res.userInfo
+        const nick_name = userInfo.nickName
+        const avatar_url = userInfo.avatarUrl
+        _this.setData({
+          editor_info: {
+            nick_name,
+            avatar_url
+          }
+        })
+      }
+    })
 
     //清理缓存
     wx.setStorageSync("pictureUrl", '');
@@ -374,7 +389,7 @@ Page({
       bgid: options.bgid,
       bgurl: this.data.$root + "/files/" + options.bgid,
       blessing,
-      category_id: options.category_id
+      category_id: options.category_id,
     })
     backgroundAudioManager.src = this.data.$root + "/files/" + options.music;
   },
