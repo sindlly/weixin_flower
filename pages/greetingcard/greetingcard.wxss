@@ -245,9 +245,16 @@ video {
   align-items: center;
 }
 
+.cover-store {
+  position: absolute;
+  left: 15rpx;
+  bottom: 207rpx;
+}
+
 .name {
   margin-left: 10rpx;
   font-size: 0.8em;
+  max-width: 200rpx
 }
 
 .log {

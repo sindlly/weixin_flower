@@ -275,7 +275,7 @@ Page({
     // 测试用例
     var _this = this;
     //暂停背景音乐
-    backgroundAudioManager.pause();
+    // backgroundAudioManager.pause();
     this.innerAudioContext.src = this.data.voiceSrc;
 
     if (this.data.seek) {

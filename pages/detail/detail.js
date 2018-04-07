@@ -41,10 +41,10 @@ Page({
     const promiseArray = [];
     const { name, contact } = e.detail.value;
 
-    if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{1,10}$/.test(name)) {
+    if (!/^.{1,20}$/.test(name)) {
       wx.showModal({
         title: '提示',
-        content: '花店名称只能包含字母、数字及中文字符，且长度不能超过10',
+        content: '花店名称长度不能超过20',
         showCancel: false
       })
       return;
